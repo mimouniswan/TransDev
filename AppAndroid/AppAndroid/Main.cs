@@ -23,6 +23,7 @@ namespace AppAndroid
             List<String> listSpinner = new List<String>();
             userSpinner = FindViewById<Spinner>(Resource.Id.spinner1);
             btnMenu = FindViewById<Button>(Resource.Id.button1);
+            Button btnDB = FindViewById<Button>(Resource.Id.buttonDB);
 
             listSpinner.Add("Amblard");
             listSpinner.Add("Mimouni");
@@ -35,6 +36,11 @@ namespace AppAndroid
             {
                 StartActivity(typeof(Menu));
 
+            };
+
+            btnDB.Click += delegate
+            {
+                StartActivity(typeof(TestDB));
             };
         }
 
