@@ -3,18 +3,18 @@ using SQLiteNetExtensions.Attributes;
 
 namespace AppAndroid.Data
 {
-    public class Check : Table
+    public class Check
     {
-        //[PrimaryKey, AutoIncrement]
-        //public int Id { get; set; }
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
 
         [ForeignKey(typeof(Bus))]
         public int IdBus { get; set; }
         [ForeignKey(typeof(Controleur))]
         public int IdControleur { get; set; }
         [ForeignKey(typeof(Conducteur))]
-
         public int IdConducteur { get; set; }
+
         public string Date { get; set; }
 
         [ManyToOne]

@@ -26,10 +26,18 @@ public final class R {
         public static final int triangle_red=0x7f02000c;
     }
     public static final class id {
-        public static final int LaunchButtonDB1=0x7f05001f;
-        public static final int LaunchButtonDB2=0x7f050020;
-        public static final int ResultTextDB=0x7f050023;
-        public static final int TestProgressBarDB=0x7f050021;
+        public static final int LaunchButtonDB1=0x7f050021;
+        public static final int LaunchButtonDB2=0x7f050022;
+        public static final int LaunchButtonDB3=0x7f050023;
+        public static final int LaunchButtonDB4=0x7f050024;
+        public static final int LaunchButtonDB5=0x7f050025;
+        public static final int LaunchButtonDB6=0x7f050028;
+        public static final int LaunchButtonDB7=0x7f050029;
+        public static final int LaunchButtonDB8=0x7f05002a;
+        public static final int LaunchButtonDB9=0x7f05002b;
+        public static final int ResultTextDB=0x7f05002f;
+        public static final int TestProgressBarDB=0x7f05002c;
+        public static final int TextBoxDB=0x7f05002d;
         public static final int btnAddBus=0x7f050019;
         public static final int btnAddController=0x7f05001b;
         public static final int btnAddDriver=0x7f05001a;
@@ -41,17 +49,21 @@ public final class R {
         public static final int button1=0x7f050018;
         public static final int buttonDB=0x7f050017;
         public static final int buttonValidate=0x7f050012;
+        public static final int horizontalScrollView1=0x7f05001f;
+        public static final int horizontalScrollView2=0x7f050026;
         public static final int imageView1=0x7f050013;
         public static final int imgBus=0x7f050007;
         public static final int imgCircle=0x7f050009;
         public static final int imgSquare=0x7f05000b;
         public static final int imgTriangle=0x7f05000d;
         public static final int imgtrash=0x7f05000f;
+        public static final int linearLayout1=0x7f050020;
+        public static final int linearLayout2=0x7f050027;
         public static final int listBus=0x7f05001e;
         public static final int lyBottom=0x7f050008;
         public static final int lyMiddle=0x7f050006;
         public static final int lyTop=0x7f050004;
-        public static final int scrollViewDB=0x7f050022;
+        public static final int scrollViewDB=0x7f05002e;
         public static final int spinner1=0x7f050016;
         public static final int textView1=0x7f050014;
         public static final int textView2=0x7f050015;

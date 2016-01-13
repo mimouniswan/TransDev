@@ -3,14 +3,13 @@ using SQLiteNetExtensions.Attributes;
 
 namespace AppAndroid.Data
 {
-    public class BusIncident : Table
+    public class BusIncident
     {
-        //[PrimaryKey, AutoIncrement]
-        //public int Id { get; set; }
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
 
         [ForeignKey(typeof(Bus))]
         public int BusId { get; set; }
-
         [ForeignKey(typeof(Incident))]
         public int IncidentId { get; set; }
 

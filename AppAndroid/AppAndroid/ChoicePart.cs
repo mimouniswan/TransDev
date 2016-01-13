@@ -17,6 +17,7 @@ namespace AppAndroid
     {
         protected override void OnCreate(Bundle bundle)
         {
+            RequestWindowFeature(WindowFeatures.NoTitle);
             base.OnCreate(bundle);
 
             // Create your application here

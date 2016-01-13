@@ -3,21 +3,92 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <Button
-        android:text="Creation"
+    <HorizontalScrollView
+        android:minWidth="25px"
+        android:minHeight="50px"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/LaunchButtonDB1" />
-    <Button
-        android:text="Select"
+        android:id="@+id/horizontalScrollView1">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout1">
+            <Button
+                android:text="Réinit"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/LaunchButtonDB1" />
+            <Button
+                android:text="CreaConduc"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/LaunchButtonDB2" />
+            <Button
+                android:text="CreaContro"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/LaunchButtonDB3" />
+            <Button
+                android:text="CreaBus"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/LaunchButtonDB4" />
+            <Button
+                android:text="CreaCheck"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/LaunchButtonDB5" />
+        </LinearLayout>
+    </HorizontalScrollView>
+    <HorizontalScrollView
+        android:minWidth="25px"
+        android:minHeight="50px"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/LaunchButtonDB2" />
+        android:id="@+id/horizontalScrollView2">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout2">
+            <Button
+                android:text="SelConduc"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/LaunchButtonDB6" />
+            <Button
+                android:text="SelContro"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/LaunchButtonDB7" />
+            <Button
+                android:text="SelBus"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/LaunchButtonDB8" />
+            <Button
+                android:text="SelCheck"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/LaunchButtonDB9" />
+        </LinearLayout>
+    </HorizontalScrollView>
     <ProgressBar
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/TestProgressBarDB" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="ID"
+        android:inputType="number"
+        android:id="@+id/TextBoxDB" />
     <ScrollView
         android:minWidth="25px"
         android:minHeight="50px"

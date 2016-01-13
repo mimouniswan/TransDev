@@ -1,17 +1,15 @@
 using System;
-using System.Collections.Generic;
-using System;
 using SQLite.Net;
 using SQLite.Net.Platform.XamarinAndroid;
 using AppAndroid.Data;
-using System.IO;
+using System.Collections.Generic;
 
 namespace AppAndroid.Work
 {
     public class DBWork
     {
-        private Java.IO.File _RootPath = Android.OS.Environment.ExternalStorageDirectory;
-        private string _DirectoryPath = "/Android/data/AppAndroid.AppAndroid/files/Transdev.sqlite";
+        private string _RootPath = FileWork.RootPath;
+        private string _DirectoryPath = "/Android/data/AppAndroid.AppAndroid/files/";
         private string _DBName = "Transdev.sqlite";
         private string _Path = "";
         private SQLiteConnection _Conn;
@@ -26,9 +24,8 @@ namespace AppAndroid.Work
         /// Création de toute les tables.
         /// </summary>
         /// <returns></returns>
-        public string[] DBCreateDB()
+        public string DBCreateDB()
         {
-            DateTimeOffset debut = DateTimeOffset.Now;
             string sr = "";
 
             try
@@ -49,44 +46,116 @@ namespace AppAndroid.Work
                 _Conn.CreateTable<BusIncident>();
                 _Conn.CreateTable<Check>();
 
-                _Conn.Insert(new Conducteur() { Nom = "Bidule", MdP = "Pass" });
-
-                sr = "Create tables successfully !\n" + _Path;
+                sr = "Tables crée avec succès !\n" + _Path;
                 //Debug.WriteLine(_Path);
             }
             catch (Exception e)
             {
-                sr = "Impossible to create table";
+                sr = "Impossible de créé les tables";
             }
 
-            TimeSpan span = DateTimeOffset.Now - debut;
-            float totalSecond = (span.Minutes * 60) + span.Seconds + ((float)span.Milliseconds / 1000);
-
-            string se = "Temps d'exécution du test : " + totalSecond.ToString() + "s";
-
-            return new string[2] { se, sr };
+            return sr;
         }
 
-        /// <summary>
-        /// Sélection de N lignes ou toute.
-        /// </summary>
-        /// <param name="n">Nombre de lignes. Toute si 0.</param>
-        /// <returns>t[0] - Temps d'exécution | t[1] - String de résultat</returns>
-        public string[] DBSelectConducteur(int id)
+        public string DBCreateConducteur(string nom, string mdp)
         {
-            DateTimeOffset debut = DateTimeOffset.Now;
+            string sr = "";
+
+            try {
+                _Conn.Insert(new Conducteur() { Nom = nom, MdP = mdp });
+                sr = "Conducteur créé avec succès";
+            }
+            catch(Exception e)
+            {
+                sr = "Une erreur c'est produit : Impossible de créer un conducteur";
+            }
+
+            return sr;
+        }
+
+        public string DBCreateControleur(string nom)
+        {
             string sr = "";
 
             try
             {
-                string q = $"SELECT * FROM Conducteur WHERE Id={id}";
+                _Conn.Insert(new Controleur() { Nom = nom });
+                sr = "Controleur créé avec succès";
+            }
+            catch (Exception e)
+            {
+                sr = "Une erreur c'est produit : Impossible de créer un controleur";
+            }
+
+            return sr;
+        }
+
+        public string DBCreateBus(int numero, string couleur)
+        {
+            string sr = "";
+
+            try
+            {
+                _Conn.Insert(new Bus() { Number = numero, Color = couleur });
+                sr = "Bus créé avec succès";
+            }
+            catch (Exception e)
+            {
+                sr = "Une erreur c'est produit : Impossible de créer un bus";
+            }
+
+            return sr;
+        }
+
+        public string DBCreateCheck(Controleur controleur, Conducteur conducteur, Bus bus, List<Incident> incidents)
+        {
+            string sr = "";
+
+            try
+            {
+                Check tmpCheck = new Check() { IdBus = bus.Id, IdConducteur = conducteur.Id, IdControleur = controleur.Id, Date = DateTime.Now.ToString() };
+
+                // Liaison avec Incident
+                foreach (Incident inc in incidents)
+                {
+                    _Conn.Insert(inc);
+                    _Conn.Insert(new BusIncident() { BusId = bus.Id, IncidentId = inc.Id });
+                }
+
+                _Conn.Insert(tmpCheck);
+
+                sr = "Check créé avec succès !";
+            }
+            catch(Exception e)
+            {
+                sr = "Une erreur c'est produit : Impossible de créer le check";
+            }
+
+            return sr;
+        }
+
+        public Incident GetIncident(Controleur controleur, Conducteur conducteur, string type, int gravite, int etat, string dateCreation, string dateMaJ, string observation, int x, int y, string picture)
+        {
+            return new Incident() { IdConducteur = conducteur.Id, IdCreationCotroleur = controleur.Id, IdMaJControleur = controleur.Id, Type = type, Gravite = gravite, Etat = etat, DateCreation = dateCreation, DateMaJ = dateMaJ, Observation = observation, X = x, Y = y, Picture = picture };
+        }
+
+        public string DBSelectConducteur(int id)
+        {
+            string sr = "", w ="";
+
+            if(id != 0)
+                w = $" WHERE Id={id}";
+
+            try
+            {
+                string q = $"SELECT * FROM Conducteur" + w;
 
                 // Selection - table Message
                 var query = _Conn.Query<Conducteur>(q);
 
                 foreach (var item in query)
                 {
-                    sr += $"{item.Id} - {item.Nom}@{item.MdP}\n";
+                    sr += $"{item.Id} : {item.Nom}@{item.MdP}\n";
                     //Debug.WriteLine(sr);
                 }
             }
@@ -95,72 +164,91 @@ namespace AppAndroid.Work
                 sr = "Il n'y a aucune table.";
             }
 
-            TimeSpan span = DateTimeOffset.Now - debut;
-            float totalSecond = (span.Minutes * 60) + span.Seconds + ((float)span.Milliseconds / 1000);
-
-            string se = "Temps d'exécution du test : " + totalSecond.ToString() + "s";
-
-            return new string[2] { se, sr };
+            return sr;
         }
 
-        /// <summary>
-        /// Suppression d'une donnée.
-        /// </summary>
-        /// <param name="n">Index de la suppression.</param>
-        /// <returns>t[0] - Temps d'exécution | t[1] - String de résultat</returns>
-        public string[] DBDeleteTest(Table table, int id)
+        public string DBSelectControleur(int id)
         {
-            DateTimeOffset debut = DateTimeOffset.Now;
-            string sr = "";
+            string sr = "", w = "";
+
+            if (id != 0)
+                w = $" WHERE Id={id}";
 
             try
             {
-                if (id == 0)
-                    sr = "Enter ID";
-                else {
-                    _Conn.Delete<Table>(id);
-                    sr = "Delete successfully !";
+                string q = $"SELECT * FROM Controleur" + w;
+
+                // Selection - table Message
+                var query = _Conn.Query<Controleur>(q);
+
+                foreach (var item in query)
+                {
+                    sr += $"{item.Id} : {item.Nom}\n";
+                    //Debug.WriteLine(sr);
                 }
             }
             catch (Exception e)
             {
-                sr = "Impossible to delete data";
+                sr = "Il n'y a aucune table.";
             }
 
-            TimeSpan span = DateTimeOffset.Now - debut;
-            float totalSecond = (span.Minutes * 60) + span.Seconds + ((float)span.Milliseconds / 1000);
-
-            string se = "Temps d'exécution du test : " + totalSecond.ToString() + "s";
-
-            return new string[2] { se, sr };
+            return sr;
         }
 
-        /// <summary>
-        /// Mise à jour d'une donnée.
-        /// </summary>
-        /// <param name="n">Index de la donnée.</param>
-        /// <returns>t[0] - Temps d'exécution | t[1] - String de résultat</returns>
-        public string[] DBUpdateTest(Table table, int id, string content)
+        public string DBSelectBus(int id)
         {
-            DateTimeOffset debut = DateTimeOffset.Now;
-            string sr = "";
+            string sr = "", w = "";
+
+            if (id != 0)
+                w = $" WHERE Id={id}";
 
             try
             {
-                _Conn.Query<Table>($"UPDATE {table.ToString()} SET Content=\"Update {content}\" WHERE Id={id}");
-                sr = "Update successfully !";
+                string q = $"SELECT * FROM Bus" + w;
+
+                // Selection - table Message
+                var query = _Conn.Query<Bus>(q);
+
+                foreach (var item in query)
+                {
+                    sr += $"{item.Id} : {item.Number}@{item.Color}\n";
+                    //Debug.WriteLine(sr);
+                }
             }
             catch (Exception e)
             {
-                sr = "Impossible to update data";
+                sr = "Il n'y a aucune table.";
             }
 
-            TimeSpan span = DateTimeOffset.Now - debut;
-            float totalSecond = (span.Minutes * 60) + span.Seconds + ((float)span.Milliseconds / 1000);
+            return sr;
+        }
 
-            string se = "Temps d'exécution du test : " + totalSecond.ToString() + "s";
+        public string DBSelectCheck(int id)
+        {
+            string sr = "", w = "";
 
-            return new string[2] { se, sr };
+            if (id != 0)
+                w = $" WHERE Id={id}";
+
+            try
+            {
+                string q = $"SELECT * FROM Check" + w;
+
+                // Selection - table Message
+                var query = _Conn.Query<Check>(q);
+
+                foreach (var item in query)
+                {
+                    sr += $"{item.Id} : {item.Date}@{item.Controleur}\n";
+                    //Debug.WriteLine(sr);
+                }
+            }
+            catch (Exception e)
+            {
+                sr = "Il n'y a aucune table.";
+            }
+
+            return sr;
         }
     }
 }

@@ -74,13 +74,12 @@
     <Compile Include="Data\Conducteur.cs" />
     <Compile Include="Data\Controleur.cs" />
     <Compile Include="Data\Incident.cs" />
-    <Compile Include="Data\ITable.cs" />
-    <Compile Include="Data\Table.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestDB.cs" />
+    <Compile Include="Work\FileWork.cs" />
     <Compile Include="Work\DBWork.cs" />
   </ItemGroup>
   <ItemGroup>

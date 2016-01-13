@@ -4,10 +4,10 @@ using System.Collections.Generic;
 
 namespace AppAndroid.Data
 {
-    public class Incident : Table
+    public class Incident
     {
-        //[PrimaryKey, AutoIncrement]
-        //public int Id { get; set; }
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
 
         [ForeignKey(typeof(Conducteur))]
         public int IdConducteur { get; set; }
@@ -20,7 +20,7 @@ namespace AppAndroid.Data
         public int Gravite { get; set; }
         public int Etat { get; set; }
         public string DateCreation { get; set; }
-        public string DateMaJObservation { get; set; }
+        public string DateMaJ { get; set; }
         public string Observation { get; set; }
         public int X { get; set; }
         public int Y { get; set; }

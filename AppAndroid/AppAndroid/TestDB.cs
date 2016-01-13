@@ -1,18 +1,11 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 using Android.App;
-using Android.Content;
 using Android.OS;
-using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using AppAndroid.Work;
 using System.Threading;
-using AppAndroid.Data;
-using System.IO;
 
 namespace AppAndroid
 {
@@ -21,6 +14,7 @@ namespace AppAndroid
     {
         protected TextView _RessourceText { set; get; }
         protected TextView _ResultText { set; get; }
+        protected EditText _EditText { set; get; }
         protected ProgressBar _TestProgressBar { set; get; }
         protected DBWork _DBSQLite { set; get; }
 
@@ -31,6 +25,7 @@ namespace AppAndroid
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            RequestWindowFeature(WindowFeatures.NoTitle);
             base.OnCreate(savedInstanceState);
 
             InitDB();
@@ -40,8 +35,17 @@ namespace AppAndroid
 
             // Get our button from the layout resource,
             // and attach an event to it
-            Button LaunchButton1 = FindViewById<Button>(Resource.Id.LaunchButtonDB1);
-            Button LaunchButton2 = FindViewById<Button>(Resource.Id.LaunchButtonDB2);
+            Button LaunchButtonReinit = FindViewById<Button>(Resource.Id.LaunchButtonDB1);
+            Button LaunchButtonCreaConduc = FindViewById<Button>(Resource.Id.LaunchButtonDB2);
+            Button LaunchButtonCreaContro = FindViewById<Button>(Resource.Id.LaunchButtonDB3);
+            Button LaunchButtonCreaBus = FindViewById<Button>(Resource.Id.LaunchButtonDB4);
+            Button LaunchButtonCreaCheck = FindViewById<Button>(Resource.Id.LaunchButtonDB5);
+            Button LaunchButtonSelConduc = FindViewById<Button>(Resource.Id.LaunchButtonDB6);
+            Button LaunchButtonSelControl = FindViewById<Button>(Resource.Id.LaunchButtonDB7);
+            Button LaunchButtonSelBus = FindViewById<Button>(Resource.Id.LaunchButtonDB8);
+            Button LaunchButtonSelCheck = FindViewById<Button>(Resource.Id.LaunchButtonDB9);
+
+            _EditText = FindViewById<EditText>(Resource.Id.TextBoxDB);
             _ResultText = FindViewById<TextView>(Resource.Id.ResultTextDB);
             _TestProgressBar = FindViewById<ProgressBar>(Resource.Id.TestProgressBarDB);
 
@@ -49,46 +53,134 @@ namespace AppAndroid
 
             // Ce que faront les boutons
             // Création
-            LaunchButton1.Click += delegate {
+            LaunchButtonReinit.Click += delegate
+            {
                 _ResultText.Text = "";
                 _TestProgressBar.Progress = 0;
 
-                new Thread(new ThreadStart(() => {
-                    string[] s = _DBSQLite.DBCreateDB();
+                new Thread(new ThreadStart(() =>
+                {
+                    string s = _DBSQLite.DBCreateDB();
 
-                    RunOnUiThread(() => { _ResultText.Text = s[1]; });
+                    RunOnUiThread(() => { _ResultText.Text = s; });
                 })).Start();
             };
 
-            LaunchButton2.Click += delegate {
+            LaunchButtonCreaConduc.Click += delegate
+            {
                 _ResultText.Text = "";
                 _TestProgressBar.Progress = 0;
 
-                new Thread(new ThreadStart(() => {
-                    string[] s = _DBSQLite.DBSelectConducteur(1);
+                new Thread(new ThreadStart(() =>
+                {
+                    string s = _DBSQLite.DBCreateConducteur("Cond - Jean-Gérard", "zef");
 
-                    RunOnUiThread(() => { _ResultText.Text = s[1]; });
-
-                    ////////////////////////////////
-
-                    Java.IO.File z = Android.OS.Environment.ExternalStorageDirectory;
-                    Java.IO.File f = new Java.IO.File(z.Path + "/Android/data/AppAndroid.AppAndroid/files/Fichier.txt");
-
-                    using (var streamWriter = new StreamWriter(f.Path, false))
-                    {
-                        streamWriter.WriteLine(DateTime.UtcNow);
-                    }
-
-                    using (var streamReader = new StreamReader(f.Path))
-                    {
-                        string content = streamReader.ReadToEnd();
-                        System.Diagnostics.Debug.WriteLine(content);
-
-                        RunOnUiThread(() => { _ResultText.Text += $"Contenu fichier :\n{content}\n"; });
-                    }
-                    ////////////////////////////////
+                    RunOnUiThread(() => { _ResultText.Text = s; });
                 })).Start();
             };
+
+            LaunchButtonCreaContro.Click += delegate
+            {
+                _ResultText.Text = "";
+                _TestProgressBar.Progress = 0;
+
+                new Thread(new ThreadStart(() =>
+                {
+                    string s = _DBSQLite.DBCreateControleur("Contr - Jean-Gérard");
+
+                    RunOnUiThread(() => { _ResultText.Text = s; });
+                })).Start();
+            };
+
+            LaunchButtonCreaBus.Click += delegate
+            {
+                _ResultText.Text = "";
+                _TestProgressBar.Progress = 0;
+
+                new Thread(new ThreadStart(() =>
+                {
+                    string s = _DBSQLite.DBCreateBus(1337, "Blouge");
+
+                    RunOnUiThread(() => { _ResultText.Text = s; });
+                })).Start();
+            };
+
+            LaunchButtonCreaCheck.Click += delegate
+            {
+                _ResultText.Text = "";
+                _TestProgressBar.Progress = 0;
+
+                new Thread(new ThreadStart(() =>
+                {
+                    //string s = _DBSQLite.DBCreateConducteur("Jean-Gérard", "zef");
+
+                    RunOnUiThread(() => { _ResultText.Text = "Rien pour le moment"; });
+                })).Start();
+            };
+
+            LaunchButtonSelConduc.Click += delegate
+            {
+                _ResultText.Text = "";
+                _TestProgressBar.Progress = 0;
+
+                new Thread(new ThreadStart(() =>
+                {
+                    string s = _DBSQLite.DBSelectConducteur(int.Parse(_GetEditTextValue()));
+
+                    RunOnUiThread(() => { _ResultText.Text = s; });
+                })).Start();
+            };
+
+            LaunchButtonSelControl.Click += delegate
+            {
+                _ResultText.Text = "";
+                _TestProgressBar.Progress = 0;
+
+                new Thread(new ThreadStart(() =>
+                {
+                    string s = _DBSQLite.DBSelectControleur(int.Parse(_GetEditTextValue()));
+
+                    RunOnUiThread(() => { _ResultText.Text = s; });
+                })).Start();
+            };
+
+            LaunchButtonSelBus.Click += delegate
+            {
+                _ResultText.Text = "";
+                _TestProgressBar.Progress = 0;
+
+                new Thread(new ThreadStart(() =>
+                {
+                    string s = _DBSQLite.DBSelectBus(int.Parse(_GetEditTextValue()));
+
+                    RunOnUiThread(() => { _ResultText.Text = s; });
+                })).Start();
+            };
+
+            LaunchButtonSelCheck.Click += delegate
+            {
+                _ResultText.Text = "";
+                _TestProgressBar.Progress = 0;
+
+                new Thread(new ThreadStart(() =>
+                {
+                    //string s = _DBSQLite.DBSelectCheck(int.Parse(_GetEditTextValue()));
+
+                    RunOnUiThread(() => { _ResultText.Text = "Rien pour le moment"; });
+                })).Start();
+            };
+        }
+
+        private string _GetEditTextValue()
+        {
+
+            string n = "";
+            if (_EditText.Text.Equals(String.Empty))
+                n = "0";
+            else
+                n = _EditText.Text;
+
+            return n;
         }
     }
 }
