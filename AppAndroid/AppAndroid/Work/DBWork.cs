@@ -444,19 +444,19 @@ namespace AppAndroid.Work
 
         ////////////////////// UPDATE ///////////////////////////////
         /// <summary>
-        /// Suppression d'un conducteur.
+        /// Mise à jour d'un conducteur.
         /// </summary>
         /// <param name="id">ID du conducteur.</param>
         /// <returns></returns>
-        public string DBUpdateConducteur(int id)
+        public string DBUpdateConducteur(int id, string nom, string mdp)
         {
             string sr = "";
 
             try
             {
-                var query = _Conn.Delete<Conducteur>(id);
+                var query = _Conn.Query<Conducteur>($"UPDATE Conducteur SET Nom = \"{nom}\", MdP=\"{mdp}\" WHERE ID = {id}");
 
-                sr = $"Suppression du conducteur d'ID : {id}\n";
+                sr = $"Mise à jour du conducteur d'ID : {id}\n";
             }
             catch (Exception)
             {
@@ -467,19 +467,19 @@ namespace AppAndroid.Work
         }
 
         /// <summary>
-        /// Suppression d'un controleur.
+        /// Mise à jour d'un controleur.
         /// </summary>
         /// <param name="id">ID du controleur</param>
         /// <returns></returns>
-        public string DBUpdateControleur(int id)
+        public string DBUpdateControleur(int id, string nom)
         {
             string sr = "";
 
             try
             {
-                var query = _Conn.Delete<Controleur>(id);
+                var query = _Conn.Query<Controleur>($"UPDATE Controleur SET Nom = \"{nom}\" WHERE ID = {id}");
 
-                sr = $"Suppression du controleur d'ID : {id}\n";
+                sr = $"Mise à jour du controleur d'ID : {id}\n";
             }
             catch (Exception)
             {
@@ -490,19 +490,19 @@ namespace AppAndroid.Work
         }
 
         /// <summary>
-        /// Suppression d'un bus.
+        /// Mise à jour d'un bus.
         /// </summary>
         /// <param name="id">ID du bus.</param>
         /// <returns></returns>
-        public string DBUpdateBus(int id)
+        public string DBUpdateBus(int id, int numero, string couleur)
         {
             string sr = "";
 
             try
             {
-                var query = _Conn.Delete<Bus>(id);
+                var query = _Conn.Query<Bus>($"UPDATE Bus SET Number = {numero}, Color=\"{couleur}\" WHERE ID = {id}");
 
-                sr = $"Suppression du bus d'ID : {id}\n";
+                sr = $"Mise à jour du bus d'ID : {id}\n";
             }
             catch (Exception)
             {
@@ -513,51 +513,49 @@ namespace AppAndroid.Work
         }
 
         /// <summary>
-        /// Supprimme le check, les liaisons entre le bus et les incidents et les incidents. Ne supprime pas le bus.
+        /// Met à jour d'un check.
         /// </summary>
         /// <param name="id">ID du check.</param>
         /// <returns></returns>
-        public string DBUpdateCheck(int id)
+        public string DBUpdateCheck(int id, string date)
         {
-            string sr = "", w = "";
+            string sr = "";
 
             try
             {
-                var checkTmp = _Conn.Find<CheckUp>(id);
-                var busIncidentTmp = _Conn.Query<BusIncident>($"SELECT * FROM BusIncident WHERE IdCheck={checkTmp.Id}");
-                var busTmp = _Conn.Query<Bus>($"SELECT * FROM Bus WHERE Id={busIncidentTmp[0].IdBus}");
+                var query = _Conn.Query<CheckUp>($"UPDATE CheckUp SET Date = \"{date}\" WHERE ID = {id}");
 
-                int i = 0;
-                foreach (var item in busIncidentTmp)
-                {
-                    if (i > 0)
-                        w += "OR ";
-                    else
-                        w += "WHERE ";
-
-                    w += $"Id={item.IdIncident} ";
-                    i++;
-                }
-
-                var incidentTmp = _Conn.Query<Incident>($"SELECT * FROM Incident {w}");
-
-                // SUPPRESSION
-                _Conn.Delete(checkTmp);
-
-                foreach (var item in busIncidentTmp)
-                    _Conn.Delete(item);
-
-                foreach (var item in incidentTmp)
-                    _Conn.Delete(item);
-
-                sr = $"Suppression du check d'ID : {id}\n";
+                sr = $"Mise à jour du check d'ID : {id}\n";
             }
             catch (Exception)
             {
                 sr = "Il n'y a aucune table.";
             }
 
-            return $"{sr}";
+            return sr;
+        }
+
+        /// <summary>
+        /// Met à jour d'un incident.
+        /// </summary>
+        /// <param name="id">ID de l'incident.</param>
+        /// <returns></returns>
+        public string DBUpdateIncident(int id, string type, int gravite, int etat, string dateMaj, string observation, int x, int y, string picture)
+        {
+            string sr = "";
+
+            try
+            {
+                var query = _Conn.Query<Incident>($"UPDATE Incident SET Type = \"{type}\", Gravite = {gravite}, Etat = {etat}, DateMaJ = \"{dateMaj}\", Observation = \"{observation}\", X = {x}, Y = {y}, Picture = \"{picture}\" WHERE ID = {id}");
+
+                sr = $"Mise à jour de l'incident d'ID : {id}\n";
+            }
+            catch (Exception)
+            {
+                sr = "Il n'y a aucune table.";
+            }
+
+            return sr;
         }
     }
 }

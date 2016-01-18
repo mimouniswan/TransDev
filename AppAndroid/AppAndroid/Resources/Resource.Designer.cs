@@ -98,53 +98,41 @@ namespace AppAndroid
 		public partial class Id
 		{
 			
+			// aapt resource value: 0x7f05001e
+			public const int LaunchButtonDB1 = 2131034142;
+			
+			// aapt resource value: 0x7f05001f
+			public const int LaunchButtonDB2 = 2131034143;
+			
+			// aapt resource value: 0x7f050020
+			public const int LaunchButtonDB3 = 2131034144;
+			
 			// aapt resource value: 0x7f050021
-			public const int LaunchButtonDB1 = 2131034145;
+			public const int LaunchButtonDB4 = 2131034145;
 			
 			// aapt resource value: 0x7f050022
-			public const int LaunchButtonDB2 = 2131034146;
-			
-			// aapt resource value: 0x7f050023
-			public const int LaunchButtonDB3 = 2131034147;
-			
-			// aapt resource value: 0x7f050024
-			public const int LaunchButtonDB4 = 2131034148;
+			public const int LaunchButtonDB5 = 2131034146;
 			
 			// aapt resource value: 0x7f050025
-			public const int LaunchButtonDB5 = 2131034149;
+			public const int LaunchButtonDB6 = 2131034149;
+			
+			// aapt resource value: 0x7f050026
+			public const int LaunchButtonDB7 = 2131034150;
+			
+			// aapt resource value: 0x7f050027
+			public const int LaunchButtonDB8 = 2131034151;
 			
 			// aapt resource value: 0x7f050028
-			public const int LaunchButtonDB6 = 2131034152;
-			
-			// aapt resource value: 0x7f050029
-			public const int LaunchButtonDB7 = 2131034153;
-			
-			// aapt resource value: 0x7f05002a
-			public const int LaunchButtonDB8 = 2131034154;
-			
-			// aapt resource value: 0x7f05002b
-			public const int LaunchButtonDB9 = 2131034155;
-			
-			// aapt resource value: 0x7f05002f
-			public const int ResultTextDB = 2131034159;
+			public const int LaunchButtonDB9 = 2131034152;
 			
 			// aapt resource value: 0x7f05002c
-			public const int TestProgressBarDB = 2131034156;
+			public const int ResultTextDB = 2131034156;
 			
-			// aapt resource value: 0x7f05002d
-			public const int TextBoxDB = 2131034157;
+			// aapt resource value: 0x7f050029
+			public const int TestProgressBarDB = 2131034153;
 			
-			// aapt resource value: 0x7f050019
-			public const int btnAddBus = 2131034137;
-			
-			// aapt resource value: 0x7f05001b
-			public const int btnAddController = 2131034139;
-			
-			// aapt resource value: 0x7f05001a
-			public const int btnAddDriver = 2131034138;
-			
-			// aapt resource value: 0x7f05001c
-			public const int btnHistory = 2131034140;
+			// aapt resource value: 0x7f05002a
+			public const int TextBoxDB = 2131034154;
 			
 			// aapt resource value: 0x7f050001
 			public const int bus_blank_back = 2131034113;
@@ -167,11 +155,11 @@ namespace AppAndroid
 			// aapt resource value: 0x7f050012
 			public const int buttonValidate = 2131034130;
 			
-			// aapt resource value: 0x7f05001f
-			public const int horizontalScrollView1 = 2131034143;
+			// aapt resource value: 0x7f05001c
+			public const int horizontalScrollView1 = 2131034140;
 			
-			// aapt resource value: 0x7f050026
-			public const int horizontalScrollView2 = 2131034150;
+			// aapt resource value: 0x7f050023
+			public const int horizontalScrollView2 = 2131034147;
 			
 			// aapt resource value: 0x7f050013
 			public const int imageView1 = 2131034131;
@@ -191,14 +179,17 @@ namespace AppAndroid
 			// aapt resource value: 0x7f05000f
 			public const int imgtrash = 2131034127;
 			
-			// aapt resource value: 0x7f050020
-			public const int linearLayout1 = 2131034144;
+			// aapt resource value: 0x7f05001d
+			public const int linearLayout1 = 2131034141;
 			
-			// aapt resource value: 0x7f050027
-			public const int linearLayout2 = 2131034151;
+			// aapt resource value: 0x7f050024
+			public const int linearLayout2 = 2131034148;
 			
-			// aapt resource value: 0x7f05001e
-			public const int listBus = 2131034142;
+			// aapt resource value: 0x7f05001b
+			public const int listBus = 2131034139;
+			
+			// aapt resource value: 0x7f050019
+			public const int listViewLeftMenu = 2131034137;
 			
 			// aapt resource value: 0x7f050008
 			public const int lyBottom = 2131034120;
@@ -209,8 +200,8 @@ namespace AppAndroid
 			// aapt resource value: 0x7f050004
 			public const int lyTop = 2131034116;
 			
-			// aapt resource value: 0x7f05002e
-			public const int scrollViewDB = 2131034158;
+			// aapt resource value: 0x7f05002b
+			public const int scrollViewDB = 2131034155;
 			
 			// aapt resource value: 0x7f050016
 			public const int spinner1 = 2131034134;
@@ -221,8 +212,8 @@ namespace AppAndroid
 			// aapt resource value: 0x7f050015
 			public const int textView2 = 2131034133;
 			
-			// aapt resource value: 0x7f05001d
-			public const int textViewBus = 2131034141;
+			// aapt resource value: 0x7f05001a
+			public const int textViewBus = 2131034138;
 			
 			// aapt resource value: 0x7f050010
 			public const int txtController = 2131034128;

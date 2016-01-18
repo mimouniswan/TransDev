@@ -8,10 +8,11 @@ using AppAndroid.Work;
 using System.Threading;
 using System.Collections.Generic;
 using AppAndroid.Data;
+using Android.Content.PM;
 
 namespace AppAndroid
 {
-    [Activity(Label = "TestDB")]
+    [Activity(Label = "TestDB", ScreenOrientation = ScreenOrientation.Landscape)]
     public class TestDB : Activity
     {
         protected TextView _RessourceText { set; get; }
@@ -180,7 +181,6 @@ namespace AppAndroid
 
         private string _GetEditTextValue()
         {
-
             string n = "";
             if (_EditText.Text.Equals(String.Empty))
                 n = "0";

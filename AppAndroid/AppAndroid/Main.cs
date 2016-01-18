@@ -6,10 +6,11 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using System.Collections.Generic;
+using Android.Content.PM;
 
 namespace AppAndroid
 {
-    [Activity(Label = "TransDev", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Label = "TransDev", MainLauncher = true, Icon = "@drawable/icon", ScreenOrientation = ScreenOrientation.Landscape)]
     public class Main : Activity
     {
         private Spinner userSpinner;
