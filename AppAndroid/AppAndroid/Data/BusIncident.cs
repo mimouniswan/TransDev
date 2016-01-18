@@ -8,10 +8,12 @@ namespace AppAndroid.Data
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
 
+        [ForeignKey(typeof(CheckUp))]
+        public int IdCheck { get; set; }
         [ForeignKey(typeof(Bus))]
-        public int BusId { get; set; }
+        public int IdBus { get; set; }
         [ForeignKey(typeof(Incident))]
-        public int IncidentId { get; set; }
+        public int IdIncident { get; set; }
 
         public override string ToString()
         {

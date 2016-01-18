@@ -69,7 +69,7 @@
     <Compile Include="Checkup.cs" />
     <Compile Include="ChoicePart.cs" />
     <Compile Include="Data\BusIncident.cs" />
-    <Compile Include="Data\Check.cs" />
+    <Compile Include="Data\CheckUp.cs" />
     <Compile Include="Data\Bus.cs" />
     <Compile Include="Data\Conducteur.cs" />
     <Compile Include="Data\Controleur.cs" />

@@ -3,7 +3,7 @@ using SQLiteNetExtensions.Attributes;
 
 namespace AppAndroid.Data
 {
-    public class Check
+    public class CheckUp
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
@@ -26,7 +26,7 @@ namespace AppAndroid.Data
 
         public override string ToString()
         {
-            return "Check";
+            return "CheckUp";
         }
     }
 }

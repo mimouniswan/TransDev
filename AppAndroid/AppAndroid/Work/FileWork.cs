@@ -39,10 +39,10 @@ namespace AppAndroid.Work
                     string content = streamReader.ReadToEnd();
                     System.Diagnostics.Debug.WriteLine(content);
 
-                    sr = $"Contenu fichier :\n{content}\n";
+                    sr = $"Contenu fichier ({f.Path}) :\n{content}\n";
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 sr = "Une erreur est survenue lors de la création du fichier.";
             }

@@ -6,6 +6,8 @@ using Android.Views;
 using Android.Widget;
 using AppAndroid.Work;
 using System.Threading;
+using System.Collections.Generic;
+using AppAndroid.Data;
 
 namespace AppAndroid
 {
@@ -73,7 +75,7 @@ namespace AppAndroid
 
                 new Thread(new ThreadStart(() =>
                 {
-                    string s = _DBSQLite.DBCreateConducteur("Cond - Jean-Gérard", "zef");
+                    string s = _DBSQLite.DBInsertConducteur("Cond - Jean-Gérard", "zef");
 
                     RunOnUiThread(() => { _ResultText.Text = s; });
                 })).Start();
@@ -86,7 +88,7 @@ namespace AppAndroid
 
                 new Thread(new ThreadStart(() =>
                 {
-                    string s = _DBSQLite.DBCreateControleur("Contr - Jean-Gérard");
+                    string s = _DBSQLite.DBInsertControleur("Contr - Jean-Gérard");
 
                     RunOnUiThread(() => { _ResultText.Text = s; });
                 })).Start();
@@ -99,7 +101,7 @@ namespace AppAndroid
 
                 new Thread(new ThreadStart(() =>
                 {
-                    string s = _DBSQLite.DBCreateBus(1337, "Blouge");
+                    string s = _DBSQLite.DBInsertBus(1337, "Blouge");
 
                     RunOnUiThread(() => { _ResultText.Text = s; });
                 })).Start();
@@ -112,14 +114,19 @@ namespace AppAndroid
 
                 new Thread(new ThreadStart(() =>
                 {
-                    //string s = _DBSQLite.DBCreateConducteur("Jean-Gérard", "zef");
+                    List<Incident> list = new List<Incident>();
+                    list.Add(_DBSQLite.GetIncident(1, 1, "Type", 1, 1, DateTime.Now.ToString(), "Rien non ?", 0, 0, "Image"));
+                    list.Add(_DBSQLite.GetIncident(1, 1, "Type", 1, 1, DateTime.Now.ToString(), "Rien non ?", 0, 0, "Image"));
 
-                    RunOnUiThread(() => { _ResultText.Text = "Rien pour le moment"; });
+                    string s = _DBSQLite.DBInsertCheck(1, 1, 1, list);
+
+                    RunOnUiThread(() => { _ResultText.Text = s; });
                 })).Start();
             };
 
             LaunchButtonSelConduc.Click += delegate
             {
+                _DBSQLite.DBDeleteCheck(1);
                 _ResultText.Text = "";
                 _TestProgressBar.Progress = 0;
 
@@ -164,9 +171,9 @@ namespace AppAndroid
 
                 new Thread(new ThreadStart(() =>
                 {
-                    //string s = _DBSQLite.DBSelectCheck(int.Parse(_GetEditTextValue()));
+                    string s = _DBSQLite.DBSelectCheck(int.Parse(_GetEditTextValue()));
 
-                    RunOnUiThread(() => { _ResultText.Text = "Rien pour le moment"; });
+                    RunOnUiThread(() => { _ResultText.Text = s; });
                 })).Start();
             };
         }
