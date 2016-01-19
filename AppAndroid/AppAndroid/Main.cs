@@ -20,7 +20,7 @@ namespace AppAndroid
         {
             RequestWindowFeature(WindowFeatures.NoTitle);
             base.OnCreate(bundle);
-            // Set our view from the "main" layout resource
+            // Set our view from the "main" layout resource"""""
             SetContentView(Resource.Layout.Main);
 
             List<String> listSpinner = new List<String>();
