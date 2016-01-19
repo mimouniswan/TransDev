@@ -87,14 +87,12 @@ namespace AppAndroid.Work
             List<Bus> result = new List<Bus>();
             string w = "";
 
-            if (id != 0)
-                w = $"WHERE Id={id}";
+            if (id != 0) w = $"WHERE Id={id}";
 
             try
             {
                 string q = $"SELECT * FROM Bus {w}";
 
-                // Selection - table Message
                 result = _Conn.Query<Bus>(q);
             }
             catch (Exception) { }
@@ -112,14 +110,12 @@ namespace AppAndroid.Work
             List<Conducteur> result = new List<Conducteur>();
             string w = "";
 
-            if (id != 0)
-                w = $"WHERE Id={id}";
+            if (id != 0) w = $"WHERE Id={id}";
 
             try
             {
                 string q = $"SELECT * FROM Conducteur {w}";
 
-                // Selection - table Message
                 result = _Conn.Query<Conducteur>(q);
             }
             catch (Exception) { }
@@ -137,14 +133,12 @@ namespace AppAndroid.Work
             List<Controleur> result = new List<Controleur>();
             string w = "";
 
-            if (id != 0)
-                w = $"WHERE Id={id}";
+            if (id != 0) w = $"WHERE Id={id}";
 
             try
             {
                 string q = $"SELECT * FROM Controleur {w}";
 
-                // Selection - table Message
                 result = _Conn.Query<Controleur>(q);
             }
             catch (Exception) { }
@@ -264,21 +258,16 @@ namespace AppAndroid.Work
         {
             string sr = "", w ="";
 
-            if(id != 0)
-                w = $" WHERE Id={id}";
+            if(id != 0) w = $" WHERE Id={id}";
 
             try
             {
                 string q = $"SELECT * FROM Conducteur" + w;
 
-                // Selection - table Message
                 var query = _Conn.Query<Conducteur>(q);
 
                 foreach (var item in query)
-                {
                     sr += $"{item.Id} : {item.Nom}@{item.MdP}\n";
-                    //Debug.WriteLine(sr);
-                }
             }
             catch (Exception)
             {
@@ -297,21 +286,16 @@ namespace AppAndroid.Work
         {
             string sr = "", w = "";
 
-            if (id != 0)
-                w = $" WHERE Id={id}";
+            if (id != 0) w = $" WHERE Id={id}";
 
             try
             {
                 string q = $"SELECT * FROM Controleur" + w;
 
-                // Selection - table Message
                 var query = _Conn.Query<Controleur>(q);
 
                 foreach (var item in query)
-                {
                     sr += $"{item.Id} : {item.Nom}\n";
-                    //Debug.WriteLine(sr);
-                }
             }
             catch (Exception)
             {
@@ -330,21 +314,16 @@ namespace AppAndroid.Work
         {
             string sr = "", w = "";
 
-            if (id != 0)
-                w = $" WHERE Id={id}";
+            if (id != 0) w = $" WHERE Id={id}";
 
             try
             {
                 string q = $"SELECT * FROM Bus" + w;
 
-                // Selection - table Message
                 var query = _Conn.Query<Bus>(q);
 
                 foreach (var item in query)
-                {
                     sr += $"{item.Id} : {item.Number}@{item.Color}\n";
-                    //Debug.WriteLine(sr);
-                }
             }
             catch (Exception)
             {
@@ -372,10 +351,8 @@ namespace AppAndroid.Work
                 int i = 0;
                 foreach (var item in busIncidentTmp)
                 {
-                    if (i > 0)
-                        w += "OR ";
-                    else
-                        w += "WHERE ";
+                    if (i > 0) w += "OR ";
+                    else w += "WHERE ";
 
                     w += $"Id={item.IdIncident} ";
                     i++;
@@ -386,10 +363,7 @@ namespace AppAndroid.Work
                 sr += $"{checkTmp.Id} : Bus[{busTmp[0].Id}],\n";
 
                 foreach (var item in incidentTmp)
-                {
                     sr += $"Incident[{item.Id}],\n";
-                    //Debug.WriteLine(sr);
-                }
             }
             catch (Exception)
             {
@@ -487,10 +461,8 @@ namespace AppAndroid.Work
                 int i = 0;
                 foreach (var item in busIncidentTmp)
                 {
-                    if (i > 0)
-                        w += "OR ";
-                    else
-                        w += "WHERE ";
+                    if (i > 0) w += "OR ";
+                    else w += "WHERE ";
 
                     w += $"Id={item.IdIncident} ";
                     i++;
