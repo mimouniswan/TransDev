@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using AppAndroid.Data;
 using Android.Content.PM;
 
-namespace AppAndroid
+namespace AppAndroid.Acti
 {
     [Activity(Label = "TestDB", ScreenOrientation = ScreenOrientation.Landscape)]
     public class TestDB : Activity

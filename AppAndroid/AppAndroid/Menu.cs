@@ -7,6 +7,7 @@ using Android.Widget;
 using Android.OS;
 using System.Collections.Generic;
 using Android.Content.PM;
+using AppAndroid.Acti;
 
 namespace AppAndroid
 {
@@ -60,15 +61,19 @@ namespace AppAndroid
             switch(ea.Id)
             {
                 case 0:
-                    StartActivity(typeof(Checkup));
+                    // Bus
+                    StartActivity(typeof(CreaBus));
                     break;
                 case 1:
-                    StartActivity(typeof(Checkup));
+                    // Controleur
+                    StartActivity(typeof(CreaContro));
                     break;
                 case 2:
-                    StartActivity(typeof(Checkup));
+                    // Conducteur
+                    StartActivity(typeof(CreaConduc));
                     break;
                 case 3:
+                    // Historique
                     StartActivity(typeof(Checkup));
                     break;
             }

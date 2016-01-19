@@ -7,6 +7,7 @@ using Android.Widget;
 using Android.OS;
 using System.Collections.Generic;
 using Android.Content.PM;
+using AppAndroid.Acti;
 
 namespace AppAndroid
 {
