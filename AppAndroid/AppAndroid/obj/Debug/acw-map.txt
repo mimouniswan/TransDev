@@ -1,0 +1,32 @@
+AppAndroid.Checkup, AppAndroid;md5a02b63792f83336f8d728b23ae2f4329.Checkup
+AppAndroid.Checkup, AppAndroid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5a02b63792f83336f8d728b23ae2f4329.Checkup
+AppAndroid.Checkup;md5a02b63792f83336f8d728b23ae2f4329.Checkup
+appandroid.Checkup;md5a02b63792f83336f8d728b23ae2f4329.Checkup
+AppAndroid.ChoicePart, AppAndroid;md5a02b63792f83336f8d728b23ae2f4329.ChoicePart
+AppAndroid.ChoicePart, AppAndroid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5a02b63792f83336f8d728b23ae2f4329.ChoicePart
+AppAndroid.ChoicePart;md5a02b63792f83336f8d728b23ae2f4329.ChoicePart
+appandroid.ChoicePart;md5a02b63792f83336f8d728b23ae2f4329.ChoicePart
+AppAndroid.Main, AppAndroid;md5a02b63792f83336f8d728b23ae2f4329.Main
+AppAndroid.Main, AppAndroid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5a02b63792f83336f8d728b23ae2f4329.Main
+AppAndroid.Main;md5a02b63792f83336f8d728b23ae2f4329.Main
+appandroid.Main;md5a02b63792f83336f8d728b23ae2f4329.Main
+AppAndroid.Menu, AppAndroid;md5a02b63792f83336f8d728b23ae2f4329.Menu
+AppAndroid.Menu, AppAndroid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5a02b63792f83336f8d728b23ae2f4329.Menu
+AppAndroid.Menu;md5a02b63792f83336f8d728b23ae2f4329.Menu
+appandroid.Menu;md5a02b63792f83336f8d728b23ae2f4329.Menu
+AppAndroid.Acti.CreaConduc, AppAndroid;md53cb23a7ea6337873dd28cc9b3d76d964.CreaConduc
+AppAndroid.Acti.CreaConduc, AppAndroid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md53cb23a7ea6337873dd28cc9b3d76d964.CreaConduc
+AppAndroid.Acti.CreaConduc;md53cb23a7ea6337873dd28cc9b3d76d964.CreaConduc
+appandroid.acti.CreaConduc;md53cb23a7ea6337873dd28cc9b3d76d964.CreaConduc
+AppAndroid.Acti.CreaBus, AppAndroid;md53cb23a7ea6337873dd28cc9b3d76d964.CreaBus
+AppAndroid.Acti.CreaBus, AppAndroid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md53cb23a7ea6337873dd28cc9b3d76d964.CreaBus
+AppAndroid.Acti.CreaBus;md53cb23a7ea6337873dd28cc9b3d76d964.CreaBus
+appandroid.acti.CreaBus;md53cb23a7ea6337873dd28cc9b3d76d964.CreaBus
+AppAndroid.Acti.CreaContro, AppAndroid;md53cb23a7ea6337873dd28cc9b3d76d964.CreaContro
+AppAndroid.Acti.CreaContro, AppAndroid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md53cb23a7ea6337873dd28cc9b3d76d964.CreaContro
+AppAndroid.Acti.CreaContro;md53cb23a7ea6337873dd28cc9b3d76d964.CreaContro
+appandroid.acti.CreaContro;md53cb23a7ea6337873dd28cc9b3d76d964.CreaContro
+AppAndroid.Acti.TestDB, AppAndroid;md53cb23a7ea6337873dd28cc9b3d76d964.TestDB
+AppAndroid.Acti.TestDB, AppAndroid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md53cb23a7ea6337873dd28cc9b3d76d964.TestDB
+AppAndroid.Acti.TestDB;md53cb23a7ea6337873dd28cc9b3d76d964.TestDB
+appandroid.acti.TestDB;md53cb23a7ea6337873dd28cc9b3d76d964.TestDB

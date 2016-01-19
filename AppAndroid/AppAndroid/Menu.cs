@@ -8,6 +8,8 @@ using Android.OS;
 using System.Collections.Generic;
 using Android.Content.PM;
 using AppAndroid.Acti;
+using AppAndroid.Work;
+using AppAndroid.Data;
 
 namespace AppAndroid
 {
@@ -18,6 +20,23 @@ namespace AppAndroid
         private List<string> listLeft;
         private ListView ListViewBus;
         private ListView ListViewLeft;
+
+        DBWork _DB = new DBWork();
+
+        protected override void OnResume()
+        {
+            base.OnResume();
+
+            listBus = new List<string>();
+            ListViewBus = FindViewById<ListView>(Resource.Id.listBus);
+
+            List<Bus> bus = _DB.GetBus();
+            foreach (var item in bus)
+                listBus.Add($"Bus [{item.Color}] N°{item.Number}");
+
+            ArrayAdapter<string> adapterBus = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, listBus);
+            ListViewBus.Adapter = adapterBus;
+        }
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -42,9 +61,10 @@ namespace AppAndroid
             // Liste de droite
             listBus = new List<string>();
             ListViewBus = FindViewById<ListView>(Resource.Id.listBus);
-            listBus.Add("N°1");
-            listBus.Add("N°2");
-            listBus.Add("N°3");
+
+            List<Bus> bus = _DB.GetBus();
+            foreach(var item in bus)
+                listBus.Add($"Bus [{item.Color}] N°{item.Number}");
 
             ArrayAdapter<string> adapterBus = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, listBus);
             ListViewBus.Adapter = adapterBus;
