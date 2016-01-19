@@ -72,9 +72,78 @@ namespace AppAndroid.Work
         /// <param name="y">Position Y.</param>
         /// <param name="picture">Chemin de l'image.</param>
         /// <returns></returns>
-        public Incident GetIncident(int IdControleur, int IdConducteur, string type, int gravite, int etat, string dateCreation, string observation, int x, int y, string picture)
+        public Incident CreateAndGetIncident(int IdControleur, int IdConducteur, string type, int gravite, int etat, string dateCreation, string observation, int x, int y, string picture)
         {
             return new Incident() { IdConducteur = IdControleur, IdCreationCotroleur = IdConducteur, IdMaJControleur = IdConducteur, Type = type, Gravite = gravite, Etat = etat, DateCreation = dateCreation, DateMaJ = dateCreation, Observation = observation, X = x, Y = y, Picture = picture };
+        }
+
+        /// <summary>
+        /// Récupère un objet Bus.
+        /// </summary>
+        /// <param name="id">ID du bus que l'on veut récupérer.</param>
+        /// <returns></returns>
+        public List<Bus> GetBus(int id = 0)
+        {
+            List<Bus> result = new List<Bus>();
+            string w = "";
+
+            if (id != 0) w = $"WHERE Id={id}";
+
+            try
+            {
+                string q = $"SELECT * FROM Bus {w}";
+
+                result = _Conn.Query<Bus>(q);
+            }
+            catch (Exception) { }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Récupère un objet Conducteur.
+        /// </summary>
+        /// <param name="id">ID du conducteur que l'on veut récupérer.</param>
+        /// <returns></returns>
+        public List<Conducteur> GetConducteur(int id = 0)
+        {
+            List<Conducteur> result = new List<Conducteur>();
+            string w = "";
+
+            if (id != 0) w = $"WHERE Id={id}";
+
+            try
+            {
+                string q = $"SELECT * FROM Conducteur {w}";
+
+                result = _Conn.Query<Conducteur>(q);
+            }
+            catch (Exception) { }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Récupère un objet Controleur.
+        /// </summary>
+        /// <param name="id">ID du controleur que l'on veut récupérer.</param>
+        /// <returns></returns>
+        public List<Controleur> GetControleur(int id = 0)
+        {
+            List<Controleur> result = new List<Controleur>();
+            string w = "";
+
+            if (id != 0) w = $"WHERE Id={id}";
+
+            try
+            {
+                string q = $"SELECT * FROM Controleur {w}";
+
+                result = _Conn.Query<Controleur>(q);
+            }
+            catch (Exception) { }
+
+            return result;
         }
 
         ////////////////////// INSERT ///////////////////////////////
@@ -189,21 +258,16 @@ namespace AppAndroid.Work
         {
             string sr = "", w ="";
 
-            if(id != 0)
-                w = $" WHERE Id={id}";
+            if(id != 0) w = $" WHERE Id={id}";
 
             try
             {
                 string q = $"SELECT * FROM Conducteur" + w;
 
-                // Selection - table Message
                 var query = _Conn.Query<Conducteur>(q);
 
                 foreach (var item in query)
-                {
                     sr += $"{item.Id} : {item.Nom}@{item.MdP}\n";
-                    //Debug.WriteLine(sr);
-                }
             }
             catch (Exception)
             {
@@ -222,21 +286,16 @@ namespace AppAndroid.Work
         {
             string sr = "", w = "";
 
-            if (id != 0)
-                w = $" WHERE Id={id}";
+            if (id != 0) w = $" WHERE Id={id}";
 
             try
             {
                 string q = $"SELECT * FROM Controleur" + w;
 
-                // Selection - table Message
                 var query = _Conn.Query<Controleur>(q);
 
                 foreach (var item in query)
-                {
                     sr += $"{item.Id} : {item.Nom}\n";
-                    //Debug.WriteLine(sr);
-                }
             }
             catch (Exception)
             {
@@ -255,21 +314,16 @@ namespace AppAndroid.Work
         {
             string sr = "", w = "";
 
-            if (id != 0)
-                w = $" WHERE Id={id}";
+            if (id != 0) w = $" WHERE Id={id}";
 
             try
             {
                 string q = $"SELECT * FROM Bus" + w;
 
-                // Selection - table Message
                 var query = _Conn.Query<Bus>(q);
 
                 foreach (var item in query)
-                {
                     sr += $"{item.Id} : {item.Number}@{item.Color}\n";
-                    //Debug.WriteLine(sr);
-                }
             }
             catch (Exception)
             {
@@ -297,10 +351,8 @@ namespace AppAndroid.Work
                 int i = 0;
                 foreach (var item in busIncidentTmp)
                 {
-                    if (i > 0)
-                        w += "OR ";
-                    else
-                        w += "WHERE ";
+                    if (i > 0) w += "OR ";
+                    else w += "WHERE ";
 
                     w += $"Id={item.IdIncident} ";
                     i++;
@@ -311,10 +363,7 @@ namespace AppAndroid.Work
                 sr += $"{checkTmp.Id} : Bus[{busTmp[0].Id}],\n";
 
                 foreach (var item in incidentTmp)
-                {
                     sr += $"Incident[{item.Id}],\n";
-                    //Debug.WriteLine(sr);
-                }
             }
             catch (Exception)
             {
@@ -412,10 +461,8 @@ namespace AppAndroid.Work
                 int i = 0;
                 foreach (var item in busIncidentTmp)
                 {
-                    if (i > 0)
-                        w += "OR ";
-                    else
-                        w += "WHERE ";
+                    if (i > 0) w += "OR ";
+                    else w += "WHERE ";
 
                     w += $"Id={item.IdIncident} ";
                     i++;

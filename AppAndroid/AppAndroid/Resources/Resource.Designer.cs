@@ -26,6 +26,8 @@ namespace AppAndroid
 		
 		public static void UpdateIdValues()
 		{
+			global::SQLite.Net.Platform.XamarinAndroid.Resource.String.ApplicationName = global::AppAndroid.Resource.String.ApplicationName;
+			global::SQLite.Net.Platform.XamarinAndroid.Resource.String.Hello = global::AppAndroid.Resource.String.Hello;
 		}
 		
 		public partial class Attribute

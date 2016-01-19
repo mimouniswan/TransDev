@@ -8,6 +8,8 @@ using Android.OS;
 using System.Collections.Generic;
 using Android.Content.PM;
 using AppAndroid.Acti;
+using AppAndroid.Work;
+using AppAndroid.Data;
 
 namespace AppAndroid
 {
@@ -16,6 +18,25 @@ namespace AppAndroid
     {
         private Spinner userSpinner;
         private Button btnMenu;
+        List<Conducteur> conducteurs;
+
+        DBWork _DB = new DBWork();
+
+        protected override void OnResume()
+        {
+            base.OnResume();
+
+            userSpinner = FindViewById<Spinner>(Resource.Id.spinner1);
+            List<string> listSpinner = new List<string>();
+
+            conducteurs = _DB.GetConducteur();
+            foreach (var item in conducteurs)
+                listSpinner.Add($"{item.Nom}");
+
+            ArrayAdapter<string> adapterDriver = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, listSpinner);
+            userSpinner.Adapter = adapterDriver;
+        }
+
         protected override void OnCreate(Bundle bundle)
         {
             RequestWindowFeature(WindowFeatures.NoTitle);
@@ -23,14 +44,14 @@ namespace AppAndroid
             // Set our view from the "main" layout resource"""""
             SetContentView(Resource.Layout.Main);
 
-            List<String> listSpinner = new List<String>();
+            List<string> listSpinner = new List<string>();
             userSpinner = FindViewById<Spinner>(Resource.Id.spinner1);
             btnMenu = FindViewById<Button>(Resource.Id.button1);
             Button btnDB = FindViewById<Button>(Resource.Id.buttonDB);
 
-            listSpinner.Add("Amblard");
-            listSpinner.Add("Mimouni");
-            listSpinner.Add("Dupont");
+            conducteurs = _DB.GetConducteur();
+            foreach(var item in conducteurs)
+                listSpinner.Add($"{item.Nom}");
 
             ArrayAdapter<string> adapterDriver = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, listSpinner);
             userSpinner.Adapter = adapterDriver;
