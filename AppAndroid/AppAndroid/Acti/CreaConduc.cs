@@ -17,7 +17,6 @@ namespace AppAndroid.Acti
     public class CreaConduc : Activity
     {
         EditText _EditText;
-        EditText _EditTextPass;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -28,7 +27,6 @@ namespace AppAndroid.Acti
 
             Button ValButton = FindViewById<Button>(Resource.Id.buttonValCreaConduc);
             _EditText = FindViewById<EditText>(Resource.Id.editTextNomCreaConduc);
-            _EditTextPass = FindViewById<EditText>(Resource.Id.editTextMdPCreaConduc);
 
             ValButton.Click += delegate
             {
@@ -36,9 +34,9 @@ namespace AppAndroid.Acti
 
                 var builder = new AlertDialog.Builder(this);
 
-                if (_EditText.Text.Equals(string.Empty) || _EditTextPass.Text.Equals(string.Empty))
+                if (_EditText.Text.Equals(string.Empty))
                 {
-                    builder.SetMessage("Ce conducteur n'a pas de nom ou de mot de passe.");
+                    builder.SetMessage("Ce conducteur n'a pas de nom.");
                     builder.SetPositiveButton("D'accord", (s, e) => { });
                     //builder.SetNegativeButton("Cancel", (s, e) => { });
                 }
@@ -46,7 +44,7 @@ namespace AppAndroid.Acti
                 {
                     builder.SetMessage("Êtes-vous sûr ?");
                     builder.SetPositiveButton("Oui", (s, e) => {
-                        DB.DBInsertConducteur(_EditText.Text, _EditTextPass.Text);
+                        DB.DBInsertConducteur(_EditText.Text);
                         this.Finish();
                     });
                     builder.SetNegativeButton("Annuler", (s, e) => { });

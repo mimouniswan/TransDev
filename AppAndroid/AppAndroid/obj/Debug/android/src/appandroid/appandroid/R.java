@@ -45,12 +45,12 @@ public final class R {
         public static final int button1=0x7f050020;
         public static final int buttonDB=0x7f05001f;
         public static final int buttonValCreaBus=0x7f050002;
-        public static final int buttonValCreaConduc=0x7f050005;
+        public static final int buttonValCreaConduc=0x7f050004;
         public static final int buttonValCreaContro=0x7f050007;
         public static final int buttonValidate=0x7f05001a;
-        public static final int editTextMdPCreaConduc=0x7f050004;
+        public static final int editTextMdPCreaContro=0x7f050006;
         public static final int editTextNomCreaConduc=0x7f050003;
-        public static final int editTextNomCreaContro=0x7f050006;
+        public static final int editTextNomCreaContro=0x7f050005;
         public static final int editTextNumeroBus=0x7f050000;
         public static final int horizontalScrollView1=0x7f050024;
         public static final int horizontalScrollView2=0x7f05002b;
