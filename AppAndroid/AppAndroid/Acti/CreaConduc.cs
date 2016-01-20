@@ -17,7 +17,7 @@ namespace AppAndroid.Acti
     public class CreaConduc : Activity
     {
         EditText _EditText;
-        
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             RequestWindowFeature(WindowFeatures.NoTitle);
@@ -27,7 +27,7 @@ namespace AppAndroid.Acti
 
             Button ValButton = FindViewById<Button>(Resource.Id.buttonValCreaConduc);
             _EditText = FindViewById<EditText>(Resource.Id.editTextNomCreaConduc);
-            
+
 
             ValButton.Click += delegate
             {
@@ -37,7 +37,7 @@ namespace AppAndroid.Acti
 
                 if (_EditText.Text.Equals(string.Empty))
                 {
-                    builder.SetMessage("Ce conducteur n'a pas de nom");
+                    builder.SetMessage("Ce conducteur n'a pas de nom ou de mot de passe.");
                     builder.SetPositiveButton("D'accord", (s, e) => { });
                     //builder.SetNegativeButton("Cancel", (s, e) => { });
                 }
