@@ -60,7 +60,6 @@ C:\Users\Swan\Source\Repos\TransDev\AppAndroid\AppAndroid\bin\Debug\System.Trans
 C:\Users\Swan\Source\Repos\TransDev\AppAndroid\AppAndroid\bin\Debug\System.Numerics.dll.mdb
 C:\Users\Swan\Source\Repos\TransDev\AppAndroid\AppAndroid\bin\Debug\Mono.Data.Tds.dll.mdb
 C:\Users\Swan\Source\Repos\TransDev\AppAndroid\AppAndroid\bin\Debug\Mono.Security.dll.mdb
-C:\Users\Swan\Source\Repos\TransDev\AppAndroid\AppAndroid\obj\Debug\AppAndroid.csprojResolveAssemblyReference.cache
 C:\Users\Swan\Source\Repos\TransDev\AppAndroid\AppAndroid\obj\Debug\AppAndroid.dll
 C:\Users\Swan\Source\Repos\TransDev\AppAndroid\AppAndroid\obj\Debug\AppAndroid.pdb
 C:\Users\Swan\Source\Repos\TransDev\AppAndroid\AppAndroid\obj\Debug\android\bin\AppAndroid.AppAndroid.apk
@@ -88,5 +87,6 @@ C:\Users\Swan\Source\Repos\TransDev\AppAndroid\AppAndroid\obj\Debug\res\drawable
 C:\Users\Swan\Source\Repos\TransDev\AppAndroid\AppAndroid\obj\Debug\res\drawable\icon.png
 C:\Users\Swan\Source\Repos\TransDev\AppAndroid\AppAndroid\obj\Debug\R.cs.flag
 C:\Users\Swan\Source\Repos\TransDev\AppAndroid\AppAndroid\obj\Debug\uploadflags.txt
+C:\Users\Swan\Source\Repos\TransDev\AppAndroid\AppAndroid\obj\Debug\AppAndroid.csprojResolveAssemblyReference.cache
 C:\Users\Swan\Source\Repos\TransDev\AppAndroid\AppAndroid\obj\Debug\AppAndroid.dll.mdb
 C:\Users\Swan\Source\Repos\TransDev\AppAndroid\AppAndroid\bin\Debug\AppAndroid.dll.mdb

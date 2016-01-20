@@ -146,19 +146,21 @@ namespace AppAndroid.Work
             return result;
         }
 
+        #region Insert
+
         ////////////////////// INSERT ///////////////////////////////
         /// <summary>
         /// Créer un coducteur en BDD.
         /// </summary>
         /// <param name="nom">Nom du conducteur.</param>
-        /// <param name="mdp">Mot de passe.</param>
+
         /// <returns></returns>
-        public string DBInsertConducteur(string nom, string mdp)
+        public string DBInsertConducteur(string nom)
         {
             string sr = "";
 
             try {
-                _Conn.Insert(new Conducteur() { Nom = nom, MdP = mdp });
+                _Conn.Insert(new Conducteur() { Nom = nom });
                 sr = "Conducteur créé avec succès";
             }
             catch(Exception)
@@ -173,14 +175,15 @@ namespace AppAndroid.Work
         /// Créer un controleur en BDD.
         /// </summary>
         /// <param name="nom">Nom du controleur.</param>
+        /// <param name="mdp">Mot de passe.</param>
         /// <returns></returns>
-        public string DBInsertControleur(string nom)
+        public string DBInsertControleur(string nom, string mdp)
         {
             string sr = "";
 
             try
             {
-                _Conn.Insert(new Controleur() { Nom = nom });
+                _Conn.Insert(new Controleur() { Nom = nom, MdP = mdp });
                 sr = "Controleur créé avec succès";
             }
             catch (Exception)
@@ -248,6 +251,10 @@ namespace AppAndroid.Work
             return sr;
         }
 
+        #endregion
+
+        #region Select
+
         ////////////////////// SELECT ///////////////////////////////
         /// <summary>
         /// Récupère les informations d'un conducteur.
@@ -267,7 +274,7 @@ namespace AppAndroid.Work
                 var query = _Conn.Query<Conducteur>(q);
 
                 foreach (var item in query)
-                    sr += $"{item.Id} : {item.Nom}@{item.MdP}\n";
+                    sr += $"{item.Id} : {item.Nom}\n";
             }
             catch (Exception)
             {
@@ -295,7 +302,7 @@ namespace AppAndroid.Work
                 var query = _Conn.Query<Controleur>(q);
 
                 foreach (var item in query)
-                    sr += $"{item.Id} : {item.Nom}\n";
+                    sr += $"{item.Id} : {item.Nom}@{item.MdP}\n";
             }
             catch (Exception)
             {
@@ -372,6 +379,10 @@ namespace AppAndroid.Work
 
             return $"{sr}";
         }
+
+        #endregion
+
+        #region Delete
 
         ////////////////////// DELETE ///////////////////////////////
         /// <summary>
@@ -489,6 +500,10 @@ namespace AppAndroid.Work
             return $"{sr}";
         }
 
+        #endregion
+
+        #region Update
+
         ////////////////////// UPDATE ///////////////////////////////
         /// <summary>
         /// Mise à jour d'un conducteur.
@@ -604,5 +619,6 @@ namespace AppAndroid.Work
 
             return sr;
         }
+        #endregion
     }
 }

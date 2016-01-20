@@ -76,7 +76,7 @@ namespace AppAndroid.Acti
 
                 new Thread(new ThreadStart(() =>
                 {
-                    string s = _DBSQLite.DBInsertConducteur("Cond - Jean-Gérard", "zef");
+                    string s = _DBSQLite.DBInsertConducteur("Cond - Jean-Gérard");
 
                     RunOnUiThread(() => { _ResultText.Text = s; });
                 })).Start();
@@ -89,7 +89,7 @@ namespace AppAndroid.Acti
 
                 new Thread(new ThreadStart(() =>
                 {
-                    string s = _DBSQLite.DBInsertControleur("Contr - Jean-Gérard");
+                    string s = _DBSQLite.DBInsertControleur("Contr - Jean-Gérard", "zef");
 
                     RunOnUiThread(() => { _ResultText.Text = s; });
                 })).Start();

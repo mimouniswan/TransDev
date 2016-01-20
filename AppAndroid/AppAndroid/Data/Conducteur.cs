@@ -8,8 +8,7 @@ namespace AppAndroid.Data
         public int Id { get; set; }
 
         public string Nom { get; set; }
-        public string MdP { get; set; }
-
+        
         public override string ToString()
         {
             return "Conducteur";
