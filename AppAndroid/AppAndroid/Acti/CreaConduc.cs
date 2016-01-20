@@ -37,7 +37,7 @@ namespace AppAndroid.Acti
 
                 if (_EditText.Text.Equals(string.Empty))
                 {
-                    builder.SetMessage("Ce conducteur n'a pas de nom ou de mot de passe.");
+                    builder.SetMessage("Ce conducteur n'a pas de nom.");
                     builder.SetPositiveButton("D'accord", (s, e) => { });
                     //builder.SetNegativeButton("Cancel", (s, e) => { });
                 }
