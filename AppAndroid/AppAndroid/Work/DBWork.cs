@@ -146,12 +146,14 @@ namespace AppAndroid.Work
             return result;
         }
 
+        #region Insert
+
         ////////////////////// INSERT ///////////////////////////////
         /// <summary>
         /// Créer un coducteur en BDD.
         /// </summary>
         /// <param name="nom">Nom du conducteur.</param>
-        /// <param name="mdp">Mot de passe.</param>
+
         /// <returns></returns>
         public string DBInsertConducteur(string nom)
         {
@@ -173,6 +175,7 @@ namespace AppAndroid.Work
         /// Créer un controleur en BDD.
         /// </summary>
         /// <param name="nom">Nom du controleur.</param>
+        /// <param name="mdp">Mot de passe.</param>
         /// <returns></returns>
         public string DBInsertControleur(string nom, string mdp)
         {
@@ -247,6 +250,10 @@ namespace AppAndroid.Work
 
             return sr;
         }
+
+        #endregion
+
+        #region Select
 
         ////////////////////// SELECT ///////////////////////////////
         /// <summary>
@@ -373,6 +380,10 @@ namespace AppAndroid.Work
             return $"{sr}";
         }
 
+        #endregion
+
+        #region Delete
+
         ////////////////////// DELETE ///////////////////////////////
         /// <summary>
         /// Suppression d'un conducteur.
@@ -489,6 +500,10 @@ namespace AppAndroid.Work
             return $"{sr}";
         }
 
+        #endregion
+
+        #region Update
+
         ////////////////////// UPDATE ///////////////////////////////
         /// <summary>
         /// Mise à jour d'un conducteur.
@@ -604,5 +619,6 @@ namespace AppAndroid.Work
 
             return sr;
         }
+        #endregion
     }
 }

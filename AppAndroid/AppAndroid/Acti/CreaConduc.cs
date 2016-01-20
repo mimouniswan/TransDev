@@ -28,6 +28,7 @@ namespace AppAndroid.Acti
             Button ValButton = FindViewById<Button>(Resource.Id.buttonValCreaConduc);
             _EditText = FindViewById<EditText>(Resource.Id.editTextNomCreaConduc);
 
+
             ValButton.Click += delegate
             {
                 DBWork DB = new DBWork();
