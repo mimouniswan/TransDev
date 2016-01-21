@@ -50,7 +50,6 @@ C:\Users\Swan\Source\Repos\TransDev\AppAndroid\AppAndroid\obj\Debug\uploadflags.
 C:\Users\Swan\Source\Repos\TransDev\AppAndroid\AppAndroid\obj\Debug\AppAndroid.csprojResolveAssemblyReference.cache
 C:\Users\Swan\Source\Repos\TransDev\AppAndroid\AppAndroid\obj\Debug\AppAndroid.dll.mdb
 C:\Users\Swan\Source\Repos\TransDev\AppAndroid\AppAndroid\bin\Debug\AppAndroid.dll.mdb
-C:\Users\Corentin\Source\Repos\TransDev\AppAndroid\AppAndroid\obj\Debug\AppAndroid.csprojResolveAssemblyReference.cache
 C:\Users\Corentin\Source\Repos\TransDev\AppAndroid\AppAndroid\bin\Debug\AppAndroid.dll
 C:\Users\Corentin\Source\Repos\TransDev\AppAndroid\AppAndroid\bin\Debug\AppAndroid.pdb
 C:\Users\Corentin\Source\Repos\TransDev\AppAndroid\AppAndroid\bin\Debug\AppAndroid.AppAndroid.apk
@@ -73,6 +72,7 @@ C:\Users\Corentin\Source\Repos\TransDev\AppAndroid\AppAndroid\bin\Debug\System.T
 C:\Users\Corentin\Source\Repos\TransDev\AppAndroid\AppAndroid\bin\Debug\System.Numerics.dll.mdb
 C:\Users\Corentin\Source\Repos\TransDev\AppAndroid\AppAndroid\bin\Debug\Mono.Data.Tds.dll.mdb
 C:\Users\Corentin\Source\Repos\TransDev\AppAndroid\AppAndroid\bin\Debug\Mono.Security.dll.mdb
+C:\Users\Corentin\Source\Repos\TransDev\AppAndroid\AppAndroid\obj\Debug\AppAndroid.csprojResolveAssemblyReference.cache
 C:\Users\Corentin\Source\Repos\TransDev\AppAndroid\AppAndroid\obj\Debug\AppAndroid.dll
 C:\Users\Corentin\Source\Repos\TransDev\AppAndroid\AppAndroid\obj\Debug\AppAndroid.pdb
 C:\Users\Corentin\Source\Repos\TransDev\AppAndroid\AppAndroid\obj\Debug\android\bin\AppAndroid.AppAndroid.apk
@@ -83,6 +83,7 @@ C:\Users\Corentin\Source\Repos\TransDev\AppAndroid\AppAndroid\obj\Debug\res\layo
 C:\Users\Corentin\Source\Repos\TransDev\AppAndroid\AppAndroid\obj\Debug\res\layout\creabus.xml
 C:\Users\Corentin\Source\Repos\TransDev\AppAndroid\AppAndroid\obj\Debug\res\layout\creacontro.xml
 C:\Users\Corentin\Source\Repos\TransDev\AppAndroid\AppAndroid\obj\Debug\res\layout\creaconduc.xml
+C:\Users\Corentin\Source\Repos\TransDev\AppAndroid\AppAndroid\obj\Debug\res\layout\histincident.xml
 C:\Users\Corentin\Source\Repos\TransDev\AppAndroid\AppAndroid\obj\Debug\res\layout\main.xml
 C:\Users\Corentin\Source\Repos\TransDev\AppAndroid\AppAndroid\obj\Debug\res\values\strings.xml
 C:\Users\Corentin\Source\Repos\TransDev\AppAndroid\AppAndroid\obj\Debug\res\drawable\bus_blank_front.png
