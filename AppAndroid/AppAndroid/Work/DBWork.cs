@@ -146,6 +146,43 @@ namespace AppAndroid.Work
             return result;
         }
 
+        /// <summary>
+        /// Récupère une liste de tableau de string pour l'historique des incidents.
+        /// </summary>
+        /// <param name="desc">True pour faire une sélection descendante.</param>
+        /// <returns></returns>
+        public List<string[]> GetHistIncident(bool desc = false)
+        {
+            List<string[]> results = new List<string[]>();
+
+            string o = "";
+            if (desc) o = "Desc"; else o = "Asc";
+
+            try
+            {
+                List<Incident> incidents = _Conn.Query<Incident>($"SELECT * FROM Incident ORDER BY DateMaJ {o}");
+                List<BusIncident> busIncidents = new List<BusIncident>();
+                List<Bus> bus = new List<Bus>();
+                List<Conducteur> conducteurs = new List<Conducteur>();
+
+                foreach (var item in incidents)
+                {
+                    conducteurs = _Conn.Query<Conducteur>($"SELECT* FROM Conducteur WHERE Id = {item.IdConducteur}");
+
+                    busIncidents = _Conn.Query<BusIncident>($"SELECT* FROM BusIncident WHERE IdIncident = {item.Id}");
+
+                    bus = _Conn.Query<Bus>($"SELECT* FROM Bus WHERE Id = {busIncidents[0].IdBus}");
+
+                    string[] r = new string[4] { bus[0].Number.ToString(), item.Observation, conducteurs[0].Nom, item.DateMaJ };
+
+                    results.Add(r);
+                }
+            }
+            catch(Exception) { }
+
+            return results;
+        }
+
         #region Insert
 
         ////////////////////// INSERT ///////////////////////////////
@@ -351,8 +388,8 @@ namespace AppAndroid.Work
 
             try
             {
-                var checkTmp = _Conn.Find<CheckUp>(id);
-                var busIncidentTmp = _Conn.Query<BusIncident>($"SELECT * FROM BusIncident WHERE IdCheck={checkTmp.Id}");
+                var checkTmp = _Conn.Query<CheckUp>($"SELECT * FROM CheckUp WHERE Id={id}");
+                var busIncidentTmp = _Conn.Query<BusIncident>($"SELECT * FROM BusIncident WHERE IdCheck={id}");
                 var busTmp = _Conn.Query<Bus>($"SELECT * FROM Bus WHERE Id={busIncidentTmp[0].IdBus}");
 
                 int i = 0;
@@ -367,7 +404,7 @@ namespace AppAndroid.Work
 
                 var incidentTmp = _Conn.Query<Incident>($"SELECT * FROM Incident {w}");
 
-                sr += $"{checkTmp.Id} : Bus[{busTmp[0].Id}],\n";
+                sr += $"{id} : Bus[{busTmp[0].Id}],\n";
 
                 foreach (var item in incidentTmp)
                     sr += $"Incident[{item.Id}],\n";

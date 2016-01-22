@@ -94,7 +94,7 @@ namespace AppAndroid
                     break;
                 case 3:
                     // Historique
-                    StartActivity(typeof(Checkup));
+                    StartActivity(typeof(HistIncident));
                     break;
             }
         }
