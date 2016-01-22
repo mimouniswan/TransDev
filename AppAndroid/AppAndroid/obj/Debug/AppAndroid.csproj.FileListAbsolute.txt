@@ -48,8 +48,6 @@ C:\Users\Swan\Source\Repos\TransDev\AppAndroid\AppAndroid\obj\Debug\res\drawable
 C:\Users\Swan\Source\Repos\TransDev\AppAndroid\AppAndroid\obj\Debug\R.cs.flag
 C:\Users\Swan\Source\Repos\TransDev\AppAndroid\AppAndroid\obj\Debug\uploadflags.txt
 C:\Users\Swan\Source\Repos\TransDev\AppAndroid\AppAndroid\obj\Debug\AppAndroid.csprojResolveAssemblyReference.cache
-C:\Users\Swan\Source\Repos\TransDev\AppAndroid\AppAndroid\obj\Debug\AppAndroid.dll.mdb
-C:\Users\Swan\Source\Repos\TransDev\AppAndroid\AppAndroid\bin\Debug\AppAndroid.dll.mdb
 C:\Users\Corentin\Source\Repos\TransDev\AppAndroid\AppAndroid\obj\Debug\AppAndroid.csprojResolveAssemblyReference.cache
 C:\Users\Corentin\Source\Repos\TransDev\AppAndroid\AppAndroid\bin\Debug\AppAndroid.dll
 C:\Users\Corentin\Source\Repos\TransDev\AppAndroid\AppAndroid\bin\Debug\AppAndroid.pdb
@@ -102,3 +100,5 @@ C:\Users\Corentin\Source\Repos\TransDev\AppAndroid\AppAndroid\obj\Debug\R.cs.fla
 C:\Users\Corentin\Source\Repos\TransDev\AppAndroid\AppAndroid\obj\Debug\uploadflags.txt
 C:\Users\Corentin\Source\Repos\TransDev\AppAndroid\AppAndroid\obj\Debug\AppAndroid.dll.mdb
 C:\Users\Corentin\Source\Repos\TransDev\AppAndroid\AppAndroid\bin\Debug\AppAndroid.dll.mdb
+C:\Users\Swan\Source\Repos\TransDev\AppAndroid\AppAndroid\obj\Debug\AppAndroid.dll.mdb
+C:\Users\Swan\Source\Repos\TransDev\AppAndroid\AppAndroid\bin\Debug\AppAndroid.dll.mdb
