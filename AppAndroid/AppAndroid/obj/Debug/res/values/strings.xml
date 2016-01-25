@@ -1,1 +1,1 @@
-<resources><string name="Hello">Hello World, Click Me!</string><string name="ApplicationName">AppAndroid</string></resources>
+<resources><string name="ApplicationName">AppAndroid</string><string-array name="colorSpinner"><item>Gris</item><item>Bleu</item><item>Blanc</item><item>Vert</item><item>Autre</item></string-array></resources>

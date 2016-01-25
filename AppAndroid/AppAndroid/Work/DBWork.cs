@@ -35,6 +35,7 @@ namespace AppAndroid.Work
                 _Conn.DropTable<BusIncident>();
                 _Conn.DropTable<Incident>();
                 _Conn.DropTable<Bus>();
+                _Conn.DropTable<Model>();
                 _Conn.DropTable<Controleur>();
                 _Conn.DropTable<Conducteur>();
 
@@ -42,6 +43,7 @@ namespace AppAndroid.Work
                 _Conn.CreateTable<Conducteur>();
                 _Conn.CreateTable<Controleur>();
                 _Conn.CreateTable<Bus>();
+                _Conn.CreateTable<Model>();
                 _Conn.CreateTable<Incident>();
                 _Conn.CreateTable<BusIncident>();
                 _Conn.CreateTable<CheckUp>();
@@ -94,6 +96,29 @@ namespace AppAndroid.Work
                 string q = $"SELECT * FROM Bus {w}";
 
                 result = _Conn.Query<Bus>(q);
+            }
+            catch (Exception) { }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Récupère un objet Modèle.
+        /// </summary>
+        /// <param name="id">ID du model que l'on veut récupérer.</param>
+        /// <returns></returns>
+        public List<Model> GetModel(int id = 0)
+        {
+            List<Model> result = new List<Model>();
+            string w = "";
+
+            if (id != 0) w = $"WHERE Id={id}";
+
+            try
+            {
+                string q = $"SELECT * FROM Model {w}";
+
+                result = _Conn.Query<Model>(q);
             }
             catch (Exception) { }
 
@@ -187,7 +212,7 @@ namespace AppAndroid.Work
 
         ////////////////////// INSERT ///////////////////////////////
         /// <summary>
-        /// Créer un coducteur en BDD.
+        /// Créer un conducteur en BDD.
         /// </summary>
         /// <param name="nom">Nom du conducteur.</param>
 
@@ -237,14 +262,13 @@ namespace AppAndroid.Work
         /// <param name="numero">Numéro du bus.</param>
         /// <param name="couleur">Couleur du bus.</param>
         /// <returns></returns>
-        public string DBInsertBus(int numero, string couleur)
+        public string DBInsertBus(int numero, string couleur, int idModel)
         {
             string sr = "";
 
             try
             {
-                _Conn.Insert(new Bus() { Number = numero, Color = couleur });
-                sr = "Bus créé avec succès";
+                _Conn.Insert(new Bus() { Number = numero, Color = couleur, IdModel = idModel});
             }
             catch (Exception)
             {
@@ -288,6 +312,27 @@ namespace AppAndroid.Work
             return sr;
         }
 
+        /// <summary>
+        /// Créer un modèle de bus en BDD.
+        /// </summary>
+        /// <param name="name">nom du modèle.</param>
+        /// <returns></returns>
+        public string DBInsertModel(string name)
+        {
+            string sr = "";
+
+            try
+            {
+                _Conn.Insert(new Model() { Name = name });
+                sr = "Modèle créé avec succès";
+            }
+            catch (Exception)
+            {
+                sr = "Une erreur c'est produit : Impossible de créer un modèle";
+            }
+
+            return sr;
+        }
         #endregion
 
         #region Select
@@ -417,6 +462,36 @@ namespace AppAndroid.Work
             return $"{sr}";
         }
 
+        /// <summary>
+        /// Récupère les informations d'un modèle.
+        /// </summary>
+        /// <param name="id">ID du modèle.</param>
+        /// <returns></returns>
+        public string DBSelectModel(int id)
+        {
+            string sr = "", w = "";
+
+            if (id != 0) w = $" WHERE Id={id}";
+
+            try
+            {
+                string q = $"SELECT * FROM Model" + w;
+
+                var query = _Conn.Query<Model>(q);
+
+                foreach (var item in query)
+                    sr += $"{item.Id} : {item.Name}\n";
+            }
+            catch (Exception)
+            {
+                sr = "Il n'y a aucune table.";
+            }
+
+            return sr;
+        }
+
+
+
         #endregion
 
         #region Delete
@@ -537,6 +612,29 @@ namespace AppAndroid.Work
             return $"{sr}";
         }
 
+        /// <summary>
+        /// Suppression d'un modèle.
+        /// </summary>
+        /// <param name="id">ID du modèle.</param>
+        /// <returns></returns>
+        public string DBDeleteModel(int id)
+        {
+            string sr = "";
+
+            try
+            {
+                var query = _Conn.Delete<Model>(id);
+
+                sr = $"Suppression du modèle d'ID : {id}\n";
+            }
+            catch (Exception)
+            {
+                sr = "Il n'y a aucune table.";
+            }
+
+            return sr;
+        }
+
         #endregion
 
         #region Update
@@ -648,6 +746,29 @@ namespace AppAndroid.Work
                 var query = _Conn.Query<Incident>($"UPDATE Incident SET Type = \"{type}\", Gravite = {gravite}, Etat = {etat}, DateMaJ = \"{dateMaj}\", Observation = \"{observation}\", X = {x}, Y = {y}, Picture = \"{picture}\" WHERE ID = {id}");
 
                 sr = $"Mise à jour de l'incident d'ID : {id}\n";
+            }
+            catch (Exception)
+            {
+                sr = "Il n'y a aucune table.";
+            }
+
+            return sr;
+        }
+
+        /// <summary>
+        /// Mise à jour d'un modèle.
+        /// </summary>
+        /// <param name="id">ID du modèle</param>
+        /// <returns></returns>
+        public string DBUpdateModel(int id, string name)
+        {
+            string sr = "";
+
+            try
+            {
+                var query = _Conn.Query<Model>($"UPDATE Model SET Name = \"{name}\" WHERE ID = {id}");
+
+                sr = $"Mise à jour du modèle d'ID : {id}\n";
             }
             catch (Exception)
             {

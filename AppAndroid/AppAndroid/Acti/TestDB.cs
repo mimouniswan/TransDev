@@ -100,12 +100,12 @@ namespace AppAndroid.Acti
                 _ResultText.Text = "";
                 _TestProgressBar.Progress = 0;
 
-                new Thread(new ThreadStart(() =>
+                /*new Thread(new ThreadStart(() =>
                 {
                     string s = _DBSQLite.DBInsertBus(1337, "Blouge");
 
                     RunOnUiThread(() => { _ResultText.Text = s; });
-                })).Start();
+                })).Start();*/
             };
 
             LaunchButtonCreaCheck.Click += delegate

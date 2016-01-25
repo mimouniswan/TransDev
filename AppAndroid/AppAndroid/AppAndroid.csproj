@@ -80,6 +80,7 @@
     <Compile Include="Data\Conducteur.cs" />
     <Compile Include="Data\Controleur.cs" />
     <Compile Include="Data\Incident.cs" />
+    <Compile Include="Data\Model.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />

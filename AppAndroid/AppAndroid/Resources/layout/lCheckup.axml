@@ -37,7 +37,7 @@
         android:layout_weight=".6"
         android:id="@+id/lyMiddle">
         <ImageView
-            android:src="@drawable/bus_droit"
+            android:src="@drawable/bus_blank_front"
             android:id="@+id/imgBus"
             android:gravity="center"
             android:layout_width="match_parent"

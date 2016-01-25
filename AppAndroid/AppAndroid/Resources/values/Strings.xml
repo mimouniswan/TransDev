@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="Hello">Hello World, Click Me!</string>
-    <string name="ApplicationName">AppAndroid</string>
+<string name="ApplicationName">AppAndroid</string>
+
+  <string-array name="colorSpinner">
+    <item>Gris</item>
+    <item>Bleu</item>
+    <item>Blanc</item>
+    <item>Vert</item>
+    <item>Autre</item>
+  </string-array>  
 </resources>
