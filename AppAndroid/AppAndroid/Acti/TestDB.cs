@@ -119,7 +119,7 @@ namespace AppAndroid.Acti
                     list.Add(_DBSQLite.CreateAndGetIncident(1, 1, "Type", 1, 1, DateTime.Now.ToString(), "Rien non ?", 0, 0, "Image"));
                     list.Add(_DBSQLite.CreateAndGetIncident(1, 1, "Type", 1, 1, DateTime.Now.ToString(), "Rien non ?", 0, 0, "Image"));
 
-                    string s = _DBSQLite.DBInsertCheck(1, 1, 1, list);
+                    string s = _DBSQLite.DBInsertCheck(1, 1, int.Parse(_GetEditTextValue()), list);
 
                     RunOnUiThread(() => { _ResultText.Text = s; });
                 })).Start();

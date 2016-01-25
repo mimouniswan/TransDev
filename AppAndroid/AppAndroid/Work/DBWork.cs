@@ -1,6 +1,7 @@
 using System;
 using SQLite.Net;
 using SQLite.Net.Platform.XamarinAndroid;
+using SQLiteNetExtensions.Extensions;
 using AppAndroid.Data;
 using System.Collections.Generic;
 
@@ -200,7 +201,7 @@ namespace AppAndroid.Work
 
                     string[] r = new string[4] { bus[0].Number.ToString(), item.Observation, conducteurs[0].Nom, item.DateMaJ };
 
-                    results.Add(r);
+                    results. Add(r);
                 }
             }
             catch(Exception) { }

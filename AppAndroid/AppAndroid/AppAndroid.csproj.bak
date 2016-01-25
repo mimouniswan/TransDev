@@ -70,6 +70,7 @@
   <ItemGroup>
     <Compile Include="Acti\CreaConduc.cs" />
     <Compile Include="Acti\CreaBus.cs" />
+    <Compile Include="Acti\HistIncident.cs" />
     <Compile Include="Checkup.cs" />
     <Compile Include="ChoicePart.cs" />
     <Compile Include="Acti\CreaContro.cs" />
@@ -79,6 +80,7 @@
     <Compile Include="Data\Conducteur.cs" />
     <Compile Include="Data\Controleur.cs" />
     <Compile Include="Data\Incident.cs" />
+    <Compile Include="Data\Model.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
@@ -104,6 +106,9 @@
       <SubType>AndroidResource</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\CreaConduc.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\HistIncident.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
   </ItemGroup>
