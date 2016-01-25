@@ -19,22 +19,26 @@
                     android:text="Numéro"
                     android:gravity="center"
                     android:layout_column="1"
-                    android:padding="3dip" />
+                    android:padding="3dip"
+                    android:id="@+id/HeadTableHistIncNum" />
                 <TextView
                     android:text="Observation"
                     android:gravity="center"
                     android:padding="3dip"
-                    android:layout_column="2" />
+                    android:layout_column="2"
+                    android:id="@+id/HeadTableHistIncObs" />
                 <TextView
                     android:text="Conducteur"
                     android:gravity="center"
                     android:padding="3dip"
-                    android:layout_column="3" />
+                    android:layout_column="3"
+                    android:id="@+id/HeadTableHistIncCond" />
                 <TextView
                     android:text="Date de MaJ"
                     android:gravity="center"
                     android:padding="3dip"
-                    android:layout_column="4" />
+                    android:layout_column="4"
+                    android:id="@+id/HeadTableHistIncMaJ" />
             </TableRow>
         </TableLayout>
     </ScrollView>
