@@ -38,7 +38,7 @@ namespace AppAndroid.Acti
             _TVConduc = FindViewById<TextView>(Resource.Id.HeadTableHistIncCond);
             _TVMaJ = FindViewById<TextView>(Resource.Id.HeadTableHistIncMaJ);
 
-            _TriNum = false; _TriCond = false; _TriMaJ = true; 
+            _TriNum = true; _TriCond = true; _TriMaJ = false; 
 
             // Récupération historique des incidents
             List<string[]> incidents = DB.GetHistIncident(true);
@@ -60,6 +60,7 @@ namespace AppAndroid.Acti
                 }
 
                 _Table.RemoveViews(1, orderTable.Count);
+                _TriCond = true; _TriMaJ = false;
 
                 FillTable(orderTable);
             };
@@ -79,6 +80,7 @@ namespace AppAndroid.Acti
                 }
 
                 _Table.RemoveViews(1, orderTable.Count);
+                _TriNum = true; _TriMaJ = false;
 
                 FillTable(orderTable);
             };
@@ -98,6 +100,7 @@ namespace AppAndroid.Acti
                 }
 
                 _Table.RemoveViews(1, orderTable.Count);
+                _TriNum = true; _TriCond = true;
 
                 FillTable(orderTable);
             };
