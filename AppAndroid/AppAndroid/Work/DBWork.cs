@@ -692,13 +692,13 @@ namespace AppAndroid.Work
         /// </summary>
         /// <param name="id">ID du bus.</param>
         /// <returns></returns>
-        public string DBUpdateBus(int id, int numero, string couleur)
+        public string DBUpdateBus(int id, int numero, string couleur, int idModel)
         {
             string sr = "";
 
             try
             {
-                var query = _Conn.Query<Bus>($"UPDATE Bus SET Number = {numero}, Color=\"{couleur}\" WHERE ID = {id}");
+                var query = _Conn.Query<Bus>($"UPDATE Bus SET Number = {numero}, Color=\"{couleur}\", IdModel =\"{idModel}\" WHERE ID = {id}");
 
                 sr = $"Mise à jour du bus d'ID : {id}\n";
             }

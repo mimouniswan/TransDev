@@ -13,7 +13,7 @@ namespace AppAndroid.Data
 
         public override string ToString()
         {
-            return "Model";
+            return Name;
         }
     }
 }

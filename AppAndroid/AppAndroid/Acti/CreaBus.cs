@@ -6,6 +6,8 @@ using Android.Views;
 using Android.Widget;
 using AppAndroid.Work;
 using System.Collections.Generic;
+using System.Linq;
+using AppAndroid.Data;
 
 namespace AppAndroid.Acti
 {
@@ -13,7 +15,6 @@ namespace AppAndroid.Acti
     public class CreaBus : Activity
     {
         List<string> listSpinnerColor;
-        List<string> listSpinnerModel;
         List<string> listSpinnerNumberBus;
 
 
@@ -31,25 +32,23 @@ namespace AppAndroid.Acti
             listSpinnerColor.Add("Vert");
             listSpinnerColor.Add("Autre");
 
-            listSpinnerModel = new List<string>();
-            listSpinnerModel.Add("1");
-            listSpinnerModel.Add("2");
-
             DBWork DB = new DBWork();
 
-            List<Data.Model> listSpinnerSelectModel = new List<Data.Model>();
-
+            List<Model> listSpinnerSelectModel = new List<Model>();
+            listSpinnerSelectModel = DB.GetModel();
             ////////////INSERT////////////
             Button AddButtonBus = FindViewById<Button>(Resource.Id.buttonAddAdminBus);
             Button AddButtonModel = FindViewById<Button>(Resource.Id.buttonAddModelAdminBus);
             Spinner colorSpinner = FindViewById<Spinner>(Resource.Id.spinnerColorAdminBus);
             Spinner modelSpinner = FindViewById<Spinner>(Resource.Id.spinnerModelAdminBus);
-            EditText _EditTextAddBus = FindViewById<EditText>(Resource.Id.editTextNumeroBus);
+            EditText _EditTextAddBus = FindViewById<EditText>(Resource.Id.editTextAddNumeroBus);
             EditText _EditTextAddModel = FindViewById<EditText>(Resource.Id.editTextAddModel);
+
+
 
             ArrayAdapter<string> adapterAddColorBus = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, listSpinnerColor);
             colorSpinner.Adapter = adapterAddColorBus;
-            ArrayAdapter<string> adapterAddModelBus = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, listSpinnerModel);
+            ArrayAdapter<Model> adapterAddModelBus = new ArrayAdapter<Model>(this, Android.Resource.Layout.SimpleListItem1, listSpinnerSelectModel);
             modelSpinner.Adapter = adapterAddModelBus;
 
             AddButtonBus.Click += delegate
@@ -64,10 +63,13 @@ namespace AppAndroid.Acti
                 }
                 else
                 {
-                    listSpinnerSelectModel = DB.GetModel();
+
+                    string itemSpinner = modelSpinner.SelectedItem.ToString();
+                    
+                    var itemIdSpinner = listSpinnerSelectModel.Where(item => item.Name == itemSpinner).ToList();
                     builder.SetMessage("Êtes-vous sûr ?");
                     builder.SetPositiveButton("Oui", (s, e) => {
-                        //DB.DBInsertBus(int.Parse(_EditTextAddBus.Text), colorSpinner.SelectedItem.ToString());
+                        DB.DBInsertBus(int.Parse(_EditTextAddBus.Text), colorSpinner.SelectedItem.ToString(), itemIdSpinner[0].Id);
                         this.Finish();
                     });
                     builder.SetNegativeButton("Annuler", (s, e) => { });
@@ -105,33 +107,45 @@ namespace AppAndroid.Acti
             Button DeleteButtonBus = FindViewById<Button>(Resource.Id.buttonDeleteAdminBus);
             Spinner SelectBusSpinner = FindViewById<Spinner>(Resource.Id.spinnerSelectAdminBus);
             Spinner colorUpdateSpinner = FindViewById<Spinner>(Resource.Id.spinnerUpdateColorAdminBus);
-            Spinner numberUpdateSpinner = FindViewById<Spinner>(Resource.Id.spinnerSelectAdminBus);
-            EditText _EditTextUpdateBus = FindViewById<EditText>(Resource.Id.editTextNumeroBus);
+            Spinner modelUpdateSpinner = FindViewById<Spinner>(Resource.Id.spinnerUpdateModelAdminBus);
+            EditText _EditTextUpdateBus = FindViewById<EditText>(Resource.Id.editTextUpdateNumeroBus);
+
+            List<Bus> listSpinnerSelectBus = new List<Bus>();
+            listSpinnerSelectBus = DB.GetBus();
+         /*   foreach (var item in listSpinnerSelectBus)
+                listSpinnerSelectBus.Add($"{item.Number}");*/
 
             Button UpdateButtonModel = FindViewById<Button>(Resource.Id.buttonUpdateAdminModel);
             Button DeleteButtonModel = FindViewById<Button>(Resource.Id.buttonDeleteAdminModel);
             Spinner SelectModelSpinner = FindViewById<Spinner>(Resource.Id.spinnerSelectAdminModel);
-            EditText _EditTextUpdateModel = FindViewById<EditText>(Resource.Id.editTextNumeroBus);
+            EditText _EditTextUpdateModel = FindViewById<EditText>(Resource.Id.editTextUpdateModel);
 
-            List<Data.Bus> listSpinnerSelectBus = new List<Data.Bus>();
 
-            listSpinnerSelectBus = DB.GetBus();
-            listSpinnerNumberBus = new List<string>();
-            foreach (var item in listSpinnerSelectBus)
-                listSpinnerNumberBus.Add($"{item.Number}");
 
-            ArrayAdapter<string> adapterUpdateNumberBus = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, listSpinnerNumberBus);
+            ArrayAdapter<Bus> adapterUpdateNumberBus = new ArrayAdapter<Bus>(this, Android.Resource.Layout.SimpleListItem1, listSpinnerSelectBus);
             SelectBusSpinner.Adapter = adapterUpdateNumberBus;
             ArrayAdapter<string> adapterUpdateColorBus = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, listSpinnerColor);
             colorUpdateSpinner.Adapter = adapterUpdateColorBus;
-            ArrayAdapter<string> adapterUpdateModelBus = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, listSpinnerModel);
-            numberUpdateSpinner.Adapter = adapterUpdateModelBus;
-            ArrayAdapter<string> adapterUpdateModel = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, listSpinnerModel);
+            ArrayAdapter<Model> adapterUpdateModelBus = new ArrayAdapter<Model>(this, Android.Resource.Layout.SimpleListItem1, listSpinnerSelectModel);
+            modelUpdateSpinner.Adapter = adapterUpdateModelBus;
+            ArrayAdapter<Model> adapterUpdateModel = new ArrayAdapter<Model>(this, Android.Resource.Layout.SimpleListItem1, listSpinnerSelectModel);
             SelectModelSpinner.Adapter = adapterUpdateModel;
 
+            SelectBusSpinner.LayoutChange += delegate
+            {
+                _EditTextUpdateBus.Text = SelectBusSpinner.SelectedItem.ToString();
+               /* int itemUpdateColorSpinner = int.Parse(colorUpdateSpinner.SelectedItem.ToString());
+                var itemIdUpdateColorSpinner = listSpinnerSelectBus.Where(item => item.Id == itemUpdateColorSpinner).ToList();
 
+                colorUpdateSpinner.SelectedItem.Equals(itemIdUpdateColorSpinner[0].Color);*/
+                
+            };
 
+            SelectModelSpinner.LayoutChange += delegate
+            {
+                _EditTextUpdateModel.Text = SelectModelSpinner.SelectedItem.ToString();
 
+            };
 
             UpdateButtonBus.Click += delegate
             {
@@ -145,9 +159,15 @@ namespace AppAndroid.Acti
                 }
                 else
                 {
+                    string itemUpdateSpinner = modelUpdateSpinner.SelectedItem.ToString();
+                    var itemIdUpdateModelSpinner = listSpinnerSelectModel.Where(item => item.Name == itemUpdateSpinner).ToList();
+
+                    int itemUpdateIdBusSpinner = int.Parse(SelectBusSpinner.SelectedItem.ToString());
+                    var itemIdUpdateBusSpinner = listSpinnerSelectBus.Where(item => item.Number == itemUpdateIdBusSpinner).ToList();
+
                     builder.SetMessage($"Êtes-vous sûr de vouloir modifier le bus n°{_EditTextUpdateModel.Text} ?");
                     builder.SetPositiveButton("Oui", (s, e) => {
-                        DB.DBUpdateBus(int.Parse(SelectBusSpinner.SelectedItem.ToString()), int.Parse(_EditTextUpdateBus.Text), colorUpdateSpinner.SelectedItem.ToString());
+                        DB.DBUpdateBus(itemIdUpdateBusSpinner[0].Id, int.Parse(_EditTextUpdateBus.Text), colorUpdateSpinner.SelectedItem.ToString(), itemIdUpdateModelSpinner[0].Id);
                         this.Finish();
                     });
                     builder.SetNegativeButton("Annuler", (s, e) => { });
@@ -168,9 +188,12 @@ namespace AppAndroid.Acti
                 }
                 else
                 {
+                    string itemUpdateModelSpinner = SelectModelSpinner.SelectedItem.ToString();
+                    var itemIdUpdateModelSpinner = listSpinnerSelectModel.Where(item => item.Name == itemUpdateModelSpinner).ToList();
+
                     builder.SetMessage($"Êtes-vous sûr de vouloir modifier le modèle n°{_EditTextUpdateModel.Text} ?");
                     builder.SetPositiveButton("Oui", (s, e) => {
-                      //  DB.DBUpdateModel(int.Parse(), _EditTextUpdateModel.Text);
+                        DB.DBUpdateModel(itemIdUpdateModelSpinner[0].Id, _EditTextUpdateModel.Text);
                         this.Finish();
                     });
                     builder.SetNegativeButton("Annuler", (s, e) => { });
@@ -191,9 +214,12 @@ namespace AppAndroid.Acti
                 }
                 else
                 {
+                    int itemDeleteIdBusSpinner = int.Parse(SelectBusSpinner.SelectedItem.ToString());
+                    var itemIdDeleteBusSpinner = listSpinnerSelectBus.Where(item => item.Number == itemDeleteIdBusSpinner).ToList();
+
                     builder.SetMessage($"Êtes-vous sûr de vouloir supprimer le bus n°{_EditTextUpdateBus.Text} ?");
                     builder.SetPositiveButton("Oui", (s, e) => {
-                      //  DB.DBDeleteBus(int.Parse());
+                        DB.DBDeleteBus(itemIdDeleteBusSpinner[0].Id);
                         this.Finish();
                     });
                     builder.SetNegativeButton("Annuler", (s, e) => { });
@@ -214,10 +240,13 @@ namespace AppAndroid.Acti
                 }
                 else
                 {
+                    string itemDeleteSpinner = SelectModelSpinner.SelectedItem.ToString();
+                    var itemIdDeleteModelSpinner = listSpinnerSelectModel.Where(item => item.Name == itemDeleteSpinner).ToList();
+
                     builder.SetMessage($"Êtes-vous sûr de vouloir supprimer le modèle n°{_EditTextUpdateModel.Text} ?");
                    
                     builder.SetPositiveButton("Oui", (s, e) => {
-                        //DB.DBDeleteModel(int.Parse());
+                        DB.DBDeleteModel(itemIdDeleteModelSpinner[0].Id);
                         this.Finish();
                     });
                     builder.SetNegativeButton("Annuler", (s, e) => { });

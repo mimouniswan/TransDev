@@ -17,7 +17,7 @@
             <EditText
                 android:inputType="number"
                 android:hint="Numéro du bus"
-                android:id="@+id/editTextNumeroBus"
+                android:id="@+id/editTextAddNumeroBus"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
             <LinearLayout
@@ -59,7 +59,7 @@
                 <EditText
                     android:inputType="number"
                     android:hint="Numéro du bus"
-                    android:id="@+id/editTextNumeroBus"
+                    android:id="@+id/editTextUpdateNumeroBus"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="0.34" />
