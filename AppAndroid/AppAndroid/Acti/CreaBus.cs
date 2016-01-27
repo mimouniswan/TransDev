@@ -4,10 +4,12 @@ using Android.Database;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
+using Android.Content.PM;
 using AppAndroid.Work;
 using System.Collections.Generic;
 using System.Linq;
 using AppAndroid.Data;
+
 
 namespace AppAndroid.Acti
 {
@@ -15,8 +17,6 @@ namespace AppAndroid.Acti
     public class CreaBus : Activity
     {
         List<string> listSpinnerColor;
-        List<string> listSpinnerNumberBus;
-
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -133,18 +133,37 @@ namespace AppAndroid.Acti
 
             SelectBusSpinner.LayoutChange += delegate
             {
-                _EditTextUpdateBus.Text = SelectBusSpinner.SelectedItem.ToString();
-               /* int itemUpdateColorSpinner = int.Parse(colorUpdateSpinner.SelectedItem.ToString());
-                var itemIdUpdateColorSpinner = listSpinnerSelectBus.Where(item => item.Id == itemUpdateColorSpinner).ToList();
+                if (SelectModelSpinner.SelectedItem != null)
+                    _EditTextUpdateBus.Text = SelectBusSpinner.SelectedItem.ToString();
+                /* int itemUpdateColorSpinner = int.Parse(colorUpdateSpinner.SelectedItem.ToString());
+                 var itemIdUpdateColorSpinner = listSpinnerSelectBus.Where(item => item.Id == itemUpdateColorSpinner).ToList();
 
-                colorUpdateSpinner.SelectedItem.Equals(itemIdUpdateColorSpinner[0].Color);*/
-                
+                 colorUpdateSpinner.SelectedItem.Equals(itemIdUpdateColorSpinner[0].Color);*/
+
+                else
+                {
+                    List<string> listSpinnerEmptyBus = new List<string>();
+                    listSpinnerEmptyBus.Add("Aucun bus");
+                    ArrayAdapter<string> adapterUpdateEmptyBus = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, listSpinnerEmptyBus);
+                    SelectBusSpinner.Adapter = adapterUpdateEmptyBus;
+                }
+
             };
 
             SelectModelSpinner.LayoutChange += delegate
             {
+                if(SelectModelSpinner.SelectedItem != null)
                 _EditTextUpdateModel.Text = SelectModelSpinner.SelectedItem.ToString();
 
+                else
+                {
+                    List<string> listSpinnerEmptyModel = new List<string>();
+                    listSpinnerEmptyModel.Add("Aucun modèle");
+                    ArrayAdapter<string> adapterUpdateEmptyModel = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, listSpinnerEmptyModel);
+                    SelectModelSpinner.Adapter = adapterUpdateEmptyModel;
+                    modelSpinner.Adapter = adapterUpdateEmptyModel;
+                    modelUpdateSpinner.Adapter = adapterUpdateEmptyModel;
+                }
             };
 
             UpdateButtonBus.Click += delegate

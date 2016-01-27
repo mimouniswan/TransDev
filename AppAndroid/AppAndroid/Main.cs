@@ -13,12 +13,12 @@ using AppAndroid.Data;
 
 namespace AppAndroid
 {
-    [Activity(Label = "TransDev", MainLauncher = true, Icon = "@drawable/icon", ScreenOrientation = ScreenOrientation.Landscape)]
-    public class Main : Activity
+    [Activity(Label = "TransDev", MainLauncher = true, Icon = "@drawable/icon")]
+    public class Main : Activity    
     {
         private Spinner userSpinner;
         private Button btnMenu;
-        List<Conducteur> conducteurs;
+        List<Controleur> conducteurs;
 
         DBWork _DB = new DBWork();
 
@@ -29,9 +29,9 @@ namespace AppAndroid
             userSpinner = FindViewById<Spinner>(Resource.Id.spinner1);
             List<string> listSpinner = new List<string>();
 
-            conducteurs = _DB.GetConducteur();
+            conducteurs = _DB.GetControleur();
             foreach (var item in conducteurs)
-                listSpinner.Add($"{item.Nom}");
+                listSpinner.Add($"{item.Name}");
 
             ArrayAdapter<string> adapterDriver = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, listSpinner);
             userSpinner.Adapter = adapterDriver;
@@ -49,9 +49,9 @@ namespace AppAndroid
             btnMenu = FindViewById<Button>(Resource.Id.button1);
             Button btnDB = FindViewById<Button>(Resource.Id.buttonDB);
 
-            conducteurs = _DB.GetConducteur();
+            conducteurs = _DB.GetControleur();
             foreach(var item in conducteurs)
-                listSpinner.Add($"{item.Nom}");
+                listSpinner.Add($"{item.Name}");
 
             ArrayAdapter<string> adapterDriver = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, listSpinner);
             userSpinner.Adapter = adapterDriver;

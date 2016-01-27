@@ -7,12 +7,12 @@ namespace AppAndroid.Data
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
 
-        public string Nom { get; set; }
+        public string Name { get; set; }
         public string MdP { get; set; }
 
         public override string ToString()
         {
-            return "Controleur";
+            return Name;
         }
     }
 }
