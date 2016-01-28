@@ -22,7 +22,7 @@ namespace AppAndroid.Data
 
         public override string ToString()
         {
-            return "Bus";
+            return Number.ToString();
         }
     }
 }

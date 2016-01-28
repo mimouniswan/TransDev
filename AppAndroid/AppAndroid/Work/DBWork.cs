@@ -4,9 +4,6 @@ using SQLite.Net.Platform.XamarinAndroid;
 using SQLiteNetExtensions.Extensions;
 using AppAndroid.Data;
 using System.Collections.Generic;
-using System.Security.Cryptography;
-using System.Text;
-using System.Linq;
 
 namespace AppAndroid.Work
 {
@@ -202,7 +199,7 @@ namespace AppAndroid.Work
 
                     bus = _Conn.Query<Bus>($"SELECT* FROM Bus WHERE Id = {busIncidents[0].IdBus}");
 
-                    string[] r = new string[4] { bus[0].Number.ToString(), item.Observation, conducteurs[0].Nom, item.DateMaJ };
+                    string[] r = new string[4] { bus[0].Number.ToString(), item.Observation, conducteurs[0].Name, item.DateMaJ };
 
                     results. Add(r);
                 }
@@ -210,12 +207,6 @@ namespace AppAndroid.Work
             catch(Exception) { }
 
             return results;
-        }
-
-        private string HashSha1(string input)
-        {
-            var hash = (new SHA1Managed()).ComputeHash(Encoding.UTF8.GetBytes(input));
-            return string.Join("", hash.Select(b => b.ToString("x2")).ToArray());
         }
 
         #region Insert
@@ -232,7 +223,7 @@ namespace AppAndroid.Work
             string sr = "";
 
             try {
-                _Conn.Insert(new Conducteur() { Nom = nom });
+                _Conn.Insert(new Conducteur() { Name = nom });
                 sr = "Conducteur créé avec succès";
             }
             catch(Exception)
@@ -255,7 +246,7 @@ namespace AppAndroid.Work
 
             try
             {
-                _Conn.Insert(new Controleur() { Nom = nom, MdP = HashSha1(mdp) });
+                _Conn.Insert(new Controleur() { Name = nom, MdP = mdp });
                 sr = "Controleur créé avec succès";
             }
             catch (Exception)
@@ -366,7 +357,7 @@ namespace AppAndroid.Work
                 var query = _Conn.Query<Conducteur>(q);
 
                 foreach (var item in query)
-                    sr += $"{item.Id} : {item.Nom}\n";
+                    sr += $"{item.Id} : {item.Name}\n";
             }
             catch (Exception)
             {
@@ -394,7 +385,7 @@ namespace AppAndroid.Work
                 var query = _Conn.Query<Controleur>(q);
 
                 foreach (var item in query)
-                    sr += $"{item.Id} : {item.Nom}@{item.MdP}\n";
+                    sr += $"{item.Id} : {item.Name}@{item.MdP}\n";
             }
             catch (Exception)
             {
@@ -655,13 +646,13 @@ namespace AppAndroid.Work
         /// </summary>
         /// <param name="id">ID du conducteur.</param>
         /// <returns></returns>
-        public string DBUpdateConducteur(int id, string nom, string mdp)
+        public string DBUpdateConducteur(int id, string nom)
         {
             string sr = "";
 
             try
             {
-                var query = _Conn.Query<Conducteur>($"UPDATE Conducteur SET Nom = \"{nom}\", MdP=\"{mdp}\" WHERE ID = {id}");
+                var query = _Conn.Query<Conducteur>($"UPDATE Conducteur SET Name = \"{nom}\" WHERE ID = {id}");
 
                 sr = $"Mise à jour du conducteur d'ID : {id}\n";
             }
@@ -678,13 +669,13 @@ namespace AppAndroid.Work
         /// </summary>
         /// <param name="id">ID du controleur</param>
         /// <returns></returns>
-        public string DBUpdateControleur(int id, string nom)
+        public string DBUpdateControleur(int id, string nom, string mdp)
         {
             string sr = "";
 
             try
             {
-                var query = _Conn.Query<Controleur>($"UPDATE Controleur SET Nom = \"{nom}\" WHERE ID = {id}");
+                var query = _Conn.Query<Controleur>($"UPDATE Controleur SET Name = \"{nom}\", Mdp = \"{mdp}\" WHERE ID = {id}");
 
                 sr = $"Mise à jour du controleur d'ID : {id}\n";
             }
@@ -701,13 +692,13 @@ namespace AppAndroid.Work
         /// </summary>
         /// <param name="id">ID du bus.</param>
         /// <returns></returns>
-        public string DBUpdateBus(int id, int numero, string couleur)
+        public string DBUpdateBus(int id, int numero, string couleur, int idModel)
         {
             string sr = "";
 
             try
             {
-                var query = _Conn.Query<Bus>($"UPDATE Bus SET Number = {numero}, Color=\"{couleur}\" WHERE ID = {id}");
+                var query = _Conn.Query<Bus>($"UPDATE Bus SET Number = {numero}, Color=\"{couleur}\", IdModel =\"{idModel}\" WHERE ID = {id}");
 
                 sr = $"Mise à jour du bus d'ID : {id}\n";
             }

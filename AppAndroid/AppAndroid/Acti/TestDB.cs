@@ -90,6 +90,7 @@ namespace AppAndroid.Acti
                 new Thread(new ThreadStart(() =>
                 {
                     string s = _DBSQLite.DBInsertControleur("Contr - Jean-Gérard", "zef");
+                    string sf = _DBSQLite.DBInsertModel("zef");
 
                     RunOnUiThread(() => { _ResultText.Text = s; });
                 })).Start();
@@ -100,12 +101,12 @@ namespace AppAndroid.Acti
                 _ResultText.Text = "";
                 _TestProgressBar.Progress = 0;
 
-                /*new Thread(new ThreadStart(() =>
+                new Thread(new ThreadStart(() =>
                 {
-                    string s = _DBSQLite.DBInsertBus(1337, "Blouge");
+                    string s = _DBSQLite.DBInsertBus(1337, "Blouge",1);
 
                     RunOnUiThread(() => { _ResultText.Text = s; });
-                })).Start();*/
+                })).Start();
             };
 
             LaunchButtonCreaCheck.Click += delegate
