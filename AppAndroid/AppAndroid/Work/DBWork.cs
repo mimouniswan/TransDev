@@ -4,6 +4,9 @@ using SQLite.Net.Platform.XamarinAndroid;
 using SQLiteNetExtensions.Extensions;
 using AppAndroid.Data;
 using System.Collections.Generic;
+using System.Security.Cryptography;
+using System.Text;
+using System.Linq;
 
 namespace AppAndroid.Work
 {
@@ -209,6 +212,12 @@ namespace AppAndroid.Work
             return results;
         }
 
+        private string HashSha1(string input)
+        {
+            var hash = (new SHA1Managed()).ComputeHash(Encoding.UTF8.GetBytes(input));
+            return string.Join("", hash.Select(b => b.ToString("x2")).ToArray());
+        }
+
         #region Insert
 
         ////////////////////// INSERT ///////////////////////////////
@@ -246,7 +255,7 @@ namespace AppAndroid.Work
 
             try
             {
-                _Conn.Insert(new Controleur() { Nom = nom, MdP = mdp });
+                _Conn.Insert(new Controleur() { Nom = nom, MdP = HashSha1(mdp) });
                 sr = "Controleur créé avec succès";
             }
             catch (Exception)
