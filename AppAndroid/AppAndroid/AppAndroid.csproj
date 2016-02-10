@@ -90,6 +90,7 @@
     <Compile Include="Acti\TestDB.cs" />
     <Compile Include="Work\FileWork.cs" />
     <Compile Include="Work\DBWork.cs" />
+    <Compile Include="Work\SharedData.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -12,17 +12,17 @@
         <TextView
             android:text="Côté droit du bus N° 101"
             android:gravity="center"
-            android:layout_marginRight="50dp"
+            android:layout_marginRight="10dp"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:id="@+id/txtNumBus" />
         <Button
-            android:text="Préc"
+            android:text="Gauche"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:id="@+id/buttonPrec" />
         <Button
-            android:text="Suiv"
+            android:text="Droite"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:id="@+id/buttonSuiv" />
@@ -33,12 +33,12 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:id="@+id/txtNumBus" />
-        <TextView
+    <!--TextView
             android:text="Dernier conducteur: Dupont"
             android:gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/txtNumBus" />
+            android:id="@+id/txtNumBus" /-->
     </LinearLayout>
     <RelativeLayout
         android:orientation="horizontal"
@@ -67,7 +67,7 @@
             android:layout_height="match_parent"
             android:id="@+id/txtIncidLow" /-->
         <CheckBox
-            android:text="Mode gestion"
+            android:text="Gestion"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginRight="10dp"
@@ -75,14 +75,14 @@
         <ImageView
             android:src="@drawable/CircleT"
             android:id="@+id/imgCircle"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:layout_marginRight="10dp" />
         <ImageView
             android:src="@drawable/Square"
             android:id="@+id/imgSquare"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:layout_marginRight="10dp" />
     <!--TextView
             android:text="Incident moyen"
@@ -93,8 +93,8 @@
         <ImageView
             android:src="@drawable/TriangleT"
             android:id="@+id/imgTriangle"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:layout_marginRight="10dp" />
     <!--TextView
             android:text="Incident important"
@@ -112,9 +112,15 @@
         <ImageView
             android:src="@drawable/trash"
             android:id="@+id/imgTrash"
-            android:layout_marginRight="30dp"
+            android:layout_marginRight="5dp"
             android:layout_width="50dp"
             android:layout_height="50dp" />
+        <TextView
+            android:gravity="center"
+            android:layout_marginRight="5dp"
+            android:layout_width="110dp"
+            android:layout_height="match_parent"
+            android:id="@+id/txtDriver" />
     <!--TextView
             android:text="Controleur: Amb"
             android:gravity="center"

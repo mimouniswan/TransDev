@@ -10,15 +10,18 @@ using Android.Content.PM;
 using AppAndroid.Acti;
 using AppAndroid.Work;
 using AppAndroid.Data;
+using Android.Graphics;
 
 namespace AppAndroid
 {
     [Activity(Label = "TransDev", Icon = "@drawable/icon", ScreenOrientation = ScreenOrientation.Landscape)]
     public class Menu : Activity
     {
-        private List<string> listBus;
+        private List<Bus> listBus;
+        private List<Conducteur> listConduc;
         private List<string> listLeft;
         private ListView ListViewBus;
+        private ListView ListViewConduc;
         private ListView ListViewLeft;
 
         DBWork _DB = new DBWork();
@@ -26,16 +29,28 @@ namespace AppAndroid
         protected override void OnResume()
         {
             base.OnResume();
+            ListViewConduc.Selected = false;
+            ListViewBus.Selected = false;
 
-            listBus = new List<string>();
+            listBus = new List<Bus>();
             ListViewBus = FindViewById<ListView>(Resource.Id.listBus);
 
             List<Bus> bus = _DB.GetBus();
             foreach (var item in bus)
-                listBus.Add($"Bus [{item.Color}] N°{item.Number}");
+                listBus.Add(item);
 
-            ArrayAdapter<string> adapterBus = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, listBus);
+            ArrayAdapter<Bus> adapterBus = new ArrayAdapter<Bus>(this, Android.Resource.Layout.SimpleListItem1, listBus);
             ListViewBus.Adapter = adapterBus;
+
+            listConduc = new List<Conducteur>();
+            ListViewConduc = FindViewById<ListView>(Resource.Id.listConduc);
+            List<Conducteur> conduc = _DB.GetConducteur();
+
+            foreach (var item in conduc)
+                listConduc.Add(item);
+
+            ArrayAdapter<Conducteur> adapterConduc = new ArrayAdapter<Conducteur>(this, Android.Resource.Layout.SimpleListItem1, listConduc);
+            ListViewConduc.Adapter = adapterConduc;
         }
 
         protected override void OnCreate(Bundle bundle)
@@ -49,47 +64,85 @@ namespace AppAndroid
             // Liste de gauche
             listLeft = new List<string>();
             ListViewLeft = FindViewById<ListView>(Resource.Id.listViewLeftMenu);
-            listLeft.Add("Ajouter Bus");
-            listLeft.Add("Ajouter Controleur");
-            listLeft.Add("Ajouter Conducteur");
+            listLeft.Add("Gestion Bus");
+            listLeft.Add("Gestion Controleur");
+            listLeft.Add("Gestion Conducteur");
             listLeft.Add("Historique");
 
             ArrayAdapter<string> adapterLeft = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, listLeft);
             ListViewLeft.Adapter = adapterLeft;
             ListViewLeft.ItemClick += LeftMenuClick;
 
-            // Liste de droite
-            listBus = new List<string>();
+            // Liste des bus à selectionner
+            listBus = new List<Bus>();
             ListViewBus = FindViewById<ListView>(Resource.Id.listBus);
-
             List<Bus> bus = _DB.GetBus();
-            foreach(var item in bus)
-                listBus.Add($"Bus [{item.Color}] N°{item.Number}");
 
-            ArrayAdapter<string> adapterBus = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, listBus);
+            foreach (var item in bus)
+                listBus.Add(item);
+            ArrayAdapter<Bus> adapterBus = new ArrayAdapter<Bus>(this, Android.Resource.Layout.SimpleListItem1, listBus);
+
             ListViewBus.Adapter = adapterBus;
             ListViewBus.ItemClick += ListViewBus_ItemClick;
+
+
+            // Liste des conducteurs à selectionner
+            listConduc = new List<Conducteur>();
+            ListViewConduc = FindViewById<ListView>(Resource.Id.listConduc);
+            List<Conducteur> conduc = _DB.GetConducteur();
+
+            foreach (var item in conduc)
+                listConduc.Add(item);
+            ArrayAdapter<Conducteur> adapterConduc = new ArrayAdapter<Conducteur>(this, Android.Resource.Layout.SimpleListItem1, listConduc);
+
+            ListViewConduc.Adapter = adapterConduc;
+            ListViewConduc.ItemClick += ListViewConduc_ItemClick;
+        }
+
+        private void ListViewConduc_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
+        {
+            SharedData.DriverName = listConduc[e.Position].Name;
+            SharedData.DriverID = listConduc[e.Position].Id;
+
+            if (ListViewBus.Selected == true)
+            {
+                StartActivity(typeof(Checkup));
+            }
+            else
+            {
+                ListViewConduc.Selected = true;
+            }
         }
 
         private void ListViewBus_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
-            StartActivity(typeof(Checkup));
-        }   
+            SharedData.BusNumber = listBus[e.Position].Number;
+            SharedData.BusID = listBus[e.Position].Id;
+
+            if (ListViewConduc.Selected == true)
+            {
+                StartActivity(typeof(Checkup));
+            }
+            else
+            {
+                ListViewBus.Selected = true;
+            }
+        }
 
         private void LeftMenuClick(object sender, AdapterView.ItemClickEventArgs ea)
         {
-            switch(ea.Id)
+            switch (ea.Id)
             {
                 case 0:
-                    // Bus
+                    // Gestion des Bus
                     StartActivity(typeof(CreaBus));
                     break;
                 case 1:
-                    // Controleur
+                    // Gestion des Controleurs
                     StartActivity(typeof(CreaContro));
                     break;
                 case 2:
-                    // Conducteur
+                    // Gestion des Conducteurs
                     StartActivity(typeof(CreaConduc));
                     break;
                 case 3:

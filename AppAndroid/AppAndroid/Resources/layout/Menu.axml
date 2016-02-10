@@ -23,22 +23,52 @@
             android:id="@+id/listViewLeftMenu" />
     </LinearLayout>
     <LinearLayout
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:layout_weight="0.25"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:background="#282828">
-        <TextView
-            android:text="Liste des bus"
-            android:gravity="center"
-            android:textSize="20sp"
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_weight="0.5"
+            android:layout_height="match_parent"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:id="@+id/textViewBus" />
-        <ListView
-            android:layout_marginTop="10dp"
+            android:background="#282828">
+            <TextView
+                android:text="Liste des bus"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:id="@+id/textViewBus" />
+            <ListView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/listBus"
+                android:choiceMode="singleChoice"
+                android:listSelector="#33b5e5" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_weight="0.5"
+            android:layout_height="match_parent"
             android:layout_width="match_parent"
-            android:layout_height="fill_parent"
-            android:id="@+id/listBus" />
+            android:background="#282828">
+            <TextView
+                android:text="Liste des conducteurs"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:id="@+id/textViewConduc" />
+            <ListView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/listConduc"
+                android:choiceMode="singleChoice"
+                android:listSelector="#33b5e5" />
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>
