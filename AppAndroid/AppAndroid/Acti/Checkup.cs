@@ -134,25 +134,37 @@ namespace AppAndroid.Acti
 
             _ImgCircle.Click += delegate
             {
-                AddImage(layout, Resource.Drawable.CircleT, _ImgColor);
-                _Type = 0;
+                if (!_CheckMode.Checked)
+                {
+                    AddImage(layout, Resource.Drawable.CircleT, _ImgColor);
+                    _Type = 0;
+                }
             };
 
             _ImgSquare.Click += delegate
             {
-                AddImage(layout, Resource.Drawable.Square, _ImgColor);
-                _Type = 1;
+                if (!_CheckMode.Checked)
+                {
+                    AddImage(layout, Resource.Drawable.Square, _ImgColor);
+                    _Type = 1;
+                }
             };
 
             _ImgTriangle.Click += delegate
             {
-                AddImage(layout, Resource.Drawable.TriangleT, _ImgColor);
-                _Type = 2;
+                if (!_CheckMode.Checked)
+                {
+                    AddImage(layout, Resource.Drawable.TriangleT, _ImgColor);
+                    _Type = 2;
+                }
             };
 
             _ImgTrash.Click += delegate
             {
-                layout.RemoveView(_ImgSelect);
+                if (_ImgSelect != null)
+                {
+                    layout.RemoveView(_ImgSelect);
+                }
             };
 
             btnVal.Click += delegate 

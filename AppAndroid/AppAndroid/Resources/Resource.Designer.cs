@@ -96,22 +96,19 @@ namespace AppAndroid
 			public const int Logo_SITUS = 2130837514;
 			
 			// aapt resource value: 0x7f02000b
-			public const int Splash = 2130837515;
+			public const int Square = 2130837515;
 			
 			// aapt resource value: 0x7f02000c
-			public const int Square = 2130837516;
+			public const int square_blue = 2130837516;
 			
 			// aapt resource value: 0x7f02000d
-			public const int square_blue = 2130837517;
+			public const int trash = 2130837517;
 			
 			// aapt resource value: 0x7f02000e
-			public const int trash = 2130837518;
+			public const int triangle_red = 2130837518;
 			
 			// aapt resource value: 0x7f02000f
-			public const int triangle_red = 2130837519;
-			
-			// aapt resource value: 0x7f020010
-			public const int TriangleT = 2130837520;
+			public const int TriangleT = 2130837519;
 			
 			static Drawable()
 			{
@@ -126,248 +123,248 @@ namespace AppAndroid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f070023
-			public const int HeadTableHistIncCond = 2131165219;
+			// aapt resource value: 0x7f060023
+			public const int HeadTableHistIncCond = 2131099683;
 			
-			// aapt resource value: 0x7f070024
-			public const int HeadTableHistIncMaJ = 2131165220;
+			// aapt resource value: 0x7f060024
+			public const int HeadTableHistIncMaJ = 2131099684;
 			
-			// aapt resource value: 0x7f070021
-			public const int HeadTableHistIncNum = 2131165217;
+			// aapt resource value: 0x7f060021
+			public const int HeadTableHistIncNum = 2131099681;
 			
-			// aapt resource value: 0x7f070022
-			public const int HeadTableHistIncObs = 2131165218;
+			// aapt resource value: 0x7f060022
+			public const int HeadTableHistIncObs = 2131099682;
 			
-			// aapt resource value: 0x7f070042
-			public const int LaunchButtonDB1 = 2131165250;
+			// aapt resource value: 0x7f060042
+			public const int LaunchButtonDB1 = 2131099714;
 			
-			// aapt resource value: 0x7f070043
-			public const int LaunchButtonDB2 = 2131165251;
+			// aapt resource value: 0x7f060043
+			public const int LaunchButtonDB2 = 2131099715;
 			
-			// aapt resource value: 0x7f070044
-			public const int LaunchButtonDB3 = 2131165252;
+			// aapt resource value: 0x7f060044
+			public const int LaunchButtonDB3 = 2131099716;
 			
-			// aapt resource value: 0x7f070045
-			public const int LaunchButtonDB4 = 2131165253;
+			// aapt resource value: 0x7f060045
+			public const int LaunchButtonDB4 = 2131099717;
 			
-			// aapt resource value: 0x7f070046
-			public const int LaunchButtonDB5 = 2131165254;
+			// aapt resource value: 0x7f060046
+			public const int LaunchButtonDB5 = 2131099718;
 			
-			// aapt resource value: 0x7f070049
-			public const int LaunchButtonDB6 = 2131165257;
+			// aapt resource value: 0x7f060049
+			public const int LaunchButtonDB6 = 2131099721;
 			
-			// aapt resource value: 0x7f07004a
-			public const int LaunchButtonDB7 = 2131165258;
+			// aapt resource value: 0x7f06004a
+			public const int LaunchButtonDB7 = 2131099722;
 			
-			// aapt resource value: 0x7f07004b
-			public const int LaunchButtonDB8 = 2131165259;
+			// aapt resource value: 0x7f06004b
+			public const int LaunchButtonDB8 = 2131099723;
 			
-			// aapt resource value: 0x7f07004c
-			public const int LaunchButtonDB9 = 2131165260;
+			// aapt resource value: 0x7f06004c
+			public const int LaunchButtonDB9 = 2131099724;
 			
-			// aapt resource value: 0x7f07001e
-			public const int LinearLayoutHistInc = 2131165214;
+			// aapt resource value: 0x7f06001e
+			public const int LinearLayoutHistInc = 2131099678;
 			
-			// aapt resource value: 0x7f070050
-			public const int ResultTextDB = 2131165264;
+			// aapt resource value: 0x7f060050
+			public const int ResultTextDB = 2131099728;
 			
-			// aapt resource value: 0x7f070020
-			public const int TableLayoutHistInc = 2131165216;
+			// aapt resource value: 0x7f060020
+			public const int TableLayoutHistInc = 2131099680;
 			
-			// aapt resource value: 0x7f07004d
-			public const int TestProgressBarDB = 2131165261;
+			// aapt resource value: 0x7f06004d
+			public const int TestProgressBarDB = 2131099725;
 			
-			// aapt resource value: 0x7f07004e
-			public const int TextBoxDB = 2131165262;
+			// aapt resource value: 0x7f06004e
+			public const int TextBoxDB = 2131099726;
 			
-			// aapt resource value: 0x7f070026
-			public const int bus_blank_back = 2131165222;
+			// aapt resource value: 0x7f060026
+			public const int bus_blank_back = 2131099686;
 			
-			// aapt resource value: 0x7f070028
-			public const int bus_blank_front = 2131165224;
+			// aapt resource value: 0x7f060028
+			public const int bus_blank_front = 2131099688;
 			
-			// aapt resource value: 0x7f070025
-			public const int bus_blank_left = 2131165221;
+			// aapt resource value: 0x7f060025
+			public const int bus_blank_left = 2131099685;
 			
-			// aapt resource value: 0x7f070027
-			public const int bus_blank_right = 2131165223;
+			// aapt resource value: 0x7f060027
+			public const int bus_blank_right = 2131099687;
 			
-			// aapt resource value: 0x7f07003c
-			public const int button1 = 2131165244;
+			// aapt resource value: 0x7f06003c
+			public const int button1 = 2131099708;
 			
-			// aapt resource value: 0x7f070003
-			public const int buttonAddAdminBus = 2131165187;
+			// aapt resource value: 0x7f060003
+			public const int buttonAddAdminBus = 2131099651;
 			
-			// aapt resource value: 0x7f07000b
-			public const int buttonAddModelAdminBus = 2131165195;
+			// aapt resource value: 0x7f06000b
+			public const int buttonAddModelAdminBus = 2131099659;
 			
-			// aapt resource value: 0x7f07003b
-			public const int buttonDB = 2131165243;
+			// aapt resource value: 0x7f06003b
+			public const int buttonDB = 2131099707;
 			
-			// aapt resource value: 0x7f07003a
-			public const int buttonDD = 2131165242;
+			// aapt resource value: 0x7f06003a
+			public const int buttonDD = 2131099706;
 			
-			// aapt resource value: 0x7f070009
-			public const int buttonDeleteAdminBus = 2131165193;
+			// aapt resource value: 0x7f060009
+			public const int buttonDeleteAdminBus = 2131099657;
 			
-			// aapt resource value: 0x7f070015
-			public const int buttonDeleteAdminConduc = 2131165205;
+			// aapt resource value: 0x7f060015
+			public const int buttonDeleteAdminConduc = 2131099669;
 			
-			// aapt resource value: 0x7f07001d
-			public const int buttonDeleteAdminContro = 2131165213;
+			// aapt resource value: 0x7f06001d
+			public const int buttonDeleteAdminContro = 2131099677;
 			
-			// aapt resource value: 0x7f07000f
-			public const int buttonDeleteAdminModel = 2131165199;
+			// aapt resource value: 0x7f06000f
+			public const int buttonDeleteAdminModel = 2131099663;
 			
-			// aapt resource value: 0x7f07002b
-			public const int buttonPrec = 2131165227;
+			// aapt resource value: 0x7f06002b
+			public const int buttonPrec = 2131099691;
 			
-			// aapt resource value: 0x7f07002c
-			public const int buttonSuiv = 2131165228;
+			// aapt resource value: 0x7f06002c
+			public const int buttonSuiv = 2131099692;
 			
-			// aapt resource value: 0x7f070008
-			public const int buttonUpdateAdminBus = 2131165192;
+			// aapt resource value: 0x7f060008
+			public const int buttonUpdateAdminBus = 2131099656;
 			
-			// aapt resource value: 0x7f070014
-			public const int buttonUpdateAdminConduc = 2131165204;
+			// aapt resource value: 0x7f060014
+			public const int buttonUpdateAdminConduc = 2131099668;
 			
-			// aapt resource value: 0x7f07001c
-			public const int buttonUpdateAdminContro = 2131165212;
+			// aapt resource value: 0x7f06001c
+			public const int buttonUpdateAdminContro = 2131099676;
 			
-			// aapt resource value: 0x7f07000e
-			public const int buttonUpdateAdminModel = 2131165198;
+			// aapt resource value: 0x7f06000e
+			public const int buttonUpdateAdminModel = 2131099662;
 			
-			// aapt resource value: 0x7f070011
-			public const int buttonValCreaConduc = 2131165201;
+			// aapt resource value: 0x7f060011
+			public const int buttonValCreaConduc = 2131099665;
 			
-			// aapt resource value: 0x7f070018
-			public const int buttonValCreaContro = 2131165208;
+			// aapt resource value: 0x7f060018
+			public const int buttonValCreaContro = 2131099672;
 			
-			// aapt resource value: 0x7f070035
-			public const int buttonValidateInci = 2131165237;
+			// aapt resource value: 0x7f060035
+			public const int buttonValidateInci = 2131099701;
 			
-			// aapt resource value: 0x7f07002f
-			public const int checkBoxInci = 2131165231;
+			// aapt resource value: 0x7f06002f
+			public const int checkBoxInci = 2131099695;
 			
-			// aapt resource value: 0x7f07000a
-			public const int editTextAddModel = 2131165194;
+			// aapt resource value: 0x7f06000a
+			public const int editTextAddModel = 2131099658;
 			
-			// aapt resource value: 0x7f070000
-			public const int editTextAddNumeroBus = 2131165184;
+			// aapt resource value: 0x7f060000
+			public const int editTextAddNumeroBus = 2131099648;
 			
-			// aapt resource value: 0x7f070017
-			public const int editTextMdPCreaContro = 2131165207;
+			// aapt resource value: 0x7f060017
+			public const int editTextMdPCreaContro = 2131099671;
 			
-			// aapt resource value: 0x7f070010
-			public const int editTextNomCreaConduc = 2131165200;
+			// aapt resource value: 0x7f060010
+			public const int editTextNomCreaConduc = 2131099664;
 			
-			// aapt resource value: 0x7f070016
-			public const int editTextNomCreaContro = 2131165206;
+			// aapt resource value: 0x7f060016
+			public const int editTextNomCreaContro = 2131099670;
 			
-			// aapt resource value: 0x7f07001b
-			public const int editTextUpdateMdpContro = 2131165211;
+			// aapt resource value: 0x7f06001b
+			public const int editTextUpdateMdpContro = 2131099675;
 			
-			// aapt resource value: 0x7f07000d
-			public const int editTextUpdateModel = 2131165197;
+			// aapt resource value: 0x7f06000d
+			public const int editTextUpdateModel = 2131099661;
 			
-			// aapt resource value: 0x7f070013
-			public const int editTextUpdateNameConduc = 2131165203;
+			// aapt resource value: 0x7f060013
+			public const int editTextUpdateNameConduc = 2131099667;
 			
-			// aapt resource value: 0x7f07001a
-			public const int editTextUpdateNameContro = 2131165210;
+			// aapt resource value: 0x7f06001a
+			public const int editTextUpdateNameContro = 2131099674;
 			
-			// aapt resource value: 0x7f070005
-			public const int editTextUpdateNumeroBus = 2131165189;
+			// aapt resource value: 0x7f060005
+			public const int editTextUpdateNumeroBus = 2131099653;
 			
-			// aapt resource value: 0x7f070040
-			public const int horizontalScrollView1 = 2131165248;
+			// aapt resource value: 0x7f060040
+			public const int horizontalScrollView1 = 2131099712;
 			
-			// aapt resource value: 0x7f070047
-			public const int horizontalScrollView2 = 2131165255;
+			// aapt resource value: 0x7f060047
+			public const int horizontalScrollView2 = 2131099719;
 			
-			// aapt resource value: 0x7f070036
-			public const int imageView1 = 2131165238;
+			// aapt resource value: 0x7f060036
+			public const int imageView1 = 2131099702;
 			
-			// aapt resource value: 0x7f070030
-			public const int imgCircle = 2131165232;
+			// aapt resource value: 0x7f060030
+			public const int imgCircle = 2131099696;
 			
-			// aapt resource value: 0x7f070031
-			public const int imgSquare = 2131165233;
+			// aapt resource value: 0x7f060031
+			public const int imgSquare = 2131099697;
 			
-			// aapt resource value: 0x7f070034
-			public const int imgTrash = 2131165236;
+			// aapt resource value: 0x7f060034
+			public const int imgTrash = 2131099700;
 			
-			// aapt resource value: 0x7f070032
-			public const int imgTriangle = 2131165234;
+			// aapt resource value: 0x7f060032
+			public const int imgTriangle = 2131099698;
 			
-			// aapt resource value: 0x7f070041
-			public const int linearLayout1 = 2131165249;
+			// aapt resource value: 0x7f060041
+			public const int linearLayout1 = 2131099713;
 			
-			// aapt resource value: 0x7f070048
-			public const int linearLayout2 = 2131165256;
+			// aapt resource value: 0x7f060048
+			public const int linearLayout2 = 2131099720;
 			
-			// aapt resource value: 0x7f07003f
-			public const int listBus = 2131165247;
+			// aapt resource value: 0x7f06003f
+			public const int listBus = 2131099711;
 			
-			// aapt resource value: 0x7f07003d
-			public const int listViewLeftMenu = 2131165245;
+			// aapt resource value: 0x7f06003d
+			public const int listViewLeftMenu = 2131099709;
 			
-			// aapt resource value: 0x7f07002e
-			public const int lyBottom = 2131165230;
+			// aapt resource value: 0x7f06002e
+			public const int lyBottom = 2131099694;
 			
-			// aapt resource value: 0x7f07002d
-			public const int lyMiddle = 2131165229;
+			// aapt resource value: 0x7f06002d
+			public const int lyMiddle = 2131099693;
 			
-			// aapt resource value: 0x7f070029
-			public const int lyTop = 2131165225;
+			// aapt resource value: 0x7f060029
+			public const int lyTop = 2131099689;
 			
-			// aapt resource value: 0x7f07004f
-			public const int scrollViewDB = 2131165263;
+			// aapt resource value: 0x7f06004f
+			public const int scrollViewDB = 2131099727;
 			
-			// aapt resource value: 0x7f07001f
-			public const int scrollViewhi = 2131165215;
+			// aapt resource value: 0x7f06001f
+			public const int scrollViewhi = 2131099679;
 			
-			// aapt resource value: 0x7f070039
-			public const int spinner1 = 2131165241;
+			// aapt resource value: 0x7f060039
+			public const int spinner1 = 2131099705;
 			
-			// aapt resource value: 0x7f070002
-			public const int spinnerColorAdminBus = 2131165186;
+			// aapt resource value: 0x7f060002
+			public const int spinnerColorAdminBus = 2131099650;
 			
-			// aapt resource value: 0x7f070033
-			public const int spinnerGravity = 2131165235;
+			// aapt resource value: 0x7f060033
+			public const int spinnerGravity = 2131099699;
 			
-			// aapt resource value: 0x7f070001
-			public const int spinnerModelAdminBus = 2131165185;
+			// aapt resource value: 0x7f060001
+			public const int spinnerModelAdminBus = 2131099649;
 			
-			// aapt resource value: 0x7f070004
-			public const int spinnerSelectAdminBus = 2131165188;
+			// aapt resource value: 0x7f060004
+			public const int spinnerSelectAdminBus = 2131099652;
 			
-			// aapt resource value: 0x7f070012
-			public const int spinnerSelectAdminConduc = 2131165202;
+			// aapt resource value: 0x7f060012
+			public const int spinnerSelectAdminConduc = 2131099666;
 			
-			// aapt resource value: 0x7f070019
-			public const int spinnerSelectAdminContro = 2131165209;
+			// aapt resource value: 0x7f060019
+			public const int spinnerSelectAdminContro = 2131099673;
 			
-			// aapt resource value: 0x7f07000c
-			public const int spinnerSelectAdminModel = 2131165196;
+			// aapt resource value: 0x7f06000c
+			public const int spinnerSelectAdminModel = 2131099660;
 			
-			// aapt resource value: 0x7f070007
-			public const int spinnerUpdateColorAdminBus = 2131165191;
+			// aapt resource value: 0x7f060007
+			public const int spinnerUpdateColorAdminBus = 2131099655;
 			
-			// aapt resource value: 0x7f070006
-			public const int spinnerUpdateModelAdminBus = 2131165190;
+			// aapt resource value: 0x7f060006
+			public const int spinnerUpdateModelAdminBus = 2131099654;
 			
-			// aapt resource value: 0x7f070037
-			public const int textView1 = 2131165239;
+			// aapt resource value: 0x7f060037
+			public const int textView1 = 2131099703;
 			
-			// aapt resource value: 0x7f070038
-			public const int textView2 = 2131165240;
+			// aapt resource value: 0x7f060038
+			public const int textView2 = 2131099704;
 			
-			// aapt resource value: 0x7f07003e
-			public const int textViewBus = 2131165246;
+			// aapt resource value: 0x7f06003e
+			public const int textViewBus = 2131099710;
 			
-			// aapt resource value: 0x7f07002a
-			public const int txtNumBus = 2131165226;
+			// aapt resource value: 0x7f06002a
+			public const int txtNumBus = 2131099690;
 			
 			static Id()
 			{
@@ -434,22 +431,6 @@ namespace AppAndroid
 			}
 			
 			private String()
-			{
-			}
-		}
-		
-		public partial class Style
-		{
-			
-			// aapt resource value: 0x7f060000
-			public const int Theme_Splash = 2131099648;
-			
-			static Style()
-			{
-				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
-			}
-			
-			private Style()
 			{
 			}
 		}

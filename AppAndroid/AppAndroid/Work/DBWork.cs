@@ -201,7 +201,7 @@ namespace AppAndroid.Work
 
                     string[] r = new string[4] { bus[0].Number.ToString(), item.Observation, conducteurs[0].Name, item.DateMaJ };
 
-                    results. Add(r);
+                    results.Add(r);
                 }
             }
             catch(Exception) { }

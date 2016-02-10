@@ -103,8 +103,6 @@ C:\Users\Corentin\Source\Repos\TransDev\AppAndroid\AppAndroid\obj\Debug\res\draw
 C:\Users\Corentin\Source\Repos\TransDev\AppAndroid\AppAndroid\obj\Debug\res\drawable\bus_blank_back.png
 C:\Users\Corentin\Source\Repos\TransDev\AppAndroid\AppAndroid\obj\Debug\res\drawable\logo.jpg
 C:\Users\Corentin\Source\Repos\TransDev\AppAndroid\AppAndroid\obj\Debug\res\drawable\icon.png
-C:\Users\Corentin\Source\Repos\TransDev\AppAndroid\AppAndroid\obj\Debug\res\values\styles.xml
-C:\Users\Corentin\Source\Repos\TransDev\AppAndroid\AppAndroid\obj\Debug\res\drawable\splash.png
 C:\Users\Corentin\Source\Repos\TransDev\AppAndroid\AppAndroid\obj\Debug\R.cs.flag
 C:\Users\Corentin\Source\Repos\TransDev\AppAndroid\AppAndroid\obj\Debug\uploadflags.txt
 C:\Users\Corentin\Source\Repos\TransDev\AppAndroid\AppAndroid\obj\Debug\AppAndroid.csprojResolveAssemblyReference.cache
