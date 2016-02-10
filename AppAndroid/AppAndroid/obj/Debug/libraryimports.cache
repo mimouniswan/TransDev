@@ -2,5 +2,7 @@
 <Paths>
   <ManifestDocuments />
   <NativeLibraries />
-  <Jars />
+  <Jars>
+    <Jar>obj\Debug\__library_projects__\Ouya.Console.Api\library_project_imports\Ouya.Console.Api.Jars.ouya-sdk.jar</Jar>
+  </Jars>
 </Paths>

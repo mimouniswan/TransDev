@@ -1,7 +1,3 @@
-AppAndroid.Checkup, AppAndroid;md5a02b63792f83336f8d728b23ae2f4329.Checkup
-AppAndroid.Checkup, AppAndroid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5a02b63792f83336f8d728b23ae2f4329.Checkup
-AppAndroid.Checkup;md5a02b63792f83336f8d728b23ae2f4329.Checkup
-appandroid.Checkup;md5a02b63792f83336f8d728b23ae2f4329.Checkup
 AppAndroid.ChoicePart, AppAndroid;md5a02b63792f83336f8d728b23ae2f4329.ChoicePart
 AppAndroid.ChoicePart, AppAndroid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5a02b63792f83336f8d728b23ae2f4329.ChoicePart
 AppAndroid.ChoicePart;md5a02b63792f83336f8d728b23ae2f4329.ChoicePart
@@ -14,6 +10,10 @@ AppAndroid.Menu, AppAndroid;md5a02b63792f83336f8d728b23ae2f4329.Menu
 AppAndroid.Menu, AppAndroid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5a02b63792f83336f8d728b23ae2f4329.Menu
 AppAndroid.Menu;md5a02b63792f83336f8d728b23ae2f4329.Menu
 appandroid.Menu;md5a02b63792f83336f8d728b23ae2f4329.Menu
+AppAndroid.Acti.Checkup, AppAndroid;md53cb23a7ea6337873dd28cc9b3d76d964.Checkup
+AppAndroid.Acti.Checkup, AppAndroid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md53cb23a7ea6337873dd28cc9b3d76d964.Checkup
+AppAndroid.Acti.Checkup;md53cb23a7ea6337873dd28cc9b3d76d964.Checkup
+appandroid.acti.Checkup;md53cb23a7ea6337873dd28cc9b3d76d964.Checkup
 AppAndroid.Acti.CreaConduc, AppAndroid;md53cb23a7ea6337873dd28cc9b3d76d964.CreaConduc
 AppAndroid.Acti.CreaConduc, AppAndroid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md53cb23a7ea6337873dd28cc9b3d76d964.CreaConduc
 AppAndroid.Acti.CreaConduc;md53cb23a7ea6337873dd28cc9b3d76d964.CreaConduc
@@ -34,3 +34,59 @@ AppAndroid.Acti.TestDB, AppAndroid;md53cb23a7ea6337873dd28cc9b3d76d964.TestDB
 AppAndroid.Acti.TestDB, AppAndroid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md53cb23a7ea6337873dd28cc9b3d76d964.TestDB
 AppAndroid.Acti.TestDB;md53cb23a7ea6337873dd28cc9b3d76d964.TestDB
 appandroid.acti.TestDB;md53cb23a7ea6337873dd28cc9b3d76d964.TestDB
+Microsoft.Xna.Framework.AndroidGameActivity, MonoGame.Framework;md5c7cc8eb4f746775163e7aaed7a135426.AndroidGameActivity
+Microsoft.Xna.Framework.AndroidGameActivity, MonoGame.Framework, Version=3.4.0.456, Culture=neutral, PublicKeyToken=null;md5c7cc8eb4f746775163e7aaed7a135426.AndroidGameActivity
+Microsoft.Xna.Framework.AndroidGameActivity;md5c7cc8eb4f746775163e7aaed7a135426.AndroidGameActivity
+microsoft.xna.framework.AndroidGameActivity;md5c7cc8eb4f746775163e7aaed7a135426.AndroidGameActivity
+Microsoft.Xna.Framework.MonoGameAndroidGameView, MonoGame.Framework;md5c7cc8eb4f746775163e7aaed7a135426.MonoGameAndroidGameView
+Microsoft.Xna.Framework.MonoGameAndroidGameView, MonoGame.Framework, Version=3.4.0.456, Culture=neutral, PublicKeyToken=null;md5c7cc8eb4f746775163e7aaed7a135426.MonoGameAndroidGameView
+Microsoft.Xna.Framework.MonoGameAndroidGameView;md5c7cc8eb4f746775163e7aaed7a135426.MonoGameAndroidGameView
+microsoft.xna.framework.MonoGameAndroidGameView;md5c7cc8eb4f746775163e7aaed7a135426.MonoGameAndroidGameView
+Microsoft.Devices.Sensors.Accelerometer/SensorListener, MonoGame.Framework;md5d711df1d8548c1215ea510111ec853aa.Accelerometer_SensorListener
+Microsoft.Devices.Sensors.Accelerometer+SensorListener, MonoGame.Framework, Version=3.4.0.456, Culture=neutral, PublicKeyToken=null;md5d711df1d8548c1215ea510111ec853aa.Accelerometer_SensorListener
+Microsoft.Devices.Sensors.Accelerometer.SensorListener;md5d711df1d8548c1215ea510111ec853aa.Accelerometer_SensorListener
+microsoft.devices.sensors.Accelerometer_SensorListener;md5d711df1d8548c1215ea510111ec853aa.Accelerometer_SensorListener
+Microsoft.Devices.Sensors.Compass/SensorListener, MonoGame.Framework;md5d711df1d8548c1215ea510111ec853aa.Compass_SensorListener
+Microsoft.Devices.Sensors.Compass+SensorListener, MonoGame.Framework, Version=3.4.0.456, Culture=neutral, PublicKeyToken=null;md5d711df1d8548c1215ea510111ec853aa.Compass_SensorListener
+Microsoft.Devices.Sensors.Compass.SensorListener;md5d711df1d8548c1215ea510111ec853aa.Compass_SensorListener
+microsoft.devices.sensors.Compass_SensorListener;md5d711df1d8548c1215ea510111ec853aa.Compass_SensorListener
+Microsoft.Xna.Framework.OrientationListener, MonoGame.Framework;md5c7cc8eb4f746775163e7aaed7a135426.OrientationListener
+Microsoft.Xna.Framework.OrientationListener, MonoGame.Framework, Version=3.4.0.456, Culture=neutral, PublicKeyToken=null;md5c7cc8eb4f746775163e7aaed7a135426.OrientationListener
+Microsoft.Xna.Framework.OrientationListener;md5c7cc8eb4f746775163e7aaed7a135426.OrientationListener
+microsoft.xna.framework.OrientationListener;md5c7cc8eb4f746775163e7aaed7a135426.OrientationListener
+Microsoft.Xna.Framework.ScreenReceiver, MonoGame.Framework;md5c7cc8eb4f746775163e7aaed7a135426.ScreenReceiver
+Microsoft.Xna.Framework.ScreenReceiver, MonoGame.Framework, Version=3.4.0.456, Culture=neutral, PublicKeyToken=null;md5c7cc8eb4f746775163e7aaed7a135426.ScreenReceiver
+Microsoft.Xna.Framework.ScreenReceiver;md5c7cc8eb4f746775163e7aaed7a135426.ScreenReceiver
+microsoft.xna.framework.ScreenReceiver;md5c7cc8eb4f746775163e7aaed7a135426.ScreenReceiver
+Ouya.Console.Api.StringListener, Ouya.Console.Api;md52dba1fde7ee3ea874ea73ab6eac8c8b5.StringListener
+Ouya.Console.Api.StringListener, Ouya.Console.Api, Version=1.0.13.0, Culture=neutral, PublicKeyToken=null;md52dba1fde7ee3ea874ea73ab6eac8c8b5.StringListener
+Ouya.Console.Api.StringListener;md52dba1fde7ee3ea874ea73ab6eac8c8b5.StringListener
+ouya.console.api.StringListener;md52dba1fde7ee3ea874ea73ab6eac8c8b5.StringListener
+Ouya.Console.Api.ReceiptsListener, Ouya.Console.Api;md52dba1fde7ee3ea874ea73ab6eac8c8b5.ReceiptsListener
+Ouya.Console.Api.ReceiptsListener, Ouya.Console.Api, Version=1.0.13.0, Culture=neutral, PublicKeyToken=null;md52dba1fde7ee3ea874ea73ab6eac8c8b5.ReceiptsListener
+Ouya.Console.Api.ReceiptsListener;md52dba1fde7ee3ea874ea73ab6eac8c8b5.ReceiptsListener
+ouya.console.api.ReceiptsListener;md52dba1fde7ee3ea874ea73ab6eac8c8b5.ReceiptsListener
+Ouya.Console.Api.VoidListener, Ouya.Console.Api;md52dba1fde7ee3ea874ea73ab6eac8c8b5.VoidListener
+Ouya.Console.Api.VoidListener, Ouya.Console.Api, Version=1.0.13.0, Culture=neutral, PublicKeyToken=null;md52dba1fde7ee3ea874ea73ab6eac8c8b5.VoidListener
+Ouya.Console.Api.VoidListener;md52dba1fde7ee3ea874ea73ab6eac8c8b5.VoidListener
+ouya.console.api.VoidListener;md52dba1fde7ee3ea874ea73ab6eac8c8b5.VoidListener
+Ouya.Console.Api.GamerInfoListener, Ouya.Console.Api;md52dba1fde7ee3ea874ea73ab6eac8c8b5.GamerInfoListener
+Ouya.Console.Api.GamerInfoListener, Ouya.Console.Api, Version=1.0.13.0, Culture=neutral, PublicKeyToken=null;md52dba1fde7ee3ea874ea73ab6eac8c8b5.GamerInfoListener
+Ouya.Console.Api.GamerInfoListener;md52dba1fde7ee3ea874ea73ab6eac8c8b5.GamerInfoListener
+ouya.console.api.GamerInfoListener;md52dba1fde7ee3ea874ea73ab6eac8c8b5.GamerInfoListener
+Ouya.Console.Api.PurchaseListener, Ouya.Console.Api;md52dba1fde7ee3ea874ea73ab6eac8c8b5.PurchaseListener
+Ouya.Console.Api.PurchaseListener, Ouya.Console.Api, Version=1.0.13.0, Culture=neutral, PublicKeyToken=null;md52dba1fde7ee3ea874ea73ab6eac8c8b5.PurchaseListener
+Ouya.Console.Api.PurchaseListener;md52dba1fde7ee3ea874ea73ab6eac8c8b5.PurchaseListener
+ouya.console.api.PurchaseListener;md52dba1fde7ee3ea874ea73ab6eac8c8b5.PurchaseListener
+Ouya.Console.Api.ProductListListener, Ouya.Console.Api;md52dba1fde7ee3ea874ea73ab6eac8c8b5.ProductListListener
+Ouya.Console.Api.ProductListListener, Ouya.Console.Api, Version=1.0.13.0, Culture=neutral, PublicKeyToken=null;md52dba1fde7ee3ea874ea73ab6eac8c8b5.ProductListListener
+Ouya.Console.Api.ProductListListener;md52dba1fde7ee3ea874ea73ab6eac8c8b5.ProductListListener
+ouya.console.api.ProductListListener;md52dba1fde7ee3ea874ea73ab6eac8c8b5.ProductListListener
+Ouya.Console.Api.GamerUuidListener, Ouya.Console.Api;md52dba1fde7ee3ea874ea73ab6eac8c8b5.GamerUuidListener
+Ouya.Console.Api.GamerUuidListener, Ouya.Console.Api, Version=1.0.13.0, Culture=neutral, PublicKeyToken=null;md52dba1fde7ee3ea874ea73ab6eac8c8b5.GamerUuidListener
+Ouya.Console.Api.GamerUuidListener;md52dba1fde7ee3ea874ea73ab6eac8c8b5.GamerUuidListener
+ouya.console.api.GamerUuidListener;md52dba1fde7ee3ea874ea73ab6eac8c8b5.GamerUuidListener
+Ouya.Console.Api.IOuyaResponseListenerImplementor, Ouya.Console.Api;mono.tv.ouya.console.api.OuyaResponseListenerImplementor
+Ouya.Console.Api.IOuyaResponseListenerImplementor, Ouya.Console.Api, Version=1.0.13.0, Culture=neutral, PublicKeyToken=null;mono.tv.ouya.console.api.OuyaResponseListenerImplementor
+Ouya.Console.Api.IOuyaResponseListenerImplementor;mono.tv.ouya.console.api.OuyaResponseListenerImplementor
+mono.tv.ouya.console.api.OuyaResponseListenerImplementor;mono.tv.ouya.console.api.OuyaResponseListenerImplementor

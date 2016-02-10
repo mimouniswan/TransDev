@@ -15,7 +15,6 @@ namespace AppAndroid.Acti
     [Activity(Label = "HistIncident", ScreenOrientation = ScreenOrientation.Landscape)]
     public class HistIncident : Activity
     {
-        private object _DB;
         private TextView _TVNumber, _TVConduc, _TVMaJ;
         private TableLayout _Table;
         private TableRow _Row;

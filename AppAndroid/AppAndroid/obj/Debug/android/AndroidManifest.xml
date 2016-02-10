@@ -5,15 +5,15 @@
   <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
   <uses-permission android:name="android.permission.INTERNET" />
   <application android:label="AppAndroid" android:icon="@drawable/icon" android:screenOrientation="landscape" android:name="mono.android.app.Application" android:allowBackup="true" android:debuggable="true">
-    <activity android:label="Checkupcs" android:name="md5a02b63792f83336f8d728b23ae2f4329.Checkup" />
     <activity android:label="ChoicePart" android:name="md5a02b63792f83336f8d728b23ae2f4329.ChoicePart" />
-    <activity android:icon="@drawable/icon" android:label="TransDev" android:name="md5a02b63792f83336f8d728b23ae2f4329.Main">
+    <activity android:icon="@drawable/icon" android:label="TransDev" android:screenOrientation="landscape" android:name="md5a02b63792f83336f8d728b23ae2f4329.Main">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
     <activity android:icon="@drawable/icon" android:label="TransDev" android:screenOrientation="landscape" android:name="md5a02b63792f83336f8d728b23ae2f4329.Menu" />
+    <activity android:label="Checkupcs" android:screenOrientation="landscape" android:name="md53cb23a7ea6337873dd28cc9b3d76d964.Checkup" />
     <activity android:label="CreaConduc" android:name="md53cb23a7ea6337873dd28cc9b3d76d964.CreaConduc" />
     <activity android:label="CreaBus" android:name="md53cb23a7ea6337873dd28cc9b3d76d964.CreaBus" />
     <activity android:label="HistIncident" android:screenOrientation="landscape" android:name="md53cb23a7ea6337873dd28cc9b3d76d964.HistIncident" />

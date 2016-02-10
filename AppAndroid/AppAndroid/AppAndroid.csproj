@@ -45,11 +45,13 @@
     <Reference Include="Mono.Data.Sqlite">
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoTouch\v1.0\Mono.Data.Sqlite.dll</HintPath>
     </Reference>
+    <Reference Include="MonoGame.Framework, Version=3.4.0.456, Culture=neutral, PublicKeyToken=null" />
     <Reference Include="mscorlib" />
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Ouya.Console.Api, Version=1.0.13.0, Culture=neutral, PublicKeyToken=null" />
     <Reference Include="SQLite.Net, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\SQLite.Net.Core-PCL.3.1.1\lib\portable-win8+net45+wp8+wpa81+MonoAndroid1+MonoTouch1\SQLite.Net.dll</HintPath>
       <Private>True</Private>
@@ -68,10 +70,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Acti\Checkup.cs" />
     <Compile Include="Acti\CreaConduc.cs" />
     <Compile Include="Acti\CreaBus.cs" />
     <Compile Include="Acti\HistIncident.cs" />
-    <Compile Include="Checkup.cs" />
     <Compile Include="ChoicePart.cs" />
     <Compile Include="Acti\CreaContro.cs" />
     <Compile Include="Data\BusIncident.cs" />
@@ -159,6 +161,18 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\values\Styles.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\CircleT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Square.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\TriangleT.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

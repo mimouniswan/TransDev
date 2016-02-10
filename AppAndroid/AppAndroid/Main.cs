@@ -13,7 +13,7 @@ using AppAndroid.Data;
 
 namespace AppAndroid
 {
-    [Activity(Label = "TransDev", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Label = "TransDev", ScreenOrientation = ScreenOrientation.Landscape, MainLauncher = true, Icon = "@drawable/icon")]
     public class Main : Activity    
     {
         private Spinner userSpinner;
@@ -48,6 +48,7 @@ namespace AppAndroid
             userSpinner = FindViewById<Spinner>(Resource.Id.spinner1);
             btnMenu = FindViewById<Button>(Resource.Id.button1);
             Button btnDB = FindViewById<Button>(Resource.Id.buttonDB);
+            Button btnDD = FindViewById<Button>(Resource.Id.buttonDD);
 
             conducteurs = _DB.GetControleur();
             foreach(var item in conducteurs)
@@ -65,6 +66,11 @@ namespace AppAndroid
             btnDB.Click += delegate
             {
                 StartActivity(typeof(TestDB));
+            };
+
+            btnDD.Click += delegate
+            {
+                StartActivity(typeof(Checkup));
             };
         }
 
