@@ -117,8 +117,8 @@ namespace AppAndroid.Acti
                 new Thread(new ThreadStart(() =>
                 {
                     List<Incident> list = new List<Incident>();
-                    list.Add(_DBSQLite.CreateAndGetIncident(1, 1, "Type", 1, 1, DateTime.Now.ToString(), "Rien non ?", 0, 0, "Image"));
-                    list.Add(_DBSQLite.CreateAndGetIncident(1, 1, "Type", 1, 1, DateTime.Now.ToString(), "Rien non ?", 0, 0, "Image"));
+                    list.Add(_DBSQLite.CreateAndGetIncident(1, 1, 0, 1, 1, 0, DateTime.Now.ToString(), "Rien non ?", 0, 0, "Image"));
+                    list.Add(_DBSQLite.CreateAndGetIncident(1, 1, 0, 1, 1, 0, DateTime.Now.ToString(), "Rien non ?", 0, 0, "Image"));
 
                     string s = _DBSQLite.DBInsertCheck(1, 1, int.Parse(_GetEditTextValue()), list);
 

@@ -16,9 +16,10 @@ namespace AppAndroid.Data
         [ForeignKey(typeof(Controleur))]
         public int IdMaJControleur { get; set; }
 
-        public string Type { get; set; }
+        public int Type { get; set; }
         public int Gravite { get; set; }
         public int Etat { get; set; }
+        public int Cote { get; set; }
         public string DateCreation { get; set; }
         public string DateMaJ { get; set; }
         public string Observation { get; set; }

@@ -9,6 +9,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using AppAndroid.Data;
 
 namespace AppAndroid.Work
 {
@@ -24,7 +25,8 @@ namespace AppAndroid.Work
         public static int ControleurID { get; internal set; }
         public static string ControleurName { get; internal set; }
 
-        public static List<TmpCheck> ListCheck { get; internal set; }
+        public static List<TmpCheck> ListCheck { get; internal set; } = new List<TmpCheck>();
+        public static List<Incident> ListIncident { get; internal set; } = new List<Incident>();
     }
 
     public class TmpCheck

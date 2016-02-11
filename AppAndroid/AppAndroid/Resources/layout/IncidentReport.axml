@@ -7,23 +7,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textViewClock" />
-    <TextView
+<!--TextView
         android:text="Small Text"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textViewNumBus" />
+        android:id="@+id/textViewNumBus" /-->
     <TextView
         android:text="Small Text"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textViewSideBus" />
-    <Spinner
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/spinnerControCreate" />
-    <Spinner
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/spinnerControUpdate" />
@@ -49,7 +49,7 @@
     </LinearLayout>
     <EditText
         android:hint="Description"
-        android:id="@+id/editTextNumeroBus"
+        android:id="@+id/editTextDescBus"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <Button

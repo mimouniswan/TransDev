@@ -6,33 +6,35 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:gravity="center"
+        android:gravity="left"
         android:layout_height="50dp"
         android:id="@+id/lyTop">
         <TextView
             android:text="Côté droit du bus N° 101"
-            android:gravity="center"
+            android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/txtNumBus" />
+            android:id="@+id/txtNumBus"
+            android:gravity="center" />
         <Button
             android:text="Gauche"
+            android:layout_marginRight="10dp"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:id="@+id/buttonPrec" />
         <Button
             android:text="Droite"
+            android:layout_marginRight="10dp"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:id="@+id/buttonSuiv" />
         <TextView
             android:text="Dernier check: 17/10/2015 17:35"
             android:gravity="center"
-            android:layout_marginRight="30dp"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/txtNumBus" />
+            android:id="@+id/txtLastCheck" />
     <!--TextView
             android:text="Dernier conducteur: Dupont"
             android:gravity="center"
@@ -115,12 +117,12 @@
             android:layout_marginRight="5dp"
             android:layout_width="50dp"
             android:layout_height="50dp" />
-        <TextView
+    <!--TextView
             android:gravity="center"
             android:layout_marginRight="5dp"
             android:layout_width="110dp"
             android:layout_height="match_parent"
-            android:id="@+id/txtDriver" />
+            android:id="@+id/txtDriver" /-->
     <!--TextView
             android:text="Controleur: Amb"
             android:gravity="center"

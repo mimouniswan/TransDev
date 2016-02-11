@@ -18,7 +18,7 @@ namespace AppAndroid
     {
         private Spinner userSpinner;
         private Button btnMenu;
-        List<Controleur> conducteurs;
+        List<Controleur> controleurs;
 
         DBWork _DB = new DBWork();
 
@@ -29,8 +29,8 @@ namespace AppAndroid
             userSpinner = FindViewById<Spinner>(Resource.Id.spinner1);
             List<string> listSpinner = new List<string>();
 
-            conducteurs = _DB.GetControleur();
-            foreach (var item in conducteurs)
+            controleurs = _DB.GetControleur();
+            foreach (var item in controleurs)
                 listSpinner.Add($"{item.Name}");
 
             ArrayAdapter<string> adapterDriver = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, listSpinner);
@@ -50,8 +50,8 @@ namespace AppAndroid
             Button btnDB = FindViewById<Button>(Resource.Id.buttonDB);
             Button btnDD = FindViewById<Button>(Resource.Id.buttonDD);
 
-            conducteurs = _DB.GetControleur();
-            foreach(var item in conducteurs)
+            controleurs = _DB.GetControleur();
+            foreach(var item in controleurs)
                 listSpinner.Add($"{item.Name}");
 
             ArrayAdapter<string> adapterDriver = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, listSpinner);
@@ -59,13 +59,16 @@ namespace AppAndroid
 
             btnMenu.Click += delegate
             {
+                SharedData.ControleurID = controleurs[userSpinner.SelectedItemPosition].Id;
+                SharedData.ControleurName = controleurs[userSpinner.SelectedItemPosition].Name;
                 StartActivity(typeof(Menu));
-
             };
 
             btnDB.Click += delegate
             {
-                StartActivity(typeof(TestDB));
+                //StartActivity(typeof(TestDB));
+                DBWork DB = new DBWork();
+                var v = DB.GetLastCheck(1);
             };
 
             btnDD.Click += delegate

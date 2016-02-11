@@ -69,16 +69,21 @@ namespace AppAndroid.Work
         /// <param name="type">Le type d'incident.</param>
         /// <param name="gravite">la gravité de l'incident.</param>
         /// <param name="etat">L'état de l'incident.</param>
+        /// <param name="cote">Le coté du bus.</param>
         /// <param name="dateCreation">La date de création de l'incident.</param>
         /// <param name="observation">Des observation.</param>
         /// <param name="x">Position X.</param>
         /// <param name="y">Position Y.</param>
         /// <param name="picture">Chemin de l'image.</param>
         /// <returns></returns>
-        public Incident CreateAndGetIncident(int IdControleur, int IdConducteur, string type, int gravite, int etat, string dateCreation, string observation, int x, int y, string picture)
-        {
-            return new Incident() { IdConducteur = IdControleur, IdCreationCotroleur = IdConducteur, IdMaJControleur = IdConducteur, Type = type, Gravite = gravite, Etat = etat, DateCreation = dateCreation, DateMaJ = dateCreation, Observation = observation, X = x, Y = y, Picture = picture };
-        }
+        public Incident CreateAndGetIncident(int IdControleur, int IdConducteur, int type, int gravite, int etat, int cote, string dateCreation, string observation, int x, int y, string picture)
+            => new Incident() { IdConducteur = IdConducteur     , IdCreationCotroleur = IdControleur    ,
+                                IdMaJControleur = IdControleur  , Type = type                           ,
+                                Gravite = gravite               , Etat = etat                           ,
+                                Cote = cote                     , DateCreation = dateCreation           ,
+                                DateMaJ = dateCreation          , Observation = observation             ,
+                                X = x                           , Y = y,
+                                Picture = picture };
 
         /// <summary>
         /// Récupère un objet Bus.
@@ -205,6 +210,43 @@ namespace AppAndroid.Work
                 }
             }
             catch(Exception) { }
+
+            return results;
+        }
+
+        /// <summary>
+        /// Retourne le nom du dernier conducteur et la date du dernier check pour un bus
+        /// </summary>
+        /// <param name="idBus">ID du bus.</param>
+        /// <returns></returns>
+        public string[] GetLastCheck(int idBus)
+        {
+            string[] results = new string[2];
+
+            try
+            {
+                List<Incident> incidents = _Conn.Query<Incident>($"SELECT * FROM Incident ORDER BY DateMaJ Desc");
+                List<BusIncident> busIncidents = new List<BusIncident>();
+                List<Bus> bus = new List<Bus>();
+                List<Conducteur> conducteurs = new List<Conducteur>();
+
+                foreach (var item in incidents)
+                {
+                    conducteurs = _Conn.Query<Conducteur>($"SELECT * FROM Conducteur WHERE Id = {item.IdConducteur}");
+
+                    busIncidents = _Conn.Query<BusIncident>($"SELECT * FROM BusIncident WHERE IdIncident = {item.Id}");
+
+                    bus = _Conn.Query<Bus>($"SELECT * FROM Bus WHERE Id = {busIncidents[0].IdBus}");
+
+                    if (busIncidents[0].IdBus == idBus)
+                    {
+                        results[0] = $"{conducteurs[0].Name}";
+                        results[1] = $"{item.DateMaJ}";
+                        break;
+                    }
+                }
+            }
+            catch (Exception) { }
 
             return results;
         }
