@@ -49,8 +49,6 @@ C:\Users\Swan\Source\Repos\TransDev\AppAndroid\AppAndroid\obj\Debug\R.cs.flag
 C:\Users\Swan\Source\Repos\TransDev\AppAndroid\AppAndroid\obj\Debug\uploadflags.txt
 C:\Users\Swan\Source\Repos\TransDev\AppAndroid\AppAndroid\obj\Debug\res\layout\histincident.xml
 C:\Users\Swan\Source\Repos\TransDev\AppAndroid\AppAndroid\obj\Debug\AppAndroid.csprojResolveAssemblyReference.cache
-C:\Users\Swan\Source\Repos\TransDev\AppAndroid\AppAndroid\obj\Debug\AppAndroid.dll.mdb
-C:\Users\Swan\Source\Repos\TransDev\AppAndroid\AppAndroid\bin\Debug\AppAndroid.dll.mdb
 C:\Users\Corentin\Source\Repos\TransDev\AppAndroid\AppAndroid\bin\Debug\AppAndroid.dll
 C:\Users\Corentin\Source\Repos\TransDev\AppAndroid\AppAndroid\bin\Debug\AppAndroid.pdb
 C:\Users\Corentin\Source\Repos\TransDev\AppAndroid\AppAndroid\bin\Debug\AppAndroid.AppAndroid.apk
@@ -111,3 +109,9 @@ C:\Users\Corentin\Source\Repos\TransDev\AppAndroid\AppAndroid\obj\Debug\res\draw
 C:\Users\Corentin\Source\Repos\TransDev\AppAndroid\AppAndroid\obj\Debug\res\drawable\trianglet.png
 C:\Users\Corentin\Source\Repos\TransDev\AppAndroid\AppAndroid\obj\Debug\AppAndroid.dll.mdb
 C:\Users\Corentin\Source\Repos\TransDev\AppAndroid\AppAndroid\bin\Debug\AppAndroid.dll.mdb
+C:\Users\Swan\Source\Repos\TransDev\AppAndroid\AppAndroid\obj\Debug\res\layout\incidentreport.xml
+C:\Users\Swan\Source\Repos\TransDev\AppAndroid\AppAndroid\obj\Debug\res\drawable\circlet.png
+C:\Users\Swan\Source\Repos\TransDev\AppAndroid\AppAndroid\obj\Debug\res\drawable\square.png
+C:\Users\Swan\Source\Repos\TransDev\AppAndroid\AppAndroid\obj\Debug\res\drawable\trianglet.png
+C:\Users\Swan\Source\Repos\TransDev\AppAndroid\AppAndroid\obj\Debug\AppAndroid.dll.mdb
+C:\Users\Swan\Source\Repos\TransDev\AppAndroid\AppAndroid\bin\Debug\AppAndroid.dll.mdb
