@@ -50,6 +50,7 @@ namespace AppAndroid.Acti
         private List<int[]> _TmpCoordList = new List<int[]>();
         private List<int> _TmpTypeList = new List<int>();
         private List<int> _TmpGraviteList = new List<int>();
+        //private List<string> _TmpTest = new List<string>();
 
         public bool OnTouch(View v, MotionEvent e)
         {
@@ -155,9 +156,6 @@ namespace AppAndroid.Acti
                 if (!_CheckMode.Checked)
                 {
                     AddImage(layout, Resource.Drawable.CircleT, _ImgColor);
-                    _Type = 0;
-
-                    _TmpTypeList[_IDImgSelect] = _Type;
                 }
             };
 
@@ -166,9 +164,6 @@ namespace AppAndroid.Acti
                 if (!_CheckMode.Checked)
                 {
                     AddImage(layout, Resource.Drawable.Square, _ImgColor);
-                    _Type = 1;
-
-                    _TmpTypeList[_IDImgSelect] = _Type;
                 }
             };
 
@@ -177,9 +172,6 @@ namespace AppAndroid.Acti
                 if (!_CheckMode.Checked)
                 {
                     AddImage(layout, Resource.Drawable.TriangleT, _ImgColor);
-                    _Type = 2;
-
-                    //_TmpTypeList[_IDImgSelect] = _Type;
                 }
             };
 
@@ -205,6 +197,28 @@ namespace AppAndroid.Acti
                     builder.SetPositiveButton("Oui", (s, e) =>
                     {
                         // X, Y, _Type, _Gravite
+                        List<TmpCheck> ListTmpCheck = new List<TmpCheck>();
+                        int side = 0;
+
+                        switch (_CurrentSide)
+                        {
+                            case Resource.Drawable.bus_blank_front:
+                                side = 1;
+                                break;
+                            case Resource.Drawable.bus_blank_right:
+                                side = 0;
+                                break;
+                            case Resource.Drawable.bus_blank_back:
+                                side = 3;
+                                break;
+                            case Resource.Drawable.bus_blank_left:
+                                side = 2;
+                                break;
+                        }
+
+                        for(int i = 0; i < _TmpCoordList.Count; i++)
+                            ListTmpCheck.Add(new TmpCheck() { X = _TmpCoordList[i][0], Y = _TmpCoordList[i][1], Type = _TmpTypeList[i], Gravite = _TmpGraviteList[i], Cote = side });
+
                     });
                     builder.SetNegativeButton("Annuler", (s, e) => { });
 
@@ -282,18 +296,24 @@ namespace AppAndroid.Acti
 
             img.SetOnTouchListener(this);
 
-            if (_ListImg.Count > 0)
+            _ListImg.Add(img);
+            _TmpCoordList.Add(new int[4] { img.Left, img.Top, img.Right, img.Bottom });
+            _TmpGraviteList.Add(_Gravite);
+
+            switch(idResource)
             {
-                layout.RemoveView(_ListImg[0]);
-                _ListImg[0] = img;
-                //_TmpCoordList[0] = new int[4] { img.Left, img.Top, img.Right, img.Bottom };
-            }
-            else {
-                _ListImg.Add(img);
-                _TmpCoordList.Add(new int[4] { img.Left, img.Top, img.Right, img.Bottom });
-                _TmpGraviteList.Add(_Gravite);
-
-
+                case Resource.Drawable.CircleT:
+                    _TmpTypeList.Add(0);
+                    //_TmpTest.Add("Cercle");
+                    break;
+                case Resource.Drawable.Square:
+                    _TmpTypeList.Add(1);
+                    //_TmpTest.Add("Carré");
+                    break;
+                case Resource.Drawable.TriangleT:
+                    _TmpTypeList.Add(2);
+                    //_TmpTest.Add("Triangle");
+                    break;
             }
 
             int c = _ListImg.Count;
@@ -348,7 +368,8 @@ namespace AppAndroid.Acti
                     break;
             }
 
-            //[_IDImgSelect] = _Gravite;
+            if(_TmpGraviteList.Count > 0)
+                _TmpGraviteList[_IDImgSelect] = _Gravite;
         }
 
         private void ReplaceImg()
