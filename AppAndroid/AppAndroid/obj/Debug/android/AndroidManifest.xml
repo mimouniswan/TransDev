@@ -17,6 +17,7 @@
     <activity android:label="CreaConduc" android:name="md53cb23a7ea6337873dd28cc9b3d76d964.CreaConduc" />
     <activity android:label="CreaBus" android:name="md53cb23a7ea6337873dd28cc9b3d76d964.CreaBus" />
     <activity android:label="HistIncident" android:screenOrientation="landscape" android:name="md53cb23a7ea6337873dd28cc9b3d76d964.HistIncident" />
+    <activity android:label="IncidentReport" android:screenOrientation="landscape" android:name="md53cb23a7ea6337873dd28cc9b3d76d964.IncidentReport" />
     <activity android:label="CreaContro" android:name="md53cb23a7ea6337873dd28cc9b3d76d964.CreaContro" />
     <activity android:label="TestDB" android:screenOrientation="landscape" android:name="md53cb23a7ea6337873dd28cc9b3d76d964.TestDB" />
     <provider android:name="mono.MonoRuntimeProvider" android:exported="false" android:initOrder="2147483647" android:authorities="AppAndroid.AppAndroid.mono.MonoRuntimeProvider.__mono_init__" />

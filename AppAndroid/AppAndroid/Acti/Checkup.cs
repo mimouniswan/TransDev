@@ -223,6 +223,7 @@ namespace AppAndroid.Acti
                     builder.SetNegativeButton("Annuler", (s, e) => { });
 
                     builder.Create().Show();
+                    StartActivity(typeof(IncidentReport));
                 }
             };
 

@@ -80,9 +80,7 @@ public class MonoPackageManager {
 class MonoPackageManager_Resources {
 	public static final String[] Assemblies = new String[]{
 		"AppAndroid.dll",
-		"MonoGame.Framework.dll",
 		"Newtonsoft.Json.dll",
-		"Ouya.Console.Api.dll",
 		"SQLite.Net.dll",
 		"SQLite.Net.Platform.XamarinAndroid.dll",
 		"SQLiteNetExtensions.dll",
