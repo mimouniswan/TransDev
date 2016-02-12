@@ -15,6 +15,7 @@ using Android.Graphics.Drawables.Shapes;
 using Android.Graphics;
 using Android.Util;
 using AppAndroid.Work;
+using AppAndroid.Data;
 
 namespace AppAndroid.Acti
 {
@@ -26,6 +27,7 @@ namespace AppAndroid.Acti
         private ImageView _ImgCircle;
         private ImageView _ImgTriangle;
         private ImageView _ImgTrash;
+        private Spinner _SpinnerGravity;
 
         private Button _BtnPrec;
         private Button _BtnSuiv;
@@ -38,6 +40,7 @@ namespace AppAndroid.Acti
         private int _HeightInDp;
 
         private List<ImageView> _ListImg = new List<ImageView>();
+        private List<Incident> _ListInc = new List<Incident>();
 
         private float _ViewX;
         private float _ViewY;
@@ -63,6 +66,8 @@ namespace AppAndroid.Acti
                 case MotionEventActions.Down:
                     v.PerformClick();
                     _ImgSelect = _ListImg[_IDImgSelect];
+
+                    Console.WriteLine($"{_IDImgSelect}");
 
                     if (!_CheckMode.Checked)
                     {
@@ -95,6 +100,13 @@ namespace AppAndroid.Acti
             return true;
         }
 
+        protected override void OnPostCreate(Bundle savedInstanceState)
+        {
+            base.OnPostCreate(savedInstanceState);
+
+            _SpinnerGravity.ItemSelected += MenuClick;
+        }
+
         protected override void OnCreate(Bundle bundle)
         {
             RequestWindowFeature(WindowFeatures.NoTitle);
@@ -118,7 +130,7 @@ namespace AppAndroid.Acti
             _ImgSquare = FindViewById<ImageView>(Resource.Id.imgSquare);
             _ImgTriangle = FindViewById<ImageView>(Resource.Id.imgTriangle);
             _ImgTrash = FindViewById<ImageView>(Resource.Id.imgTrash);
-            Spinner spinner = FindViewById<Spinner>(Resource.Id.spinnerGravity);
+            _SpinnerGravity = FindViewById<Spinner>(Resource.Id.spinnerGravity);
             _CheckMode = FindViewById<CheckBox>(Resource.Id.checkBoxInci);
             #endregion
             // Image du Bus
@@ -148,8 +160,7 @@ namespace AppAndroid.Acti
             listSpinner.Add($"Important");
 
             ArrayAdapter<string> adapterGravity = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, listSpinner);
-            spinner.Adapter = adapterGravity;
-            spinner.ItemSelected += MenuClick;
+            _SpinnerGravity.Adapter = adapterGravity;
 
             #region Les fonctions Click
             _ImgCircle.Click += delegate
@@ -266,6 +277,72 @@ namespace AppAndroid.Acti
             {
                 NextSide(layout);
             };
+            
+            _CheckMode.Click += delegate
+            {
+                //if (_CheckMode.Checked)
+                //    _CheckMode.Checked = false;
+                //else
+                //    _CheckMode.Checked = true;
+
+                _ListImg = new List<ImageView>();
+                _TmpCoordList = new List<int[]>();
+                _TmpGraviteList = new List<int>();
+                _TmpTypeList = new List<int>();
+
+                Console.WriteLine($"{_CheckMode.Checked}");
+                if(_CheckMode.Checked)
+                {
+                    int c = 0;
+                    if (_CurrentSide == Resource.Drawable.bus_blank_right)
+                        c = 0;
+                    else if (_CurrentSide == Resource.Drawable.bus_blank_front)
+                        c = 1;
+                    else if (_CurrentSide == Resource.Drawable.bus_blank_left)
+                        c = 2;
+                    else if (_CurrentSide == Resource.Drawable.bus_blank_back)
+                        c = 3;
+
+                    _ListInc = DB.GetBusIncident(SharedData.BusID, c);
+
+                    layout.RemoveAllViews();
+                    _ImgSelect = null;
+
+                    layout.AddView(CreateImageView(layout, _CurrentSide));
+
+                    int count = 0;
+                    foreach (Incident item in _ListInc)
+                    {
+                        int t = 0;
+                        Color color = Color.Gray;
+
+                        if (item.Type == 0)
+                            t = Resource.Drawable.CircleT;
+                        else if (item.Type == 1)
+                            t = Resource.Drawable.Square;
+                        else if (item.Type == 2)
+                            t = Resource.Drawable.TriangleT;
+
+                        if (item.Gravite == 0)
+                            color = Color.Green;
+                        else if (item.Gravite == 1)
+                            color = Color.Orange;
+                        else if (item.Gravite == 2)
+                            color = Color.Red;
+
+                        AddImage(layout, t, color, item.Gravite, new int[4] { item.X + count * 4, item.Y + count * 4, 50, 50 }, false);
+
+                        count++;
+                    }
+                }
+                else
+                {
+                    layout.RemoveAllViews();
+                    _ImgSelect = null;
+
+                    layout.AddView(CreateImageView(layout, _CurrentSide));
+                }
+            };
             #endregion
 
 
@@ -361,7 +438,7 @@ namespace AppAndroid.Acti
         /// <param name="layout">Le layout dans lequel il s'affichera.</param>
         /// <param name="idResource">Resource.Drawable</param>
         /// <param name="color">La couleur que l'image prendra.</param>
-        private void AddImage(RelativeLayout layout, int idResource, Color color)
+        private void AddImage(RelativeLayout layout, int idResource, Color color, int gravite = -1, int[] position = null, bool oneOnly = true)
         {
             ImageView img = CreateImageView(layout, idResource, false);
 
@@ -372,11 +449,16 @@ namespace AppAndroid.Acti
 
             img.SetOnTouchListener(this);
 
-            if (_ListImg.Count > 0)
+            if (_ListImg.Count > 0 && oneOnly)
             {
                 layout.RemoveView(_ListImg[0]);
                 _ListImg[0] = img;
-                _TmpCoordList[0] = new int[4] { img.Left, img.Top, img.Right, img.Bottom };
+                if (position != null)
+                    _TmpCoordList[0] = new int[4] { position[0], position[1], position[2], position[3] };
+                else
+                    _TmpCoordList[0] = new int[4] { img.Left, img.Top, img.Right, img.Bottom };
+                if (gravite > -1)
+                    _TmpGraviteList[0] = gravite;
 
                 switch (idResource)
                 {
@@ -396,7 +478,12 @@ namespace AppAndroid.Acti
             }
             else {
                 _ListImg.Add(img);
-                _TmpCoordList.Add(new int[4] { img.Left, img.Top, img.Right, img.Bottom });
+                if (position != null)
+                    _TmpCoordList.Add(new int[4] { position[0], position[1], position[2], position[3] });
+                else 
+                    _TmpCoordList.Add(new int[4] { img.Left, img.Top, img.Right, img.Bottom });
+                if (gravite > -1)
+                    _TmpGraviteList.Add(gravite);
 
                 switch (idResource)
                 {
@@ -422,7 +509,8 @@ namespace AppAndroid.Acti
 
             _ImgSelect = img;
 
-            ReplaceImg();
+            if(!oneOnly)
+                ReplaceImg();
         }
 
         private void ChangeImgColor(Color color)

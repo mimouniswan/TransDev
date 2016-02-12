@@ -2,8 +2,10 @@ using System;
 using SQLite.Net;
 using SQLite.Net.Platform.XamarinAndroid;
 using SQLiteNetExtensions.Extensions;
+using Android.Database.Sqlite;
 using AppAndroid.Data;
 using System.Collections.Generic;
+using Java.IO;
 
 namespace AppAndroid.Work
 {
@@ -31,7 +33,9 @@ namespace AppAndroid.Work
 
             try
             {
-                // Suppression - tables
+                Java.IO.File f = new Java.IO.File(_Path);
+                SQLiteDatabase.DeleteDatabase(f);
+             /*   // Suppression - tables
                 _Conn.DropTable<CheckUp>();
                 _Conn.DropTable<BusIncident>();
                 _Conn.DropTable<Incident>();
@@ -50,7 +54,7 @@ namespace AppAndroid.Work
                 _Conn.CreateTable<CheckUp>();
 
                 sr = "Tables crée avec succès !\n" + _Path;
-                //Debug.WriteLine(_Path);
+                //Debug.WriteLine(_Path);*/
             }
             catch (Exception)
             {
@@ -175,6 +179,34 @@ namespace AppAndroid.Work
             catch (Exception) { }
 
             return result;
+        }
+
+        public List<Incident> GetBusIncident(int idBus, int side)
+        {
+            List<Incident> results = new List<Incident>();
+
+            List<Incident> incidents = _Conn.Query<Incident>($"SELECT * FROM Incident");
+            List<BusIncident> busIncidents = new List<BusIncident>();
+            List<Bus> bus = new List<Bus>();
+
+            foreach (var item in incidents)
+            {
+                //conducteurs = _Conn.Query<Conducteur>($"SELECT* FROM Conducteur WHERE Id = {item.IdConducteur}");
+
+                busIncidents = _Conn.Query<BusIncident>($"SELECT* FROM BusIncident WHERE IdIncident = {item.Id}");
+
+                if(busIncidents[0].IdBus == idBus && item.Cote == side)
+                {
+                    //bus = _Conn.Query<Bus>($"SELECT* FROM Bus WHERE Id = {busIncidents[0].IdBus}");
+                    results.Add(item);
+                }
+
+                //string[] r = new string[4] { bus[0].Number.ToString(), item.Observation, conducteurs[0].Name, item.DateMaJ };
+
+                //results.Add(r);
+            }
+
+            return results;
         }
 
         /// <summary>

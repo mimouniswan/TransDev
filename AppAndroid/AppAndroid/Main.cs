@@ -66,7 +66,7 @@ namespace AppAndroid
 
             btnDB.Click += delegate
             {
-                //StartActivity(typeof(TestDB));
+                StartActivity(typeof(TestDB));
                 DBWork DB = new DBWork();
                 var v = DB.GetLastCheck(1);
             };
