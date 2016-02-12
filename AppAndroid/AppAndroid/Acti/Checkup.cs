@@ -121,7 +121,8 @@ namespace AppAndroid.Acti
             Spinner spinner = FindViewById<Spinner>(Resource.Id.spinnerGravity);
             _CheckMode = FindViewById<CheckBox>(Resource.Id.checkBoxInci);
             #endregion
-
+            // Image du Bus
+            layout.AddView(CreateImageView(layout, Resource.Drawable.bus_blank_right));
             //Get Bus number
             TextView busNumber = FindViewById<TextView>(Resource.Id.txtNumBus);
             busNumber.Text = $"Bus N°{SharedData.BusNumber}";
@@ -267,8 +268,48 @@ namespace AppAndroid.Acti
             };
             #endregion
 
-            // Image du Bus
-            layout.AddView(CreateImageView(layout, Resource.Drawable.bus_blank_right));
+
+        }
+
+        private void MenuClick(object sender, AdapterView.ItemSelectedEventArgs ea)
+        {
+            switch (ea.Id)
+            {
+                case 0:
+                    // Léger
+                    ChangeImgColor(Color.Green);
+                    _Gravite = 0;
+                    break;
+                case 1:
+                    // Modéré
+                    ChangeImgColor(Color.Orange);
+                    _Gravite = 1;
+                    break;
+                case 2:
+                    // Important
+                    ChangeImgColor(Color.Red);
+                    _Gravite = 2;
+                    break;
+            }
+
+            if (_TmpGraviteList.Count > 0)
+                _TmpGraviteList[_IDImgSelect] = _Gravite;
+            else
+                _TmpGraviteList.Add(_Gravite);
+        }
+
+        private void ReplaceImg()
+        {
+            if (_ListImg.Count > 0)
+            {
+                int i = 0;
+                foreach (var item in _ListImg)
+                {
+                    int[] coord = _TmpCoordList[i];
+                    item.Layout(coord[0], coord[1], coord[2], coord[3]);
+                    i++;
+                }
+            }
         }
 
         /// <summary>
@@ -397,7 +438,9 @@ namespace AppAndroid.Acti
                 else
                 {
                     foreach (ImageView item in _ListImg)
+                    {
                         item.SetColorFilter(color);
+                        }
                 }
 
                 _ImgColor = color;
@@ -405,46 +448,7 @@ namespace AppAndroid.Acti
             ReplaceImg();
         }
 
-        private void MenuClick(object sender, AdapterView.ItemSelectedEventArgs ea)
-        {
-            switch (ea.Id)
-            {
-                case 0:
-                    // Léger
-                    ChangeImgColor(Color.Green);
-                    _Gravite = 0;
-                    break;
-                case 1:
-                    // Modéré
-                    ChangeImgColor(Color.Orange);
-                    _Gravite = 1;
-                    break;
-                case 2:
-                    // Important
-                    ChangeImgColor(Color.Red);
-                    _Gravite = 2;
-                    break;
-            }
-
-            if (_TmpGraviteList.Count > 0)
-                _TmpGraviteList[_IDImgSelect] = _Gravite;
-            else
-                _TmpGraviteList.Add(_Gravite);
-        }
-
-        private void ReplaceImg()
-        {
-            if(_ListImg.Count > 0)
-            {
-                int i = 0;
-                foreach (var item in _ListImg)
-                {
-                    int[] coord = _TmpCoordList[i];
-                    item.Layout(coord[0], coord[1], coord[2], coord[3]);
-                    i++;
-                }
-            }
-        }
+        
 
         private void NextSide(RelativeLayout layout, bool asc = true)
         {
