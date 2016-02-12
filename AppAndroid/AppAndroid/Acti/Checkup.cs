@@ -42,7 +42,6 @@ namespace AppAndroid.Acti
         private float _ViewX;
         private float _ViewY;
 
-        private int _Type;
         private int _Gravite;
         private int _CurrentSide;
         private int _IDImgSelect;
@@ -50,6 +49,7 @@ namespace AppAndroid.Acti
         private List<int[]> _TmpCoordList = new List<int[]>();
         private List<int> _TmpTypeList = new List<int>();
         private List<int> _TmpGraviteList = new List<int>();
+        //private List<string> _TmpTest = new List<string>();
 
         public bool OnTouch(View v, MotionEvent e)
         {
@@ -123,19 +123,20 @@ namespace AppAndroid.Acti
             #endregion
 
             //Get Bus number
-            var insertNumber = SharedData.BusNumber;
             TextView busNumber = FindViewById<TextView>(Resource.Id.txtNumBus);
-            busNumber.Text = "Bus N°" + insertNumber;
+            busNumber.Text = $"Bus N°{SharedData.BusNumber}";
 
-            //Get Driver Name
-            var insertName = SharedData.DriverName;
-            busNumber = FindViewById<TextView>(Resource.Id.txtDriver);
-            busNumber.Text = "Conducteur : " + insertName;
+            DBWork DB = new DBWork();
+            string[] str = DB.GetLastCheck(SharedData.BusID);
+            TextView lastCheck = FindViewById<TextView>(Resource.Id.txtLastCheck);
+            lastCheck.Text = $"Dernier check :  {str[1]} avec {str[0]}";
 
             _ImgCircle.Clickable = true;
             _ImgSquare.Clickable = true;
             _ImgTriangle.Clickable = true;
             _ImgTrash.Clickable = true;
+
+            btnVal.Text = "Terminé";
 
             ChangeImgColor(Color.Green);
 
@@ -149,15 +150,13 @@ namespace AppAndroid.Acti
             spinner.Adapter = adapterGravity;
             spinner.ItemSelected += MenuClick;
 
-            #region Clicks
+            #region Les fonctions Click
             _ImgCircle.Click += delegate
             {
                 if (!_CheckMode.Checked)
                 {
                     AddImage(layout, Resource.Drawable.CircleT, _ImgColor);
-                    _Type = 0;
-
-                    _TmpTypeList[_IDImgSelect] = _Type;
+                    btnVal.Text = "Valider";
                 }
             };
 
@@ -166,9 +165,7 @@ namespace AppAndroid.Acti
                 if (!_CheckMode.Checked)
                 {
                     AddImage(layout, Resource.Drawable.Square, _ImgColor);
-                    _Type = 1;
-
-                    _TmpTypeList[_IDImgSelect] = _Type;
+                    btnVal.Text = "Valider";
                 }
             };
 
@@ -177,9 +174,7 @@ namespace AppAndroid.Acti
                 if (!_CheckMode.Checked)
                 {
                     AddImage(layout, Resource.Drawable.TriangleT, _ImgColor);
-                    _Type = 2;
-
-                    //_TmpTypeList[_IDImgSelect] = _Type;
+                    btnVal.Text = "Valider";
                 }
             };
 
@@ -189,6 +184,9 @@ namespace AppAndroid.Acti
                 {
                     layout.RemoveView(_ImgSelect);
                     _ListImg.RemoveAt(_IDImgSelect);
+
+                    _ImgSelect = null;
+                    btnVal.Text = "Terminé";
                 }
             };
 
@@ -205,11 +203,56 @@ namespace AppAndroid.Acti
                     builder.SetPositiveButton("Oui", (s, e) =>
                     {
                         // X, Y, _Type, _Gravite
+                        List<TmpCheck> ListTmpCheck = new List<TmpCheck>();
+                        int side = 0;
+
+                        switch (_CurrentSide)
+                        {
+                            case Resource.Drawable.bus_blank_front:
+                                side = 1;
+                                break;
+                            case Resource.Drawable.bus_blank_right:
+                                side = 0;
+                                break;
+                            case Resource.Drawable.bus_blank_back:
+                                side = 3;
+                                break;
+                            case Resource.Drawable.bus_blank_left:
+                                side = 2;
+                                break;
+                        }
+
+                        if (_TmpCoordList.Count > 0)
+                            ListTmpCheck.Add(new TmpCheck() { X = _TmpCoordList[0][0], Y = _TmpCoordList[0][1], Type = _TmpTypeList[0], Gravite = _TmpGraviteList[0], Cote = side });
+                        else
+                            ListTmpCheck[0] = new TmpCheck() { X = _TmpCoordList[0][0], Y = _TmpCoordList[0][1], Type = _TmpTypeList[0], Gravite = _TmpGraviteList[0], Cote = side };
+
+                        SharedData.ListCheck = ListTmpCheck;
+
+                        this.Finish();
+                        StartActivity(typeof(IncidentReport));
+
                     });
                     builder.SetNegativeButton("Annuler", (s, e) => { });
 
                     builder.Create().Show();
-                    StartActivity(typeof(IncidentReport));
+                }
+                else
+                {
+                    var builder = new AlertDialog.Builder(this);
+                    builder.SetMessage($"Vous avez terminé ?");
+                    builder.SetPositiveButton("Oui", (s, e) =>
+                    {
+                        var v = SharedData.ListIncident;
+                        DB.DBInsertCheck(SharedData.ControleurID, SharedData.DriverID, SharedData.BusID, SharedData.ListIncident);
+
+                        SharedData.ListIncident = new List<Data.Incident>();
+
+                        this.Finish();
+                    });
+                    builder.SetNegativeButton("Non", (s, e) => { });
+
+                    builder.Create().Show();
                 }
             };
 
@@ -225,7 +268,6 @@ namespace AppAndroid.Acti
             #endregion
 
             // Image du Bus
-            ////////////// Mettre condition pour connaitre le coté à affiché //////////////
             layout.AddView(CreateImageView(layout, Resource.Drawable.bus_blank_right));
         }
 
@@ -272,6 +314,12 @@ namespace AppAndroid.Acti
             return imgView;
         }
 
+        /// <summary>
+        /// Ajout d'une ImageView
+        /// </summary>
+        /// <param name="layout">Le layout dans lequel il s'affichera.</param>
+        /// <param name="idResource">Resource.Drawable</param>
+        /// <param name="color">La couleur que l'image prendra.</param>
         private void AddImage(RelativeLayout layout, int idResource, Color color)
         {
             ImageView img = CreateImageView(layout, idResource, false);
@@ -287,15 +335,44 @@ namespace AppAndroid.Acti
             {
                 layout.RemoveView(_ListImg[0]);
                 _ListImg[0] = img;
-                //_TmpCoordList[0] = new int[4] { img.Left, img.Top, img.Right, img.Bottom };
+                _TmpCoordList[0] = new int[4] { img.Left, img.Top, img.Right, img.Bottom };
+
+                switch (idResource)
+                {
+                    case Resource.Drawable.CircleT:
+                        _TmpTypeList[0] = 0;
+                        //_TmpTest.Add("Cercle");
+                        break;
+                    case Resource.Drawable.Square:
+                        _TmpTypeList[0] = 1;
+                        //_TmpTest.Add("Carré");
+                        break;
+                    case Resource.Drawable.TriangleT:
+                        _TmpTypeList[0] = 2;
+                        //_TmpTest.Add("Triangle");
+                        break;
+                }
             }
             else {
                 _ListImg.Add(img);
                 _TmpCoordList.Add(new int[4] { img.Left, img.Top, img.Right, img.Bottom });
-                _TmpGraviteList.Add(_Gravite);
 
-
-            }
+                switch (idResource)
+                {
+                    case Resource.Drawable.CircleT:
+                        _TmpTypeList.Add(0);
+                        //_TmpTest.Add("Cercle");
+                        break;
+                    case Resource.Drawable.Square:
+                        _TmpTypeList.Add(1);
+                        //_TmpTest.Add("Carré");
+                        break;
+                    case Resource.Drawable.TriangleT:
+                        _TmpTypeList.Add(2);
+                        //_TmpTest.Add("Triangle");
+                        break;
+                }
+            } 
 
             int c = _ListImg.Count;
             img.Click += delegate { _IDImgSelect = c - 1; };
@@ -349,7 +426,10 @@ namespace AppAndroid.Acti
                     break;
             }
 
-            //[_IDImgSelect] = _Gravite;
+            if (_TmpGraviteList.Count > 0)
+                _TmpGraviteList[_IDImgSelect] = _Gravite;
+            else
+                _TmpGraviteList.Add(_Gravite);
         }
 
         private void ReplaceImg()

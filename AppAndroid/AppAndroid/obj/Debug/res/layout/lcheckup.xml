@@ -1,4 +1,4 @@
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android"><LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:gravity="center" android:layout_height="50dp" android:id="@+id/lyTop"><TextView android:text="Côté droit du bus N° 101" android:gravity="center" android:layout_marginRight="10dp" android:layout_width="wrap_content" android:layout_height="match_parent" android:id="@+id/txtNumBus" /><Button android:text="Gauche" android:layout_width="wrap_content" android:layout_height="match_parent" android:id="@+id/buttonPrec" /><Button android:text="Droite" android:layout_width="wrap_content" android:layout_height="match_parent" android:id="@+id/buttonSuiv" /><TextView android:text="Dernier check: 17/10/2015 17:35" android:gravity="center" android:layout_marginRight="30dp" android:layout_width="wrap_content" android:layout_height="match_parent" android:id="@+id/txtNumBus" /><!--TextView
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android"><LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:gravity="left" android:layout_height="50dp" android:id="@+id/lyTop"><TextView android:text="Côté droit du bus N° 101" android:layout_marginLeft="10dp" android:layout_marginRight="10dp" android:layout_width="wrap_content" android:layout_height="match_parent" android:id="@+id/txtNumBus" android:gravity="center" /><Button android:text="Gauche" android:layout_marginRight="10dp" android:layout_width="wrap_content" android:layout_height="match_parent" android:id="@+id/buttonPrec" /><Button android:text="Droite" android:layout_marginRight="10dp" android:layout_width="wrap_content" android:layout_height="match_parent" android:id="@+id/buttonSuiv" /><TextView android:text="Dernier check: 17/10/2015 17:35" android:gravity="center" android:layout_width="wrap_content" android:layout_height="match_parent" android:id="@+id/txtLastCheck" /><!--TextView
             android:text="Dernier conducteur: Dupont"
             android:gravity="center"
             android:layout_width="wrap_content"
@@ -23,7 +23,12 @@
             android:gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/txtIncidHigh" /--><Spinner android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/spinnerGravity" android:minHeight="30dp" android:minWidth="100dp" android:layout_marginRight="10dp" /><ImageView android:src="@drawable/trash" android:id="@+id/imgTrash" android:layout_marginRight="5dp" android:layout_width="50dp" android:layout_height="50dp" /><TextView android:gravity="center" android:layout_marginRight="5dp" android:layout_width="110dp" android:layout_height="match_parent" android:id="@+id/txtDriver" /><!--TextView
+            android:id="@+id/txtIncidHigh" /--><Spinner android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/spinnerGravity" android:minHeight="30dp" android:minWidth="100dp" android:layout_marginRight="10dp" /><ImageView android:src="@drawable/trash" android:id="@+id/imgTrash" android:layout_marginRight="5dp" android:layout_width="50dp" android:layout_height="50dp" /><!--TextView
+            android:gravity="center"
+            android:layout_marginRight="5dp"
+            android:layout_width="110dp"
+            android:layout_height="match_parent"
+            android:id="@+id/txtDriver" /--><!--TextView
             android:text="Controleur: Amb"
             android:gravity="center"
             android:layout_width="wrap_content"
