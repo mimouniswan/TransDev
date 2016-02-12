@@ -177,6 +177,34 @@ namespace AppAndroid.Work
             return result;
         }
 
+        public List<Incident> GetBusIncident(int idBus, int side)
+        {
+            List<Incident> results = new List<Incident>();
+
+            List<Incident> incidents = _Conn.Query<Incident>($"SELECT * FROM Incident");
+            List<BusIncident> busIncidents = new List<BusIncident>();
+            List<Bus> bus = new List<Bus>();
+
+            foreach (var item in incidents)
+            {
+                //conducteurs = _Conn.Query<Conducteur>($"SELECT* FROM Conducteur WHERE Id = {item.IdConducteur}");
+
+                busIncidents = _Conn.Query<BusIncident>($"SELECT* FROM BusIncident WHERE IdIncident = {item.Id}");
+
+                if(busIncidents[0].IdBus == idBus && item.Cote == side)
+                {
+                    //bus = _Conn.Query<Bus>($"SELECT* FROM Bus WHERE Id = {busIncidents[0].IdBus}");
+                    results.Add(item);
+                }
+
+                //string[] r = new string[4] { bus[0].Number.ToString(), item.Observation, conducteurs[0].Name, item.DateMaJ };
+
+                //results.Add(r);
+            }
+
+            return results;
+        }
+
         /// <summary>
         /// Récupère une liste de tableau de string pour l'historique des incidents.
         /// </summary>
