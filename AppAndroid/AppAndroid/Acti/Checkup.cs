@@ -329,7 +329,16 @@ namespace AppAndroid.Acti
                         else if (item.Gravite == 2)
                             color = Color.Red;
 
-                        AddImage(layout, t, color, item.Gravite, new int[4] { item.X + count * 4, item.Y + count * 4, 50, 50 }, false);
+                        AddImage(layout, t, color, item.Gravite, new int[4] { item.X, item.Y, 50, 50 }, false);
+
+                        foreach(ImageView img in _ListImg)
+                        {
+
+                            RelativeLayout.LayoutParams ll = new RelativeLayout.LayoutParams(50, 50);
+
+                            ll.SetMargins(_TmpCoordList[count][0], _TmpCoordList[count][1], 0, 0);
+                            _ListImg[count].LayoutParameters = ll;
+                        }
 
                         count++;
                     }
@@ -467,9 +476,6 @@ namespace AppAndroid.Acti
             layout.AddView(img);
 
             _ImgSelect = img;
-
-            if(!oneOnly)
-                ReplaceImg();
         }
 
         private void ChangeImgColor(Color color)
