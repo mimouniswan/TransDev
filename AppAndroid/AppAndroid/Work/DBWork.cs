@@ -86,7 +86,7 @@ namespace AppAndroid.Work
                                 Gravite = gravite               , Etat = etat                           ,
                                 Cote = cote                     , DateCreation = dateCreation           ,
                                 DateMaJ = dateCreation          , Observation = observation             ,
-                                X = x                           , Y = y,
+                                X = x                           , Y = y                                 ,
                                 Picture = picture };
 
         /// <summary>
@@ -181,11 +181,16 @@ namespace AppAndroid.Work
             return result;
         }
 
+        public void UpdateEtatIncident(int id, int etat)
+        {
+            var query = _Conn.Query<Incident>($"UPDATE Incident SET Etat = \"{etat}\" WHERE ID = {id}");
+        }
+
         public List<Incident> GetBusIncident(int idBus, int side)
         {
             List<Incident> results = new List<Incident>();
 
-            List<Incident> incidents = _Conn.Query<Incident>($"SELECT * FROM Incident");
+            List<Incident> incidents = _Conn.Query<Incident>($"SELECT * FROM Incident WHERE Etat=0");
             List<BusIncident> busIncidents = new List<BusIncident>();
             List<Bus> bus = new List<Bus>();
 
@@ -283,6 +288,42 @@ namespace AppAndroid.Work
             return results;
         }
 
+        public string[] GetAllIncidentInfos(int id, string date, bool desc = false)
+        {
+            string[] results = new string[2];
+
+            string o = "";
+            if (desc) o = "Desc"; else o = "Asc";
+
+            try
+            {
+                List<Incident> incidents = _Conn.Query<Incident>($"SELECT * FROM Incident WHERE Id = {id} AND DateCreation=\"{date}\" ORDER BY DateMaJ {o}");
+                List<BusIncident> busIncidents = new List<BusIncident>();
+                List<Bus> bus = new List<Bus>();
+                List<Conducteur> conducteurs = new List<Conducteur>();
+                List<Controleur> controleurs = new List<Controleur>();
+                List<CheckUp> checks = new List<CheckUp>();
+
+                foreach (var item in incidents)
+                {
+                    conducteurs = _Conn.Query<Conducteur>($"SELECT* FROM Conducteur WHERE Id = {item.IdConducteur}");
+
+                    controleurs = _Conn.Query<Controleur>($"SELECT* FROM Controleur WHERE Id = {item.IdCreationCotroleur}");
+
+                    busIncidents = _Conn.Query<BusIncident>($"SELECT* FROM BusIncident WHERE IdIncident = {item.Id}");
+
+                    bus = _Conn.Query<Bus>($"SELECT* FROM Bus WHERE Id = {busIncidents[0].IdBus}");
+
+                    checks = _Conn.Query<CheckUp>($"SELECT* FROM CheckUp WHERE IdBus={bus[0].Id} AND Date=\"{date}\"");
+
+                    results = new string[4] { checks[0].Id.ToString(), item.Observation, controleurs[0].Name, item.DateMaJ };
+                }
+            }
+            catch (Exception) { }
+
+            return results;
+        }
+
         #region Insert
 
         ////////////////////// INSERT ///////////////////////////////
@@ -367,12 +408,16 @@ namespace AppAndroid.Work
 
             try
             {
-                CheckUp tmpCheck = new CheckUp() { IdBus = IdBus, IdConducteur = IdConducteur, IdControleur = IdControleur, Date = DateTime.Now.ToString() };
+                string dateSynchro = DateTime.Now.ToString("HH:mm dd/MM/yyyy");
+
+                CheckUp tmpCheck = new CheckUp() { IdBus = IdBus, IdConducteur = IdConducteur, IdControleur = IdControleur, Date = dateSynchro };
                 _Conn.Insert(tmpCheck);
 
                 // Liaison avec Incident
                 foreach (Incident inc in incidents)
                 {
+                    inc.DateCreation = dateSynchro;
+                    inc.DateMaJ = dateSynchro;
                     _Conn.Insert(inc);
                     _Conn.Insert(new BusIncident() { IdCheck = tmpCheck.Id, IdBus = IdBus, IdIncident = inc.Id });
                 }
@@ -812,13 +857,13 @@ namespace AppAndroid.Work
         /// </summary>
         /// <param name="id">ID de l'incident.</param>
         /// <returns></returns>
-        public string DBUpdateIncident(int id, string type, int gravite, int etat, string dateMaj, string observation, int x, int y, string picture)
+        public string DBUpdateIncident(int id, int type, int gravite, int etat, string dateMaj, string observation, int x, int y, string picture)
         {
             string sr = "";
 
             try
             {
-                var query = _Conn.Query<Incident>($"UPDATE Incident SET Type = \"{type}\", Gravite = {gravite}, Etat = {etat}, DateMaJ = \"{dateMaj}\", Observation = \"{observation}\", X = {x}, Y = {y}, Picture = \"{picture}\" WHERE ID = {id}");
+                var query = _Conn.Query<Incident>($"UPDATE Incident SET Type = {type}, Gravite = {gravite}, Etat = {etat}, DateMaJ = \"{dateMaj}\", Observation = \"{observation}\", X = {x}, Y = {y}, Picture = \"{picture}\" WHERE ID = {id}");
 
                 sr = $"Mise à jour de l'incident d'ID : {id}\n";
             }
