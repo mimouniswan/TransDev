@@ -26,6 +26,10 @@ AppAndroid.Acti.HistIncident, AppAndroid;md53cb23a7ea6337873dd28cc9b3d76d964.His
 AppAndroid.Acti.HistIncident, AppAndroid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md53cb23a7ea6337873dd28cc9b3d76d964.HistIncident
 AppAndroid.Acti.HistIncident;md53cb23a7ea6337873dd28cc9b3d76d964.HistIncident
 appandroid.acti.HistIncident;md53cb23a7ea6337873dd28cc9b3d76d964.HistIncident
+AppAndroid.Acti.IncidentMaJ, AppAndroid;md53cb23a7ea6337873dd28cc9b3d76d964.IncidentMaJ
+AppAndroid.Acti.IncidentMaJ, AppAndroid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md53cb23a7ea6337873dd28cc9b3d76d964.IncidentMaJ
+AppAndroid.Acti.IncidentMaJ;md53cb23a7ea6337873dd28cc9b3d76d964.IncidentMaJ
+appandroid.acti.IncidentMaJ;md53cb23a7ea6337873dd28cc9b3d76d964.IncidentMaJ
 AppAndroid.Acti.IncidentReport, AppAndroid;md53cb23a7ea6337873dd28cc9b3d76d964.IncidentReport
 AppAndroid.Acti.IncidentReport, AppAndroid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md53cb23a7ea6337873dd28cc9b3d76d964.IncidentReport
 AppAndroid.Acti.IncidentReport;md53cb23a7ea6337873dd28cc9b3d76d964.IncidentReport

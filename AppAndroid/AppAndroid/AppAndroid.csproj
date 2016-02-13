@@ -74,6 +74,7 @@
     <Compile Include="Acti\CreaConduc.cs" />
     <Compile Include="Acti\CreaBus.cs" />
     <Compile Include="Acti\HistIncident.cs" />
+    <Compile Include="Acti\IncindentMaJ.cs" />
     <Compile Include="Acti\IncindentReport.cs" />
     <Compile Include="ChoicePart.cs" />
     <Compile Include="Acti\CreaContro.cs" />
@@ -116,6 +117,9 @@
       <SubType>AndroidResource</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\IncidentReport.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\IncidentMaJ.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
   </ItemGroup>

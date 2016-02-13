@@ -114,5 +114,6 @@ C:\Users\Swan\Source\Repos\TransDev\AppAndroid\AppAndroid\obj\Debug\res\drawable
 C:\Users\Swan\Source\Repos\TransDev\AppAndroid\AppAndroid\obj\Debug\AppAndroid.dll.mdb
 C:\Users\Swan\Source\Repos\TransDev\AppAndroid\AppAndroid\bin\Debug\AppAndroid.dll.mdb
 C:\Users\Corentin\Source\Repos\TransDev\AppAndroid\AppAndroid\obj\Debug\res\layout\incidentreport.xml
+C:\Users\Corentin\Source\Repos\TransDev\AppAndroid\AppAndroid\obj\Debug\res\layout\incidentmaj.xml
 C:\Users\Corentin\Source\Repos\TransDev\AppAndroid\AppAndroid\obj\Debug\AppAndroid.dll.mdb
 C:\Users\Corentin\Source\Repos\TransDev\AppAndroid\AppAndroid\bin\Debug\AppAndroid.dll.mdb

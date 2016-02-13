@@ -25,6 +25,7 @@ namespace AppAndroid.Work
         public static int ControleurID { get; internal set; }
         public static string ControleurName { get; internal set; }
 
+        public static TmpCheck CheckSelect { get; internal set; } = new TmpCheck();
         public static List<TmpCheck> ListCheck { get; internal set; } = new List<TmpCheck>();
         public static List<Incident> ListIncident { get; internal set; } = new List<Incident>();
     }
@@ -33,6 +34,9 @@ namespace AppAndroid.Work
     {
         public int X { get; set; }
         public int Y { get; set; }
+        public int IdBDD { get; set; }
+        public string DateBDD { get; set; }
+        public string DateMaJBDD { get; set; }
         /// <summary>
         /// 0 = Cercle, 1 = Carré, 2 = Triangle
         /// </summary>
