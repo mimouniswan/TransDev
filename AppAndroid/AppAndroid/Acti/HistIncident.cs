@@ -69,12 +69,12 @@ namespace AppAndroid.Acti
 
                 if (_TriCond)
                 {
-                    orderTable = incidents.OrderBy(n => n[0]).ToList();
+                    orderTable = incidents.OrderBy(n => n[2]).ToList();
                     _TriCond = false;
                 }
                 else
                 {
-                    orderTable = incidents.OrderByDescending(n => n[0]).ToList();
+                    orderTable = incidents.OrderByDescending(n => n[2]).ToList();
                     _TriCond = true;
                 }
 
@@ -89,12 +89,12 @@ namespace AppAndroid.Acti
 
                 if (_TriMaJ)
                 {
-                    orderTable = incidents.OrderBy(n => n[0]).ToList();
+                    orderTable = incidents.OrderBy(n => n[3]).ToList();
                     _TriMaJ = false;
                 }
                 else
                 {
-                    orderTable = incidents.OrderByDescending(n => n[0]).ToList();
+                    orderTable = incidents.OrderByDescending(n => n[3]).ToList();
                     _TriMaJ = true;
                 }
 

@@ -857,13 +857,13 @@ namespace AppAndroid.Work
         /// </summary>
         /// <param name="id">ID de l'incident.</param>
         /// <returns></returns>
-        public string DBUpdateIncident(int id, int type, int gravite, int etat, string dateMaj, string observation, int x, int y, string picture)
+        public string DBUpdateIncident(int id, int idConducteur, int type, int gravite, int etat, string dateMaj, string observation, int x, int y, string picture)
         {
             string sr = "";
 
             try
             {
-                var query = _Conn.Query<Incident>($"UPDATE Incident SET Type = {type}, Gravite = {gravite}, Etat = {etat}, DateMaJ = \"{dateMaj}\", Observation = \"{observation}\", X = {x}, Y = {y}, Picture = \"{picture}\" WHERE ID = {id}");
+                var query = _Conn.Query<Incident>($"UPDATE Incident SET Type = {type}, IdConducteur = {idConducteur}, Gravite = {gravite}, Etat = {etat}, DateMaJ = \"{dateMaj}\", Observation = \"{observation}\", X = {x}, Y = {y}, Picture = \"{picture}\" WHERE ID = {id}");
 
                 sr = $"Mise à jour de l'incident d'ID : {id}\n";
             }

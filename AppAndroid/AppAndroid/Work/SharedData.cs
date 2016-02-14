@@ -35,6 +35,7 @@ namespace AppAndroid.Work
         public int X { get; set; }
         public int Y { get; set; }
         public int IdBDD { get; set; }
+        public int Side { get; set; }
         public string DateBDD { get; set; }
         public string DateMaJBDD { get; set; }
         /// <summary>
