@@ -145,7 +145,8 @@ namespace AppAndroid.Acti
                     builder.SetMessage("Êtes-vous sûr ?");
                     builder.SetPositiveButton("Oui", (s, e) => {
                         var v = DateTime.Now.ToString("HH:mm dd/MM/yyyy");
-                        _DB.DBUpdateIncident(SharedData.CheckSelect.IdBDD, typeSpinner.SelectedItemPosition, gravitySpinner.SelectedItemPosition, 0, DateTime.Now.ToString("HH:mm dd/MM/yyyy"), editTextDescription.Text, SharedData.CheckSelect.X, SharedData.CheckSelect.Y, "");
+                        int vv = SharedData.CheckSelect.IdBDD;
+                        _DB.DBUpdateIncident(SharedData.CheckSelect.IdBDD, SharedData.DriverID, typeSpinner.SelectedItemPosition, gravitySpinner.SelectedItemPosition, 0, DateTime.Now.ToString("HH:mm dd/MM/yyyy"), editTextDescription.Text, SharedData.CheckSelect.X, SharedData.CheckSelect.Y, "");
 
                         this.Finish();
                     });

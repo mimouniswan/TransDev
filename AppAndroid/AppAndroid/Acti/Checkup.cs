@@ -92,6 +92,8 @@ namespace AppAndroid.Acti
                             _BtnVal.Text = "Modifier";
                         else
                             _BtnVal.Text = "Terminer";
+
+                        _BtnVal.CallOnClick();
                     }
                     break;
                 case MotionEventActions.Move:
@@ -99,14 +101,9 @@ namespace AppAndroid.Acti
                     {
                         left = (int)(e.RawX - _ViewX);
                         top = (int)(e.RawY - _ViewY - (_HeightInDp * 0.185));
-                        right = (int)(left + v.Width);
-                        bottom = (int)(top + v.Height);
+                        right = (int)(left + 50);
+                        bottom = (int)(top + 50);
                         v.Layout(left, top, right, bottom);
-
-                        RelativeLayout.LayoutParams ll = new RelativeLayout.LayoutParams(50, 50);
-
-                        ll.SetMargins(left, top, right, bottom);
-                        v.LayoutParameters = ll;
 
                         _TmpCoordList[_IDImgSelect] = new int[4] { left, top, right, bottom };
                     }
@@ -172,7 +169,7 @@ namespace AppAndroid.Acti
             _ImgTriangle.Clickable = true;
             _ImgTrash.Clickable = true;
 
-            _BtnVal.Text = "Terminé";
+            _BtnVal.Text = "Terminer";
 
             ChangeImgColor(Color.Green);
 
@@ -239,7 +236,7 @@ namespace AppAndroid.Acti
                     _ListImg.RemoveAt(_IDImgSelect);
 
                     _ImgSelect = null;
-                    _BtnVal.Text = "Terminé";
+                    _BtnVal.Text = "Terminer";
                 }
             };
 
@@ -247,37 +244,38 @@ namespace AppAndroid.Acti
             {
                 if (_ImgSelect != null && !_SelectCache)
                 {
-                    var builder = new AlertDialog.Builder(this);
-                    builder.SetMessage($"Valider ?");
-                    builder.SetPositiveButton("Oui", (s, e) =>
+                    int side = 0;
+
+                    switch (_CurrentSide)
                     {
-                        // X, Y, _Type, _Gravite
-                        int side = 0;
+                        case Resource.Drawable.bus_blank_front:
+                            side = 1;
+                            break;
+                        case Resource.Drawable.bus_blank_right:
+                            side = 0;
+                            break;
+                        case Resource.Drawable.bus_blank_back:
+                            side = 3;
+                            break;
+                        case Resource.Drawable.bus_blank_left:
+                            side = 2;
+                            break;
+                    }
 
-                        switch (_CurrentSide)
-                        {
-                            case Resource.Drawable.bus_blank_front:
-                                side = 1;
-                                break;
-                            case Resource.Drawable.bus_blank_right:
-                                side = 0;
-                                break;
-                            case Resource.Drawable.bus_blank_back:
-                                side = 3;
-                                break;
-                            case Resource.Drawable.bus_blank_left:
-                                side = 2;
-                                break;
-                        }
+                    if (_CheckMode.Checked)
+                    {
+                        SharedData.CheckSelect = new TmpCheck() { X = _TmpCoordList[_IDImgSelect][0], Y = _TmpCoordList[_IDImgSelect][1], Type = _TmpTypeList[_IDImgSelect], Gravite = _TmpGraviteList[_IDImgSelect], Cote = side, IdBDD = _TmpIdBDD[_IDImgSelect], DateBDD = _TmpDateBDD[_IDImgSelect], DateMaJBDD = _TmpDateMaJBDD[_IDImgSelect] };
 
-                        if (_CheckMode.Checked)
+                        StartActivity(typeof(IncidentMaJ));
+                    }
+                    else
+                    {
+                        var builder = new AlertDialog.Builder(this);
+                        builder.SetMessage($"Valider ?");
+                        builder.SetPositiveButton("Oui", (s, e) =>
                         {
-                            SharedData.CheckSelect = new TmpCheck() { X = _TmpCoordList[_IDImgSelect][0], Y = _TmpCoordList[_IDImgSelect][1], Type = _TmpTypeList[_IDImgSelect], Gravite = _TmpGraviteList[_IDImgSelect], Cote = side, IdBDD = _TmpIdBDD[_IDImgSelect], DateBDD = _TmpDateBDD[_IDImgSelect], DateMaJBDD = _TmpDateMaJBDD[_IDImgSelect] };
+                            // X, Y, _Type, _Gravite                            
 
-                            StartActivity(typeof(IncidentMaJ));
-                        }
-                        else
-                        {
                             List<TmpCheck> ListTmpCheck = new List<TmpCheck>();
 
                             if (_TmpCoordList.Count > 0)
@@ -289,12 +287,13 @@ namespace AppAndroid.Acti
 
                             this.Finish();
                             StartActivity(typeof(IncidentReport));
-                        }
 
-                    });
-                    builder.SetNegativeButton("Annuler", (s, e) => { });
 
-                    builder.Create().Show();
+                        });
+                        builder.SetNegativeButton("Annuler", (s, e) => { });
+
+                        builder.Create().Show();
+                    }
                 }
                 else
                 {
@@ -603,25 +602,33 @@ namespace AppAndroid.Acti
             _TmpCoordList = new List<int[]>();
             _TmpGraviteList = new List<int>();
             _TmpTypeList = new List<int>();
+            _TmpIdBDD = new List<int>();
+            _TmpDateBDD = new List<string>();
+            _TmpDateMaJBDD = new List<string>();
+
+            int c = 0;
+            if (_CurrentSide == Resource.Drawable.bus_blank_right)
+                c = 0;
+            else if (_CurrentSide == Resource.Drawable.bus_blank_front)
+                c = 1;
+            else if (_CurrentSide == Resource.Drawable.bus_blank_left)
+                c = 2;
+            else if (_CurrentSide == Resource.Drawable.bus_blank_back)
+                c = 3;
 
             if (_CheckMode.Checked)
             {
                 ChangeImgColor(Color.Gray, true);
 
-                int c = 0;
-                if (_CurrentSide == Resource.Drawable.bus_blank_right)
-                    c = 0;
-                else if (_CurrentSide == Resource.Drawable.bus_blank_front)
-                    c = 1;
-                else if (_CurrentSide == Resource.Drawable.bus_blank_left)
-                    c = 2;
-                else if (_CurrentSide == Resource.Drawable.bus_blank_back)
-                    c = 3;
-
                 _ListInc = _DB.GetBusIncident(SharedData.BusID, c);
 
                 layout.RemoveAllViews();
                 _ImgSelect = null;
+
+                _ImgTrash.Enabled = false;
+                _SpinnerGravity.Enabled = false;
+                _BtnVal.Enabled = false;
+                _BtnVal.Visibility = ViewStates.Invisible;
 
                 layout.AddView(CreateImageView(layout, _CurrentSide));
 
@@ -655,33 +662,37 @@ namespace AppAndroid.Acti
                     count++;
                 }
 
+                count = 0;
                 foreach (Incident item in SharedData.ListIncident)
                 {
-                    int t = 0;
-                    Color color = Color.Gray;
+                    if (item.Cote == c)
+                    {
+                        int t = 0;
+                        Color color = Color.Gray;
 
-                    if (item.Type == 0)
-                        t = Resource.Drawable.CircleT;
-                    else if (item.Type == 1)
-                        t = Resource.Drawable.Square;
-                    else if (item.Type == 2)
-                        t = Resource.Drawable.TriangleT;
+                        if (item.Type == 0)
+                            t = Resource.Drawable.CircleT;
+                        else if (item.Type == 1)
+                            t = Resource.Drawable.Square;
+                        else if (item.Type == 2)
+                            t = Resource.Drawable.TriangleT;
 
-                    if (item.Gravite == 0)
-                        color = Color.Green;
-                    else if (item.Gravite == 1)
-                        color = Color.Orange;
-                    else if (item.Gravite == 2)
-                        color = Color.Red;
+                        if (item.Gravite == 0)
+                            color = Color.Green;
+                        else if (item.Gravite == 1)
+                            color = Color.Orange;
+                        else if (item.Gravite == 2)
+                            color = Color.Red;
 
-                    AddImage(layout, t, color, true, item.Gravite, new int[4] { item.X, item.Y, 50, 50 }, item.Id, item.DateCreation, item.DateMaJ, false);
+                        AddImage(layout, t, color, true, item.Gravite, new int[4] { item.X, item.Y, 50, 50 }, item.Id, item.DateCreation, item.DateMaJ, false);
 
-                    RelativeLayout.LayoutParams ll = new RelativeLayout.LayoutParams(50, 50);
+                        RelativeLayout.LayoutParams ll = new RelativeLayout.LayoutParams(50, 50);
 
-                    ll.SetMargins(_TmpCoordList[count][0], _TmpCoordList[count][1], 0, 0);
-                    _ListImg[count].LayoutParameters = ll;
+                        ll.SetMargins(_TmpCoordList[count][0], _TmpCoordList[count][1], 0, 0);
+                        _ListImg[count].LayoutParameters = ll;
 
-                    count++;
+                        count++;
+                    }
                 }
             }
             else
@@ -712,6 +723,12 @@ namespace AppAndroid.Acti
 
                 layout.RemoveAllViews();
                 _ImgSelect = null;
+
+                _ImgTrash.Enabled = true;
+                _SpinnerGravity.Enabled = true;
+                _BtnVal.Text = "Terminer";
+                _BtnVal.Enabled = true;
+                _BtnVal.Visibility = ViewStates.Visible;
 
                 layout.AddView(CreateImageView(layout, _CurrentSide));
             }
