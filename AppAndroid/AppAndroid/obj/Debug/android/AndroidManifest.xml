@@ -14,12 +14,12 @@
     </activity>
     <activity android:icon="@drawable/icon" android:label="TransDev" android:screenOrientation="landscape" android:name="md5a02b63792f83336f8d728b23ae2f4329.Menu" />
     <activity android:label="Checkupcs" android:screenOrientation="landscape" android:name="md53cb23a7ea6337873dd28cc9b3d76d964.Checkup" />
-    <activity android:label="CreaConduc" android:name="md53cb23a7ea6337873dd28cc9b3d76d964.CreaConduc" />
-    <activity android:label="CreaBus" android:name="md53cb23a7ea6337873dd28cc9b3d76d964.CreaBus" />
+    <activity android:label="CreaConduc" android:screenOrientation="landscape" android:name="md53cb23a7ea6337873dd28cc9b3d76d964.CreaConduc" />
+    <activity android:label="CreaBus" android:screenOrientation="landscape" android:name="md53cb23a7ea6337873dd28cc9b3d76d964.CreaBus" />
     <activity android:label="HistIncident" android:screenOrientation="landscape" android:name="md53cb23a7ea6337873dd28cc9b3d76d964.HistIncident" />
     <activity android:label="IncidentMaJ" android:screenOrientation="landscape" android:name="md53cb23a7ea6337873dd28cc9b3d76d964.IncidentMaJ" />
     <activity android:label="IncidentReport" android:screenOrientation="landscape" android:name="md53cb23a7ea6337873dd28cc9b3d76d964.IncidentReport" />
-    <activity android:label="CreaContro" android:name="md53cb23a7ea6337873dd28cc9b3d76d964.CreaContro" />
+    <activity android:label="CreaContro" android:screenOrientation="landscape" android:name="md53cb23a7ea6337873dd28cc9b3d76d964.CreaContro" />
     <activity android:label="TestDB" android:screenOrientation="landscape" android:name="md53cb23a7ea6337873dd28cc9b3d76d964.TestDB" />
     <provider android:name="mono.MonoRuntimeProvider" android:exported="false" android:initOrder="2147483647" android:authorities="AppAndroid.AppAndroid.mono.MonoRuntimeProvider.__mono_init__" />
     <!--suppress ExportedReceiver-->

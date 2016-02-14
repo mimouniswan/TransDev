@@ -33,9 +33,9 @@ namespace AppAndroid.Work
 
             try
             {
-                Java.IO.File f = new Java.IO.File(_Path);
-                SQLiteDatabase.DeleteDatabase(f);
-             /*   // Suppression - tables
+               /* Java.IO.File f = new Java.IO.File(_Path);
+                SQLiteDatabase.DeleteDatabase(f);*/
+                // Suppression - tables
                 _Conn.DropTable<CheckUp>();
                 _Conn.DropTable<BusIncident>();
                 _Conn.DropTable<Incident>();

@@ -3,5 +3,6 @@
   <PropertyGroup>
     <AndroidDesignerPreferredDevice>Nexus 4</AndroidDesignerPreferredDevice>
     <SelectedDevice>Genymotion Google Nexus 7 - 4.1.1 - API 16 - 800x1280_1</SelectedDevice>
+    <AndroidDesignerPreferredTheme>Theme.Material</AndroidDesignerPreferredTheme>
   </PropertyGroup>
 </Project>

@@ -11,10 +11,11 @@ using Android.Views;
 using Android.Widget;
 using AppAndroid.Work;
 using AppAndroid.Data;
+using Android.Content.PM;
 
 namespace AppAndroid.Acti
 {
-    [Activity(Label = "CreaConduc")]
+    [Activity(Label = "CreaConduc", ScreenOrientation = ScreenOrientation.Landscape)]
     public class CreaConduc : Activity
     {
         EditText _EditText;

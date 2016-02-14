@@ -7,10 +7,11 @@ using AppAndroid.Work;
 using AppAndroid.Data;
 using System.Collections.Generic;
 using System.Linq;
+using Android.Content.PM;
 
 namespace AppAndroid.Acti
 {
-    [Activity(Label = "CreaContro")]
+    [Activity(Label = "CreaContro", ScreenOrientation = ScreenOrientation.Landscape)]
     public class CreaContro : Activity
     {
         EditText _EditText;

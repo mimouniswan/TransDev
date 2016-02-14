@@ -1,61 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_weight="1">
     <LinearLayout
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.5">
-        <EditText
+        android:minWidth="25px"
+        android:minHeight="25px">
+        <TextView
+            android:text="Gestion des Conducteurs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nom du conducteur"
-            android:id="@+id/editTextNomCreaConduc" />
-        <Button
-            android:text="Ajouter"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/buttonValCreaConduc" />
+            android:id="@+id/textViewTitleConduc"
+            android:textSize="19dp" />
     </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="2dp"
+        android:background="#FFFFFF" />
     <LinearLayout
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.5">
-        <Spinner
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/spinnerSelectAdminConduc" />
+        android:layout_weight="0.5"
+        android:gravity="bottom">
         <LinearLayout
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1">
+            android:layout_weight="0.5">
             <EditText
-                android:hint="Nom du conducteur"
-                android:id="@+id/editTextUpdateNameConduc"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="wrap_content"
+                android:hint="Nom du conducteur"
+                android:id="@+id/editTextNomCreaConduc" />
+            <Button
+                android:text="Ajouter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/buttonValCreaConduc" />
         </LinearLayout>
         <LinearLayout
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1">
-            <Button
-                android:text="Modifier"
+            android:layout_weight="0.5">
+            <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/buttonUpdateAdminConduc"
-                android:layout_weight="0.5" />
-            <Button
-                android:text="Supprimer"
+                android:id="@+id/spinnerSelectAdminConduc" />
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/buttonDeleteAdminConduc"
-                android:layout_weight="0.5" />
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+                <EditText
+                    android:hint="Nom du conducteur"
+                    android:id="@+id/editTextUpdateNameConduc"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+                <Button
+                    android:text="Modifier"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/buttonUpdateAdminConduc"
+                    android:layout_weight="0.5" />
+                <Button
+                    android:text="Supprimer"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/buttonDeleteAdminConduc"
+                    android:layout_weight="0.5" />
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.5" />
 </LinearLayout>

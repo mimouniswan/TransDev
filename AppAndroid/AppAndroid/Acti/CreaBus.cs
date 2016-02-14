@@ -13,7 +13,7 @@ using AppAndroid.Data;
 
 namespace AppAndroid.Acti
 {
-    [Activity(Label = "CreaBus")]
+    [Activity(Label = "CreaBus", ScreenOrientation = ScreenOrientation.Landscape)]
     public class CreaBus : Activity
     {
         List<string> listSpinnerColor;
