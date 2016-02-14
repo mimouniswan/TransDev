@@ -2,8 +2,10 @@ using System;
 using SQLite.Net;
 using SQLite.Net.Platform.XamarinAndroid;
 using SQLiteNetExtensions.Extensions;
+using Android.Database.Sqlite;
 using AppAndroid.Data;
 using System.Collections.Generic;
+using Java.IO;
 
 namespace AppAndroid.Work
 {
@@ -31,7 +33,9 @@ namespace AppAndroid.Work
 
             try
             {
-                // Suppression - tables
+                Java.IO.File f = new Java.IO.File(_Path);
+                SQLiteDatabase.DeleteDatabase(f);
+             /*   // Suppression - tables
                 _Conn.DropTable<CheckUp>();
                 _Conn.DropTable<BusIncident>();
                 _Conn.DropTable<Incident>();
@@ -50,7 +54,7 @@ namespace AppAndroid.Work
                 _Conn.CreateTable<CheckUp>();
 
                 sr = "Tables crée avec succès !\n" + _Path;
-                //Debug.WriteLine(_Path);
+                //Debug.WriteLine(_Path);*/
             }
             catch (Exception)
             {
